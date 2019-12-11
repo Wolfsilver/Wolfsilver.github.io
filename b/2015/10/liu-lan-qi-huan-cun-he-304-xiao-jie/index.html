@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>浏览器缓存和304小结 | MXOXW</title>
+  <meta name="author" content="Wind">
+  <meta name="keywords" content="浏览器缓存 304 200 from cache">
+  <meta name="description" content="昨天有网友在询问关于浏览器缓存的问题，只记得以前写PHP的时候，自己简单地写过Etag的304方式，倒是没有认真看过浏览器本地缓存和304的区别，今天做了一些资料查询和测试，总结一下。
+关于浏览器缓存浏览器的资源请求，如果使用了缓存基本上是两种情况
+status code: 200 ok ( from cache )
+
+status code: 304 Not Modified
+
+上面两种方...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="浏览器缓存和304小结 | MXOXW" />
+  <meta itemprop="description" content="昨天有网友在询问关于浏览器缓存的问题，只记得以前写PHP的时候，自己简单地写过Etag的304方式，倒是没有认真看过浏览器本地缓存和304的区别，今天做了一些资料查询和测试，总结一下。
+关于浏览器缓存浏览器的资源请求，如果使用了缓存基本上是两种情况
+status code: 200 ok ( from cache )
+
+status code: 304 Not Modified
+
+上面两种方..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com/b/2015/10/liu-lan-qi-huan-cun-he-304-xiao-jie/">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">浏览器缓存和304小结</h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-10-14T09:24:58.000Z" itemprop="datePublished">10月 14, 2015</time>
+
+        
+        
+        
+           | <a href="#gitalk-container" >Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>昨天有网友在询问关于浏览器缓存的问题，只记得以前写PHP的时候，自己简单地写过Etag的304方式，倒是没有认真看过浏览器本地缓存和304的区别，今天做了一些资料查询和测试，总结一下。</p>
+<h2 id="关于浏览器缓存">关于浏览器缓存</h2><p>浏览器的资源请求，如果使用了缓存基本上是两种情况</p>
+<p>status code: 200 ok ( from cache )<br><img src="https://cloud.githubusercontent.com/assets/2452450/16187302/19d18b9a-3702-11e6-8c88-7c782a1960d4.png" alt="browser-cache"></p>
+<p>status code: 304 Not Modified<br><img src="https://cloud.githubusercontent.com/assets/2452450/16187304/1b7d8c14-3702-11e6-9af8-839959ce38d6.png" alt="browser-cache"></p>
+<p>上面两种方式有什么区别呢？简单地说，第一种方式是不向浏览器发送请求，直接使用本地缓存文件。第二种方式，浏览器虽然发现了本地有该资源的缓存，但是不确定是否是最新的，于是想服务器询问，若服务器认为浏览器的缓存版本还可用，那么便会返回304。<br><a id="more"></a></p>
+<h2 id="浏览器关于缓存使用的决策">浏览器关于缓存使用的决策</h2><p>那么，浏览器如何决定是使用哪种方式呢？这就和服务器在请求返回中的Header字段有关了。下面对相关的字段进行简单介绍。</p>
+<h3 id="Cache-Control">Cache-Control</h3><p>Cache-Control 是最重要的规则。这个字段用于指定所有缓存机制在整个请求/响应链中必须服从的指令。该字段通常覆盖默认缓存算法。另外，缓存指令是单向的，即请求中存在一个指令并不意味着响应中将存在同一个指令。</p>
+<p>简单地说，该字段用于控制浏览器在什么情况下直接使用本地缓存而不向服务器发送请求。一般具有以下值：</p>
+<ul>
+<li>public: 所有内容都将被缓存</li>
+<li>private: 内容只缓存到似有缓存中</li>
+<li>no-cache: 所有内容都不会被缓存</li>
+<li>no-store: 所有内容都不会被缓存到缓存或者internet临时文件中</li>
+<li>must-revalidation/proxy-revalidation: 如果缓存的内容失效，请求必须发送到服务器/代理以进行重新验证</li>
+<li>max-age=xxx( xxx is numeric ): 缓存的内容将在 xxx 秒后失效, 这个选项只在HTTP 1.1可用, 并如果和Last-Modified一起使用时, 优先级较高</li>
+</ul>
+<p>其中最常用的属性便是 <code>max-age</code>, 这个字段很简单，就是浏览器在资源成功请求后的制定时间内，都将直接调用本地缓存和不会向服务器去请求数据。</p>
+<h3 id="Expires">Expires</h3><p>Expires 头部字段提供一个日期和时间，在该日期前的所有对该资源的请求都会直接使用浏览器缓存而不用向服务器请求（注意：cache-control max-age 和 s-maxage 将覆盖 Expires 头部。）</p>
+<p>Expires 字段接收以下格式的值：”Expires: Sun, 08 Nov 2009 03:37:26 GMT”。</p>
+<p>但是使用Expires存在服务器端时间和浏览器时间不一致的问题。</p>
+<h3 id="Last-Modified/E-tag">Last-Modified/E-tag</h3><p>Last-Modified和E-tag的作用都是向服务器确认当前缓存文件是否为最新。抛开功能不看，这两个字段的表现如下：</p>
+<ul>
+<li>若服务器在响应一个资源时添加了Last-Modified字段，那么当下一次浏览器再一次向服务器请求该资源时（前提是浏览器中上一次的资源被缓存过了），会在请求header中包含If-Modified-Since字段，且值与服务器第一次响应给浏览器的Last-Modified字段一致</li>
+<li>若服务器在响应一个资源时添加了ETag字段，那么当下一次浏览器再一次向服务器请求该资源时（前提是浏览器中上一次的资源被缓存过了），会在请求header中包含If-None-Match字段，且值与服务器第一次响应给浏览器的ETag字段一致</li>
+<li>那么上述是遵循了Http协议的浏览器会自动实现的，而要实现304的功能，就需要服务器（比如Apache对于静态资源会自动实现这两个字段的响应）或者我们手动在服务器端编写响应的逻辑来实现。</li>
+<li>若服务器在收到的资源请求中发现含有Last-Modified字段，则说明浏览器中包含了该资源的某一版本的缓存，此时服务器端将根据该字段的值进行一定的逻辑判断，以决定让浏览器直接使用已有的缓存（返回304）还是将最新的文件发送过去（200，发送新文件并更新Last-Modified字段）<br>若服务器在收到的资源请求中发现含有If-None-Matc字段，则说明浏览器中包含了该资源的某一版本的缓存，此时服务器端将根据该字段的值进行一定的逻辑判断，以决定让浏览器直接使用已有的缓存（返回304）还是将最新的文件发送过去（200，发送新文件，并更新ETag）</li>
+<li>若同时使用了Last-Modified和ETag，正确的做法应该是当两者都符合条件时，才返回304</li>
+</ul>
+<h3 id="什么时候使用ETag？">什么时候使用ETag？</h3><p>Etag 主要为了解决 Last-Modified 无法解决的一些问题。</p>
+<ul>
+<li>一些文件也许会周期性的更改，但是他的内容并不改变(仅仅改变的修改时间)，这个时候我们并不希望客户端认为这个文件被修改了，而重新GET。这种情况下可以将某个能用来表明文件内容是否被更改的值（比如md5）来作为ETag</li>
+<li>某些文件修改非常频繁，比如在秒以下的时间内进行修改，(比方说1s内修改了N次)，If-Modified-Since能检查到的粒度是s级的，这种修改无法判断(或者说UNIX记录MTIME只能精确到秒)</li>
+<li>某些服务器不能精确的得到文件的最后修改时间</li>
+</ul>
+<h2 id="不同的页面打开方式产生的请求区别">不同的页面打开方式产生的请求区别</h2><p>一般我们打开（或者更新）一个页面（或者资源）有几种方式：</p>
+<ul>
+<li>在地址栏中输入地址，然后回车</li>
+<li>激活当前页面地址，然后回车</li>
+<li>F5刷新页面</li>
+<li>单机Back/Forward按钮<br>上面几种方式对资源的请求，会产生不同的结果，并且各浏览器的表现并不一致。具体的区别可以参考鸟哥的《<a href="http://www.laruence.com/2010/03/05/1332.html?cp=2#comment-6618" target="_blank" rel="external">浏览器缓存机制</a>》</li>
+</ul>
+<p>其中大家需要注意的一点是，刷新页面（F5或者刷新按钮），不管是否设置了max-age，都会重新像服务器发送请求。但是这不影响304逻辑。</p>
+<h2 id="实例代码测试">实例代码测试</h2><p>用nodejs写了一个简单的静态文件服务器，用来测试上面的Cache-Control和Last-Modified，具体代码可以看<a href="https://gist.github.com/2382491" target="_blank" rel="external">gist</a></p>
+<p>例子比较简单，大体逻辑：</p>
+<ul>
+<li>每个资源的200返回设置max-age=10，即缓存10秒。同时设置Last-Modified</li>
+<li><p>每次收到请求后，若发现包含if-modified-since字段，则304<br>测试过程和结果：</p>
+</li>
+<li><p>第一次请求，不管是index.html还是index.css均为200，且response中包含了max-age和Last-Modified</p>
+</li>
+<li>在地址栏中回车（10s以内），index.html为304，index.css为200 ok ( from cache )</li>
+<li><p>若对页面进行刷新（ F5或者刷新页面 ），两者均为 304（在10s内或者不在10s内）<br>需要注意的问题：</p>
+</li>
+<li><p>index.html不管是否设置了max-age，都是304，同理，将index.css直接放到地址栏中请求也是304</p>
+</li>
+<li>index.css一次304之后的10s内又能继续进行不需要请求服务器的直接本地缓存。这里我个人认为，浏览器的“直接使用本地缓存“的效果和从服务器成功200到数据产生的效果是一致的，除了文件本身，header字段等信息也是同样会被cache的，因此304之后，max-age又可以被继续使用一遍。</li>
+</ul>
+<hr>
+<p>做了nodejs的实验之后，又开启了apache服务器，同样的将index.html和index.css文件放置到服务器根目录中，请求后，发现apache默认已经做了Last-Modified和ETag的处理，并且在修改index.css文件后，可以观察到这两个值的变化。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/2452450/16187306/1efdc610-3702-11e6-90f6-461996f56a01.png" alt="browser-cache"></p>
+<blockquote>
+<p>From: <a href="http://blog.neekey.me/blog/2012/04/14/liu-lan-qi-huan-cun-he-304xiao-jie/" target="_blank" rel="external">浏览器缓存和304小结 - Neekey</a></p>
+</blockquote>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
+
+      <time datetime="2015-10-14T09:24:58.000Z" itemprop="datePublished">10月 14, 2015</time>
+
+      
+
+    </p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/b/2015/10/2015-10-15-mian-shi-zong-jie/" title="Previous Post:  2015-10-15面试总结">&laquo;  2015-10-15面试总结</a>
+      
+      
+        <a class="basic-alignment right" href="/b/2015/10/2015-10-14-mian-shi-zong-jie/" title="Next Post: 2015-10-14面试总结">2015-10-14面试总结 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>评论</h1>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
+<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '50fbdf7a6156260cd0b1',
+        clientSecret: 'aeac1ce266e68e5421cdbbcc9b5223378ff0b6bc',
+        repo: 'gitalk',
+        owner: 'wolfsilver',
+        admin: 'wolfsilver',
+        id: location.pathname.substring(0, 50),
+        labels: 'Gitalk'.split(','),
+        perPage: 15,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+ </script>
+  </section>
+
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

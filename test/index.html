@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="manifest" href="/manifest.json">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://imgcache.qq.com/ac/vasapp/webviewlib/183/qw_lite_v2.js?_bid=183&max_age=31536000"></script>
+</head>
+<body>
+    <script type="text/javascript">
+            function plogin(rurl) {
+                function getCookie(name) {
+                    var reg = new RegExp("(^| )" + name + "(?:=([^;]*))?(;|$)"),
+                        val = document.cookie.match(reg);
+                    return val ? (val[2] ? unescape(val[2]) : "") : null;
+                }
+                var ua = navigator.userAgent.toLowerCase();
+                var isWX = window.WeixinJSBridge;
+                var isMQQ = false;
+                if (!isWX) {
+                    isWX = ua.match(/micromessenger/) ? true : false;
+                }
+                if (/qq\/([\d\.]+)*/.test(ua)) {
+                    isMQQ = true;
+                }
+                if (!rurl) {
+                    if (isMQQ) {
+                        return (getCookie("skey") && getCookie("uin")) ? true : false;
+                    } else {
+                        return (getCookie("wg_skey") && getCookie("wg_uin") || getCookie("p_skey") && getCookie(
+                            "p_uin") || getCookie("skey") && getCookie("uin")) ? true : false;
+                    }
+                }
+                if (isWX) {
+                    window.location.href = 'http://b.paipai.com/mlogin/tws64/m/wxv2/Login?appid=1&rurl=' +
+                        encodeURIComponent(rurl);
+                } else if (isMQQ) {
+                    if (mqq && mqq.data) {
+                        mqq.data.getUserInfo(function(o) {
+                            window.location.href = rurl;
+                        });
+                    }
+                } else {
+                    window.location.href = 'http://b.paipai.com/mlogin/tws64/m/h5v1/cpLogin?rurl=' +
+                        encodeURIComponent(rurl) + '&sid=' + getCookie('sid') + '&uk=' + getCookie('uk');
+                }
+            }
+
+
+            var uid = plogin();
+            alert('uid: ' + uid);
+            if(typeof mqq != "undefined") {
+                alert('mqq: ' + mqq||'null');
+                mqq.data.getUserInfo(function(o) {
+                    window.location.href = rurl;
+                });
+            }else{
+                alert('mqq not exist.');
+            }
+
+            // alert(document.cookie)
+
+            // if (!uid) {
+            //     alert('login');
+            //     plogin(window.location.href);
+            // };
+    </script>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

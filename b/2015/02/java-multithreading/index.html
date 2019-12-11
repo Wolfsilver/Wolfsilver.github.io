@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>Java 多线程 | MXOXW</title>
+  <meta name="author" content="Wind">
+  <meta name="keywords" content="Java 多线程 线程池">
+  <meta name="description" content="Java 多线程知识总结...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="Java 多线程 | MXOXW" />
+  <meta itemprop="description" content="Java 多线程知识总结..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com/b/2015/02/java-multithreading/">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Java 多线程</h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-02-11T10:05:48.000Z" itemprop="datePublished">2月 11, 2015</time>
+
+        
+        
+        
+           | <a href="#gitalk-container" >Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Java中要想实现多线程，有两种手段，一种是继续Thread类，另外一种是实现Runable接口。  </p>
+<p>1、通过实现Runnable接口线程创建<br>(1).定义一个类实现Runnable接口，重写接口中的run()方法。在run()方法中加入具体的任务代码或处理逻辑。<br>(2).创建Runnable接口实现类的对象。<br>(3).创建一个Thread类的对象，需要封装前面Runnable接口实现类的对象。（接口可以实现多继承）<br>(4).调用Thread对象的start()方法，启动线程</p>
+<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreadDemo1</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> countDown = <span class="number">10</span>;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="comment">// 在run方法中定义任务</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (countDown-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"#"</span> + Thread.currentThread().getName() + <span class="string">"("</span></span><br><span class="line">                    + countDown + <span class="string">")"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Runnable中run方法是一个空方法，并不会产生任何线程行为，必须显式地将一个任务附着到线程上</span></span><br><span class="line">        TreadDemo1 tt=<span class="keyword">new</span> TreadDemo1();</span><br><span class="line">        <span class="keyword">new</span> Thread(tt).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(tt).start();</span><br><span class="line">        System.out.println(<span class="string">"火箭发射前倒计时："</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、通过继承Thread类创建线程<br>(1).首先定义一个类去继承Thread父类，重写父类中的run()方法。在run()方法中加入具体的任务代码或处理逻辑。<br>(2).直接创建一个ThreadDemo2类的对象，也可以利用多态性，变量声明为父类的类型。<br>(3).调用start方法，线程t启动，隐含的调用run()方法。<br>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadDemo2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> countDown = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="comment">// 在run方法中定义任务</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (countDown-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"#"</span> + <span class="keyword">this</span>.getName() + <span class="string">"("</span> + countDown + <span class="string">")"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> ThreadDemo2().start();</span><br><span class="line">        <span class="keyword">new</span> ThreadDemo2().start();</span><br><span class="line">        <span class="comment">// 由于start方法迅速返回，所以main线程可以执行其他的操作,此时有两个独立的线程在并发运行</span></span><br><span class="line">        System.out.println(<span class="string">"火箭发射前倒计时："</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、两种方式的比较<br>首先分析两种方式的输出结果，同样是创建了两个线程，为什么结果不一样呢？<br>使用实现Runnable接口方式创建线程可以共享同一个目标对象（TreadDemo1 tt=new TreadDemo1();），实现了多个相同线程处理同一份资源。<br>然后再看一段来自JDK的解释：<br>Runnable 接口应该由那些打算通过某一线程执行其实例的类来实现。类必须定义一个称为run 的无参数方法。<br>设计该接口的目的是为希望在活动时执行代码的对象提供一个公共协议。例如，Thread 类实现了Runnable。激活的意思是说某个线程已启动并且尚未停止。<br>此外，Runnable 为非 Thread 子类的类提供了一种激活方式。通过实例化某个Thread 实例并将自身作为运行目标，就可以运行实现 Runnable 的类而无需创建 Thread 的子类。大多数情况下，如果只想重写run() 方法，而不重写其他 Thread 方法，那么应使用 Runnable 接口。这很重要，因为除非程序员打算修改或增强类的基本行为，否则不应为该类创建子类。</p>
+<p>采用继承Thread类方式：<br>（1）优点：编写简单，如果需要访问当前线程，无需使用Thread.currentThread()方法，直接使用this，即可获得当前线程。<br>（2）缺点：因为线程类已经继承了Thread类，所以不能再继承其他的父类。<br>采用实现Runnable接口方式：<br>（1）优点：线程类只是实现了Runable接口，还可以继承其他的类。在这种方式下，可以多个线程共享同一个目标对象，所以非常适合多个相同线程来处理同一份资源的情况，从而可以将CPU代码和数据分开，形成清晰的模型，较好地体现了面向对象的思想。<br>（2）缺点：编程稍微复杂，如果需要访问当前线程，必须使用Thread.currentThread()方法。<br><a id="more"></a><br>所谓的后台线程，是指在程序运行的时候在后台提供一种通用服务的线程，并且这种线程并不属于程序中不可或缺的部分。因此当所有的非后台线程结束时，程序也就终止了，同时会杀死所有后台线程。反过来说，只要有任何非后台线程(用户线程)还在运行，程序就不会终止。后台线程在不执行finally子句的情况下就会终止其run方法。后台线程创建的子线程也是后台线程。<br>下面是一个后台线程的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DaemonDemo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                System.out.println(<span class="string">"#"</span> + Thread.currentThread().getName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;<span class="comment">// 后台线程不执行finally子句</span></span><br><span class="line">            System.out.println(<span class="string">"finally "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            Thread daemon = <span class="keyword">new</span> Thread(<span class="keyword">new</span> DaemonDemo());</span><br><span class="line">            <span class="comment">// 必须在start之前设置为后台线程</span></span><br><span class="line">            daemon.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">            daemon.start();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"All daemons started"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.MILLISECONDS.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>sleep()、join()、interrupt()示例<br>这是一个来自《java编程思想上的示例》<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.thread;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *sleep()是静态方法，是属于类的，作用是让当前线程阻塞 </span><br><span class="line"> *join()是使线程同步，如在某个线程里调用t.join()表示t线程执行完再执行当前线程</span><br><span class="line"> *interrupt()给线程设定一个标志表示该线程已被中断，但在异常捕获时将清理这个标志</span><br><span class="line"> *所以在catch子句中，该标志为false </span><br><span class="line"> */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SleepJoinDemo</span> &#123;</span></span><br><span class="line">    public static void main(<span class="type">String</span>[] args) &#123;</span><br><span class="line">        <span class="type">Sleeper</span> sleep1 = <span class="keyword">new</span> <span class="type">Sleeper</span>(<span class="string">"sleep1"</span>, <span class="number">1500</span>);</span><br><span class="line">        <span class="type">Sleeper</span> sleep2 = <span class="keyword">new</span> <span class="type">Sleeper</span>(<span class="string">"sleep2"</span>, <span class="number">1500</span>);</span><br><span class="line">        <span class="type">Joiner</span> join1 = <span class="keyword">new</span> <span class="type">Joiner</span>(<span class="string">"join1"</span>, sleep1);</span><br><span class="line">        <span class="type">Joiner</span> join2 = <span class="keyword">new</span> <span class="type">Joiner</span>(<span class="string">"join2"</span>, sleep1);</span><br><span class="line">        sleep2.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sleeper</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> &#123;</span></span><br><span class="line">    <span class="comment">// 可以传参设定睡眠时间</span></span><br><span class="line">    <span class="keyword">private</span> int sleepTime;</span><br><span class="line"></span><br><span class="line">    public <span class="type">Sleeper</span>(<span class="type">String</span> name, int sleepTime) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.sleepTime = sleepTime;</span><br><span class="line">        start();<span class="comment">// 在构造方法中启动</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public void run() &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sleep(sleepTime);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="type">InterruptedException</span> e) &#123;</span><br><span class="line">            <span class="type">System</span>.out.println(getName() + <span class="string">" was interrupted.\n"</span></span><br><span class="line">                    + <span class="string">"isInterrupted():"</span> + isInterrupted());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">System</span>.out.println(getName() + <span class="string">" has awakened"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Joiner</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">Sleeper</span> sleeper;</span><br><span class="line"></span><br><span class="line">    public <span class="type">Joiner</span>(<span class="type">String</span> name, <span class="type">Sleeper</span> sleeper) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.sleeper = sleeper;</span><br><span class="line">        start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void run() &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sleeper.join();<span class="comment">//合并，异步变同步</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="type">InterruptedException</span> e) &#123;</span><br><span class="line">            <span class="type">System</span>.out.println(<span class="string">"interrupted"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">System</span>.out.println(getName() + <span class="string">" join completed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>转自<a href="http://blog.csdn.net/touch_2011/article/details/6914210" target="_blank" rel="external">java多线程总结三：sleep()、join()、interrupt()示例 - Touch_2011的专栏 - 博客频道 - CSDN.NET</a></p>
+</blockquote>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
+
+      <time datetime="2015-02-11T10:05:48.000Z" itemprop="datePublished">2月 11, 2015</time>
+
+      
+<span class="categories">
+  <a class="category-link" href="/categories/java/">Java</a>, <a class="category-link" href="/categories/java/多线程/">多线程</a>
+</span>
+
+
+    </p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/b/2015/02/programmers-ten-floors/" title="Previous Post: 程序员的十层楼">&laquo; 程序员的十层楼</a>
+      
+      
+        <a class="basic-alignment right" href="/b/2015/02/octopress-date-type/" title="Next Post: 自定义Octopress的日期格式">自定义Octopress的日期格式 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>评论</h1>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
+<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '50fbdf7a6156260cd0b1',
+        clientSecret: 'aeac1ce266e68e5421cdbbcc9b5223378ff0b6bc',
+        repo: 'gitalk',
+        owner: 'wolfsilver',
+        admin: 'wolfsilver',
+        id: location.pathname.substring(0, 50),
+        labels: 'Gitalk'.split(','),
+        perPage: 15,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+ </script>
+  </section>
+
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

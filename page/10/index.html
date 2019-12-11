@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>MXOXW</title>
+  <meta name="author" content="Wind">
+  
+  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="MXOXW" />
+  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/">JavaScript 权威指南-对象</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-25T02:17:25.000Z" itemprop="datePublished">5月 25, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="6-4检测属性">6.4检测属性</h2><ul>
+<li>in运算符</li>
+<li>hasOwnProperty()检测是否是对象自有属性</li>
+<li>propertyIsEnumerable()是hasProperty()的增强版，只有检测到是自有属性且这个属性的enumerable为true时才返回true。</li>
+<li>!==判断属性是否undefined（in可以区分不存在的属性和存在但是值为undefined的属性）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; x: <span class="literal">undefined</span> &#125; <span class="comment">// Property is explicitly set to undefined</span></span><br><span class="line">o.x !== <span class="literal">undefined</span> <span class="comment">// false: property exists but is undefined</span></span><br><span class="line">o.y !== <span class="literal">undefined</span> <span class="comment">// false: property doesn't even exist</span></span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> o <span class="comment">// true: the property exists</span></span><br><span class="line"><span class="string">"y"</span> <span class="keyword">in</span> o <span class="comment">// false: the property doesn't exists</span></span><br><span class="line"><span class="keyword">delete</span> o.x; <span class="comment">// Delete the property x</span></span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> o <span class="comment">// false: it doesn't exist anymore</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-7属性特性">6.7属性特性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(&#123;x:<span class="number">1</span>&#125;, <span class="string">"x"</span>);    <span class="comment">//获得某个对象特定属性的属性描述符</span></span><br><span class="line"><span class="comment">//Object.getPrototypeOf()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;&#125;; <span class="comment">// Start with no properties at all</span></span><br><span class="line"><span class="comment">// Add a nonenumerable data property x with value 1.</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"x"</span>, &#123; value : <span class="number">1</span>,</span><br><span class="line"> writable: <span class="literal">true</span>,</span><br><span class="line"> enumerable: <span class="literal">false</span>,</span><br><span class="line"> configurable: <span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">// Check that the property is there but is nonenumerable</span></span><br><span class="line">o.x; <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="built_in">Object</span>.keys(o) <span class="comment">// =&gt; []</span></span><br><span class="line"><span class="comment">// Now modify the property x so that it is read-only</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"x"</span>, &#123; writable: <span class="literal">false</span> &#125;);</span><br><span class="line"><span class="comment">// Try to change the value of the property</span></span><br><span class="line">o.x = <span class="number">2</span>; <span class="comment">// Fails silently or throws TypeError in strict mode</span></span><br><span class="line">o.x <span class="comment">// =&gt; 1</span></span><br><span class="line"><span class="comment">// The property is still configurable, so we can change its value like this:</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"x"</span>, &#123; value: <span class="number">2</span> &#125;);</span><br><span class="line">o.x <span class="comment">// =&gt; 2</span></span><br><span class="line"><span class="comment">// Now change x from a data property to an accessor property</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(o, <span class="string">"x"</span>, &#123; get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">0</span>; &#125; &#125;);</span><br><span class="line">o.x <span class="comment">// =&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">   同时修改或者创建多个属性</span><br><span class="line">**/</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="built_in">Object</span>.defineProperties(&#123;&#125;, &#123;</span><br><span class="line">    x: &#123; value: <span class="number">1</span>, writable: <span class="literal">true</span>, enumerable:<span class="literal">true</span>, configurable:<span class="literal">true</span> &#125;,</span><br><span class="line">    y: &#123; value: <span class="number">1</span>, writable: <span class="literal">true</span>, enumerable:<span class="literal">true</span>, configurable:<span class="literal">true</span> &#125;,</span><br><span class="line">    r: &#123;</span><br><span class="line">        get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="built_in">Math</span>.sqrt(<span class="keyword">this</span>.x*<span class="keyword">this</span>.x + <span class="keyword">this</span>.y*<span class="keyword">this</span>.y) &#125;,</span><br><span class="line">        enumerable:<span class="literal">true</span>,</span><br><span class="line">        configurable:<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/nodejs-mo-kuai-xiu-gai/">NodeJS 模块修改</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-19T05:52:05.000Z" itemprop="datePublished">5月 19, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/nodejs-mo-kuai-xiu-gai/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/nodejs-mo-kuai-xiu-gai/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="HEXO">HEXO</h2><h3 id="新建博客时，将中文标题转换为拼音">新建博客时，将中文标题转换为拼音</h3><p>/node_modules/hexo/lib/plugins/console/new.js<br>修改部分如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tr = <span class="built_in">require</span>(<span class="string">'transliteration'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    title: args._.pop(),</span><br><span class="line">    layout: args._.length ? args._[<span class="number">0</span>] : <span class="keyword">this</span>.config.default_layout,</span><br><span class="line">    slug: args.s || args.slug,</span><br><span class="line">    path: args.p || args.path</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 中文标题转换为拼音</span></span><br><span class="line">data.slug = tr.slugify(data.title);</span><br></pre></td></tr></table></figure></p></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/05/nodejs-mo-kuai-xiu-gai/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/">JavaScript 权威指南总结</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-19T02:15:15.000Z" itemprop="datePublished">5月 19, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="二进制浮点数和四舍五入错误">二进制浮点数和四舍五入错误</h2><p>JavaScript采用了IEEE-754浮点数表示法（几乎所有现代编程语言所采用），这是一种二进制表示法，可以精确地表示分数，比如1/2、1/8和1/1024。遗憾的是，我们常用的分数（特别是在金融计算方面）都是十进制分数1/10、1/100等。二进制浮点数表示法并不能精确表示类似0.1这样简单的数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">.3</span> - <span class="number">.2</span>;        <span class="comment">// 30美分减去20美分</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="number">.2</span> - <span class="number">.1</span>;        <span class="comment">// 20美分减去10美分</span></span><br><span class="line">x == y                  <span class="comment">// =&gt; false:两值不相等!</span></span><br><span class="line">x == <span class="number">.1</span>                 <span class="comment">// =&gt; false: .3-.2 不等于 .1</span></span><br><span class="line">y == <span class="number">.1</span>                 <span class="comment">// =&gt; true: .2-.1 等于 .1</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript的未来版本或许会支持十进制数字类型以避免这些舍入问题。在这之前你可能更愿意使用大整数进行重要的金融计算，例如，要使用整数“分”而不要使用小数“元”进行基于货币单位的运算。<br></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/java-collection/">Java集合类详解</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-22T13:00:33.000Z" itemprop="datePublished">3月 22, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/java-collection/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/java-collection/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="集合类说明及区别">集合类说明及区别</h2><p>Collection<br>├List<br>│├LinkedList<br>│├ArrayList<br>│└Vector<br>│　└Stack<br>└Set</p>
+<p>Map<br>├Hashtable<br>├HashMap<br>└WeakHashMap</p>
+<h2 id="Collection接口">Collection接口</h2><p>Collection是最基本的集合接口，一个Collection代表一组Object，即Collection的元素(Elements)。一些Collection允许相同的元素而另一些不行。一些能排序而另一些不行。Java SDK不提供直接继承自Collection的类，Java SDK提供的类都是继承自Collection的“子接口”如List和Set。</p>
+<p>所有实现Collection接口的类都必须提供两个标准的构造函数：无参数的构造函数用于创建一个空的Collection，有一个Collection参数的构造函数用于创建一个新的Collection，这个新的Collection与传入的Collection有相同的元素。后一个构造函数允许用户复制一个Collection。</p>
+<p>如何遍历Collection中的每一个元素？不论Collection的实际类型如何，它都支持一个iterator()的方法，该方法返回一个迭代子，使用该迭代子即可逐一访问Collection中每一个元素。典型的用法如下：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Iterator</span> it = collection.<span class="keyword">iterator</span>(); // 获得一个迭代子</span><br><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">　　<span class="type">Object</span> obj = it.next(); // 得到下一个元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　由Collection接口派生的两个接口是List和Set。</p>
+<h2 id="List接口">List接口</h2><p>List是有序的Collection，使用此接口能够精确的控制每个元素插入的位置。用户能够使用索引（元素在List中的位置，类似于数组下标）来访问List中的元素，这类似于Java的数组。</p>
+<p>和下面要提到的Set不同，List允许有相同的元素。</p>
+<p>除了具有Collection接口必备的iterator()方法外，List还提供一个listIterator()方法，返回一个ListIterator接口，和标准的Iterator接口相比，ListIterator多了一些add()之类的方法，允许添加，删除，设定元素，还能向前或向后遍历。</p>
+<p>实现List接口的常用类有LinkedList，ArrayList，Vector和Stack。<br></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/java-collection/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/java-classloader/">Java Classloader</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-19T06:55:09.000Z" itemprop="datePublished">3月 19, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/java-classloader/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/java-classloader/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Java类加载器（英语：Java Classloader）是Java运行时环境（Java Runtime Environment）的一部分，负责动态加载Java类到Java虚拟机的内存空间中。类通常是按需加载，即第一次使用该类时才加载。由于有了类加载器，Java运行时系统不需要知道文件与文件系统。学习类加载器时，掌握Java的委派概念很重要。</p>
+<p>每个Java类必须由某个类加载器装入到内存。Java程序可以利用外部库（即由其他作者编写的软件库）。</p>
+<p>JVM中有3个默认的类加载器：</p>
+<ul>
+<li>引导（Bootstrap）类加载器。由原生代码（如C语言）编写，不继承自java.lang.ClassLoader。负责加载核心Java库，存储在<code>&lt;JAVA_HOME&gt;/jre/lib</code>目录中。</li>
+<li>扩展（Extensions）类加载器。用来在<code>&lt;JAVA_HOME&gt;/jre/lib/ext</code>,或java.ext.dirs中指明的目录中加载 Java的扩展库。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。该类由sun.misc.Launcher$ExtClassLoader实现。</li>
+<li>Apps类加载器（也称系统类加载器）。根据 Java应用程序的类路径（java.class.path或CLASSPATH环境变量）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 ClassLoader.getSystemClassLoader()来获取它。该类由sun.misc.Launcher$AppClassLoader实现。<br>每个类装载器有一个父装载器（parent class loader）。</li>
+</ul>
+<h2 id="User-defined_class_loaders">User-defined class loaders</h2><p>可以通过继承java.lang.ClassLoader类的方式实现自己的类加载器，以满足一些特殊的需求而不需要完全了解Java虚拟机的类加载的细节。</p>
+<p>可用于：</p>
+<ul>
+<li>运行时装载或卸载类。这常用于：<ul>
+<li>实现脚本语言</li>
+<li>用于bean生成器</li>
+<li>允许用户定义的扩展性</li>
+<li>允许命名空间之间的通信。这是CORBA / RMI协议的基础。</li>
+</ul>
+</li>
+<li>改变Java字节码的装入，例如，可用于Java类字节码的加密装入。</li>
+<li>修改已装入的字节码(weaving of aspects when using aspect-oriented programming).</li>
+</ul>
+</div>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/11/">&larr; 旧作</a>
+    
+    <a href="/archives">博文列表</a>
+    
+    <a class="next" href="/page/9/">新章 &rarr;</a>
+    
+  </div>
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

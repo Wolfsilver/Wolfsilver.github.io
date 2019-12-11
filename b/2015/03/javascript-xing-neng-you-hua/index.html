@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>JavaScript 性能优化方面的知识总结 | MXOXW</title>
+  <meta name="author" content="Wind">
+  <meta name="keywords" content="JavaScript 性能优化">
+  <meta name="description" content="JavaScript 性能优化方面的知识总结...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="JavaScript 性能优化方面的知识总结 | MXOXW" />
+  <meta itemprop="description" content="JavaScript 性能优化方面的知识总结..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com/b/2015/03/javascript-xing-neng-you-hua/">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaScript 性能优化方面的知识总结</h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-18T06:21:06.000Z" itemprop="datePublished">3月 18, 2015</time>
+
+        
+        
+        
+           | <a href="#gitalk-container" >Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>转载<a href="http://segmentfault.com/blog/shibar/1190000002588062" target="_blank" rel="external">javascript性能优化方面的知识总结 - SegmentFault</a></p>
+<h2 id="前言">前言</h2><p>一直在学习JavaScript，也有看过《犀利开发Jquery内核详解与实践》，对这本书的评价只有两个字犀利，可能是对JavaScript理解的还不够透彻异或是自己太笨，更多的是自己不擅于思考懒得思考以至于里面说的一些精髓都没有太深入的理解。</p>
+<p>鉴于想让自己有一个提升，进不了一个更加广阔的天地，总得找一个属于自己的居所好好生存，所以平时会有意无意的去积累一些使用jQuerry的常用知识，特别是对于性能要求这一块，总是会想是不是有更好的方式来实现。</p>
+<p>下面是我总结的一些小技巧，仅供参考。(我先会说一个总标题，然后用一小段话来说明这个意思 再最后用一个demo来简单言明)</p>
+<h2 id="避免全局查找">避免全局查找</h2><p>在一个函数中会用到全局对象存储为局部变量来减少全局查找，因为访问局部变量的速度要比访问全局变量的速度更快些<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当我要使用当前页面地址和主机域名</span></span><br><span class="line">    alert(<span class="built_in">window</span>.location.href + <span class="built_in">window</span>.location.host);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//最好的方式是如下这样  先用一个简单变量保存起来</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> location = <span class="built_in">window</span>.location;</span><br><span class="line">    alert(location.href + location.host);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="定时器">定时器</h2><p> 如果针对的是不断运行的代码，不应该使用setTimeout，而应该是用setInterval，因为setTimeout每一次都会初始化一个定时器，而setInterval只会在开始的时候初始化一个定时器<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutTimes = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    timeoutTimes++;</span><br><span class="line">    <span class="keyword">if</span> (timeoutTimes &lt; <span class="number">10</span>) &#123;</span><br><span class="line">        setTimeout(timeout, <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">timeout();</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> intervalTimes = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">interval</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    intervalTimes++;</span><br><span class="line">    <span class="keyword">if</span> (intervalTimes &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">        clearInterval(interv);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> interv = setInterval(interval, <span class="number">10</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="字符串连接">字符串连接</h2><p>如果要连接多个字符串，应该少使用+=，如<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s+=a<span class="comment">;</span></span><br><span class="line">s+=b<span class="comment">;</span></span><br><span class="line">s+=c<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>应该写成<code>s+=a + b + c</code>；</p>
+<p>而如果是收集字符串，比如多次对同一个字符串进行+=操作的话，最好使用一个缓存，使用JavaScript数组来收集，最后使用join方法连接起来<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    buf.push(i.<span class="built_in">toString</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> all = buf.<span class="built_in">join</span>(<span class="string">""</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="避免with语句">避免with语句</h2><p>和函数类似，with语句会创建自己的作用域，因此会增加其中执行的代码的作用域链的长度，由于额外的作用域链的查找，在with语句中执行的代码肯定会比外面执行的代码要慢，在能不使用with语句的时候尽量不要使用with语句。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">with (a.b.c.d) &#123;</span><br><span class="line">    property1 = <span class="number">1</span>;</span><br><span class="line">    property2 = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line">var obj = a.b.c.d;</span><br><span class="line">obj.property1 = <span class="number">1</span>;</span><br><span class="line">obj.property2 = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数字转换成字符串">数字转换成字符串</h2><p>般最好用<code>&quot;&quot; + 1</code>来将数字转换成字符串，虽然看起来比较丑一点，但事实上这个效率是最高的，性能上来说：</p>
+<p><strong>(“” +) &gt; String() &gt; .toString() &gt; new String()</strong></p>
+<h2 id="浮点数转换成整型">浮点数转换成整型</h2><p>很多人喜欢使用<code>parseInt()</code>，其实<code>parseInt()</code>是用于将字符串转换成数字，而不是浮点数和整型之间的转换，我们应该使用<code>Math.floor()</code>或者<code>Math.round()</code><br><a id="more"></a></p>
+<h2 id="各种类型转换">各种类型转换</h2><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myVar = <span class="string">"3.14159"</span>,</span><br><span class="line">str = <span class="string">""</span> + myVar, //  to <span class="type">string</span>  </span><br><span class="line">i_int = ~ ~myVar,  //  to integer  </span><br><span class="line">f_float = <span class="number">1</span> * myVar,  //  to <span class="type">float</span>  </span><br><span class="line">b_bool = !!myVar,  /*  to boolean - <span class="type">any</span> <span class="type">string</span> <span class="keyword">with</span> length </span><br><span class="line">                        <span class="keyword">and</span> <span class="type">any</span> number <span class="keyword">except</span> <span class="number">0</span> are <span class="literal">true</span> */</span><br><span class="line"><span class="type">array</span> = [myVar];  //  to <span class="type">array</span></span><br></pre></td></tr></table></figure>
+<p>如果定义了<code>toString()</code>方法来进行类型转换的话，推荐显式调用<code>toString()</code>，因为内部的操作在尝试所有可能性之后，会尝试对象的<code>toString()</code>方法尝试能否转化为<code>String</code>，所以直接调用这个方法效率会更高</p>
+<h2 id="多个类型声明">多个类型声明</h2><p>在JavaScript中所有变量都可以使用单个<code>var</code>语句来声明，这样就是组合在一起的语句，以减少整个脚本的执行时间，就如上面代码一样，上面代码格式也挺规范，让人一看就明了。</p>
+<h2 id="插入迭代器">插入迭代器</h2><p>如<code>var name=values[i]; i++;</code>前面两条语句可以写成<code>var name=values[i++]</code></p>
+<h2 id="使用直接量">使用直接量</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aTest = <span class="keyword">new</span> <span class="built_in">Array</span>(); <span class="comment">//替换为</span></span><br><span class="line"><span class="keyword">var</span> aTest = [];</span><br><span class="line"><span class="keyword">var</span> aTest = <span class="keyword">new</span> <span class="built_in">Object</span>; <span class="comment">//替换为</span></span><br><span class="line"><span class="keyword">var</span> aTest = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(); <span class="comment">//替换为</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/../</span>;</span><br><span class="line"><span class="comment">//如果要创建具有一些特性的一般对象，也可以使用字面量，如下：</span></span><br><span class="line"><span class="keyword">var</span> oFruit = <span class="keyword">new</span> O;</span><br><span class="line">oFruit.color = <span class="string">"red"</span>;</span><br><span class="line">oFruit.name = <span class="string">"apple"</span>;</span><br><span class="line"><span class="comment">//前面的代码可用对象字面量来改写成这样：</span></span><br><span class="line"><span class="keyword">var</span> oFruit = &#123; color: <span class="string">"red"</span>, name: <span class="string">"apple"</span> &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="使用DocumentFragment优化多次append">使用DocumentFragment优化多次append</h2><p>一旦需要更新DOM,请考虑使用文档碎片来构建DOM结构，然后再将其添加到现存的文档中。<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">    el.innerHTML = i;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">    el.innerHTML = i;</span><br><span class="line">    frag.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(frag);</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用一次innerHTML赋值代替构建dom元素">使用一次innerHTML赋值代替构建dom元素</h2><p>对于大的DOM更改，使用innerHTML要比使用标准的DOM方法创建同样的DOM结构快得多。<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">    el.innerHTML = i;</span><br><span class="line">    frag.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(frag);</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> html = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    html.push(<span class="string">'&lt;p&gt;'</span> + i + <span class="string">'&lt;/p&gt;'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html.join(<span class="string">''</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="通过模板元素clone，替代createElement">通过模板元素clone，替代createElement</h2><p>很多人喜欢在JavaScript中使用<code>document.write</code>来给页面生成内容。事实上这样的效率较低，如果需要直接插入HTML，可以找一个容器元素，比如指定一个div或者span，并设置他们的innerHTML来将自己的HTML代码插入到页面中。通常我们可能会使用字符串直接写HTML来创建节点，其实这样做，1无法保证代码的有效性2字符串操作效率低，所以应该是用<code>document.createElement()</code>方法，而如果文档中存在现成的样板节点，应该是用<code>cloneNode()</code>方法，因为使用<code>createElement()</code>方法之后，你需要设置多次元素的属性，使用<code>cloneNode()</code>则可以减少属性的设置次数——同样如果需要创建很多元素，应该先准备一个样板节点<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">    el.innerHTML = i;</span><br><span class="line">    frag.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(frag);</span><br><span class="line"><span class="comment">//替换为：</span></span><br><span class="line"><span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">var</span> pEl = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'p'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> el = pEl.cloneNode(<span class="keyword">false</span>);</span><br><span class="line">    el.innerHTML = i;</span><br><span class="line">    frag.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(frag);</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用firstChild和nextSibling代替childNodes遍历dom元素">使用firstChild和nextSibling代替childNodes遍历dom元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testNextSibling</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementByld(<span class="string">'mydiv'</span>),</span><br><span class="line">        ch = el.firstChild,</span><br><span class="line">        name = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        name = ch.nodeName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ch = ch.nextSibling);</span><br><span class="line">    <span class="keyword">return</span> name.;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testChildNodes</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementByld(<span class="string">'mydiv'</span>),</span><br><span class="line">        ch = el.childNodes,</span><br><span class="line">        len = ch.length,</span><br><span class="line">        name = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> count = <span class="number">0</span>; count &lt; len; count++) &#123;</span><br><span class="line">        name = ch[count].nodeName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodes = element.childNodes;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = 0, <span class="keyword">l</span> = nodes.length; i &lt; <span class="keyword">l</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> node = nodes[i];</span><br><span class="line">    <span class="comment">//……</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> node = element.firstChild;</span><br><span class="line"><span class="keyword">while</span> (node) &#123;</span><br><span class="line">    <span class="comment">//……</span></span><br><span class="line">    node = node.nextSibling;</span><br></pre></td></tr></table></figure>
+<h2 id="删除DOM节点">删除DOM节点</h2><p><strong>删除dom节点之前,一定要删除注册在该节点上的事件</strong>,不管是用<code>observe</code>方式还是用<code>attachEvent</code>方式注册的事件,否则将会产生无法回收的内存。另外，在<code>removeChild</code>和<code>innerHTML=&#39;&#39;</code>二者之间,尽量选择后者. 因为在sIEve(内存泄露监测工具)中监测的结果是用<code>removeChild</code>无法有效地释放dom节点</p>
+<h2 id="使用事件代理">使用事件代理</h2><p>任何可以冒泡的事件都不仅仅可以在事件目标上进行处理，目标的任何祖先节点上也能处理，使用这个知识就可以将事件处理程序附加到更高的地方负责多个目标的事件处理，同样，对于内容动态增加并且子节点都需要相同的事件处理函数的情况，可以把事件注册提到父节点上，这样就不需要为每个子节点注册事件监听了。另外，现有的js库都采用observe方式来创建事件监听,其实现上隔离了dom对象和事件处理函数之间的循环引用,所以应该尽量采用这种方式来创建事件监听</p>
+<h2 id="重复使用的调用结果，事先保存到局部变量">重复使用的调用结果，事先保存到局部变量</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//避免多次取值的调用开销</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> h1</span> = element1.clientHeight + num1;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> h2</span> = element1.clientHeight + num2;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> eleHeight</span> = element1.clientHeight;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> h1</span> = eleHeight + num1;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> h2</span> = eleHeight + num2;</span><br></pre></td></tr></table></figure>
+<h2 id="注意NodeList">注意NodeList</h2><p>最小化访问NodeList的次数可以极大的改进脚本的性能<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> images = document.getElementsByTagName(<span class="string">'img'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, <span class="built_in">len</span> = images.length; i &lt; <span class="built_in">len</span>; i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编写JavaScript的时候一定要知道何时返回NodeList对象，这样可以最小化对它们的访问</p>
+<p>进行了对getElementsByTagName()的调用<br>获取了元素的childNodes属性<br>获取了元素的attributes属性<br>访问了特殊的集合，如document.forms、document.images等等<br>要了解了当使用NodeList对象时，合理使用会极大的提升代码执行速度</p>
+<h2 id="优化循环">优化循环</h2><p>可以使用下面几种方式来优化循环</p>
+<ul>
+<li><p>减值迭代<br>大多数循环使用一个从0开始、增加到某个特定值的迭代器，在很多情况下，从最大值开始，在循环中不断减值的迭代器更加高效</p>
+</li>
+<li><p>简化终止条件<br>由于每次循环过程都会计算终止条件，所以必须保证它尽可能快，也就是说避免属性查找或者其它的操作，最好是将循环控制量保存到局部变量中，也就是说对数组或列表对象的遍历时，提前将length保存到局部变量中，避免在循环的每一步重复取值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">list</span> = document.getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">list</span>.length; i++) &#123;</span><br><span class="line">    <span class="comment">//……</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//替换为：</span></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">list</span> = document.getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = <span class="keyword">list</span>.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="comment">//……</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简化循环体<br>循环体是执行最多的，所以要确保其被最大限度的优化</p>
+</li>
+<li><p>使用后测试循环<br>在JavaScript中，我们可以使用for(;;),while(),for(in)三种循环，事实上，这三种循环中for(in)的效率极差，因为他需要查询散列键，只要可以，就应该尽量少用。for(;;)和while循环，while循环的效率要优于for(;;)，可能是因为for(;;)结构的问题，需要经常跳转回去。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line">var sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (var i = <span class="number">0</span>, l = arr.length; i &lt; l; i++) &#123;</span><br><span class="line">    sum += arr[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以考虑替换为：</span></span><br><span class="line"></span><br><span class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>];</span><br><span class="line">var sum = <span class="number">0</span>, l = arr.length;</span><br><span class="line"><span class="keyword">while</span> (l--) &#123;</span><br><span class="line">    sum += arr[l];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最常用的for循环和while循环都是前测试循环，而如do-while这种后测试循环，可以避免最初终止条件的计算，因此运行更快。</p>
+<h2 id="展开循环">展开循环</h2><p>当循环次数是确定的，消除循环并使用多次函数调用往往会更快。</p>
+<h2 id="避免双重解释">避免双重解释</h2><p>如果要提高代码性能，尽可能避免出现需要按照JavaScript解释的字符串，也就是</p>
+<ul>
+<li><p>尽量少使用<strong>eval</strong>函数<br>使用eval相当于在运行时再次调用解释引擎对内容进行运行，需要消耗大量时间，而且使用Eval带来的安全性问题也是不容忽视的。</p>
+</li>
+<li><p>不要使用<strong>Function</strong>构造器<br>不要给<code>setTimeout</code>或者<code>setInterval</code>传递字符串参数</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">setTimeout(<span class="string">'num++'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addNum</span><span class="params">()</span> <span class="comment">&#123;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="title">setTimeout</span><span class="params">(addNum, 10)</span>;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="缩短否定检测">缩短否定检测</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">if</span> (oTest != <span class="string">'#ff0000'</span>) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">if</span> (oTest != null) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">if</span> (oTest != false) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//虽然这些都正确，但用逻辑非操作符来操作也有同样的效果：</span></span><br><span class="line"><span class="tag">if</span> (!oTest) &#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="条件分支">条件分支</h2><p>将条件分支，按可能性顺序从高到低排列：可以减少解释器对条件的探测次数<br>在同一条件子的多(&gt;2)条件分支时，使用switch优于if：switch分支选择的效率高于if，在IE下尤为明显。4分支的测试，IE下switch的执行时间约为if的一半。<br>使用三目运算符替代条件分支<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">    <span class="built_in">num</span> = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">num</span> = b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="built_in">num</span> = a &gt; b ? a : b;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用常量">使用常量</h2><ul>
+<li>重复值:任何在多处用到的值都应该抽取为一个常量</li>
+<li>用户界面字符串:任何用于显示给用户的字符串，都应该抽取出来以方便国际化</li>
+<li>URLs:在Web应用中，资源位置很容易变更，所以推荐用一个公共地方存放所有的URL</li>
+<li>任意可能会更改的值:每当你用到字面量值的时候，你都要问一下自己这个值在未来是不是会变化，如果答案是“是”，那么这个值就应该被提取出来作为一个常量。</li>
+</ul>
+<h2 id="避免与null进行比较">避免与null进行比较</h2><p>由于JavaScript是弱类型的，所以它不会做任何的自动类型检查，所以如果看到与null进行比较的代码，尝试使用以下技术替换</p>
+<ul>
+<li>如果值应为一个引用类型，使用<code>instanceof</code>操作符检查其构造函数</li>
+<li>如果值应为一个基本类型，作用<code>typeof</code>检查其类型</li>
+<li>如果是希望对象包含某个特定的方法名，则使用<code>typeof</code>操作符确保指定名字的方法存在于对象上</li>
+</ul>
+<h2 id="避免全局量">避免全局量</h2><p>全局变量应该全部字母大写，各单词之间用_下划线来连接。尽可能避免全局变量和函数, 尽量减少全局变量的使用，因为在一个页面中包含的所有JavaScript都在同一个域中运行。所以如果你的代码中声明了全局变量或者全局函数的话，后面的代码中载入的脚本文件中的同名变量和函数会覆盖掉(overwrite)你的。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//糟糕的全局变量和全局函数</span></span><br><span class="line"><span class="keyword">var</span> current = <span class="literal">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">verify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//解决办法有很多，Christian Heilmann建议的方法是：</span></span><br><span class="line"><span class="comment">//如果变量和函数不需要在“外面”引用，那么就可以使用一个没有名字的方法将他们全都包起来。</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">var</span> current = <span class="literal">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">verify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">//如果变量和函数需要在“外面”引用，需要把你的变量和函数放在一个“命名空间”中</span></span><br><span class="line"><span class="comment">//我们这里用一个function做命名空间而不是一个var，因为在前者中声明function更简单，而且能保护隐私数据</span></span><br><span class="line"></span><br><span class="line">myNameSpace = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> current = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">change</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">verify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//所有需要在命名空间外调用的函数和属性都要写在return里面</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        init: init,</span><br><span class="line">        <span class="comment">//甚至你可以为函数和属性命名一个别名</span></span><br><span class="line">        <span class="keyword">set</span>: change</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="尊重对象的所有权">尊重对象的所有权</h2><p>因为JavaScript可以在任何时候修改任意对象，这样就可以以不可预计的方式覆写默认的行为，所以如果你不负责维护某个对象，它的对象或者它的方法，那么你就不要对它进行修改，具体一点就是说：</p>
+<ul>
+<li>不要为实例或原型添加属性</li>
+<li>不要为实例或者原型添加方法</li>
+<li>不要重定义已经存在的方法</li>
+<li>不要重复定义其它团队成员已经实现的方法，永远不要修改不是由你所有的对象，你可以通过以下方式为对象创建新的功能:<ul>
+<li>创建包含所需功能的新对象，并用它与相关对象进行交互</li>
+<li>创建自定义类型，继承需要进行修改的类型，然后可以为自定义类型添加额外功能<h2 id="循环引用">循环引用</h2></li>
+</ul>
+</li>
+</ul>
+<p>如果循环引用中包含DOM对象或者ActiveX对象，那么就会发生内存泄露。内存泄露的后果是在浏览器关闭前，即使是刷新页面，这部分内存不会被浏览器释放。</p>
+<p>简单的循环引用：</p>
+<pre><code><span class="keyword">var</span> el = document.getElementById(<span class="string">'MyElement'</span>);
+<span class="keyword">var</span> <span class="keyword">func</span> = function () {
+    <span class="comment">//…</span>
+}
+el.<span class="keyword">func</span> = <span class="keyword">func</span>;
+<span class="keyword">func</span>.element = el;
+</code></pre><p>但是通常不会出现这种情况。通常循环引用发生在为dom元素添加闭包作为expendo的时候。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+}
+init();
+</code></pre><p>init在执行的时候，当前上下文我们叫做context。这个时候，context引用了el，el引用了function，function引用了context。这时候形成了一个循环引用。</p>
+<p>下面2种方法可以解决循环引用：</p>
+<p>1 <strong>置空dom对象</strong></p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+}
+init();
+<span class="comment">//可以替换为：</span>
+<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+    el = <span class="literal">null</span>;
+}
+init();
+</code></pre><p>将el置空，context中不包含对dom对象的引用，从而打断循环应用。</p>
+<p>如果我们需要将dom对象返回，可以用如下方法：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+    <span class="keyword">return</span> el;
+}
+init();
+<span class="comment">//可以替换为：</span>
+<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+    <span class="keyword">try</span> {
+        <span class="keyword">return</span> el;
+    } <span class="keyword">finally</span> {
+        el = <span class="literal">null</span>;
+    }
+}
+init();
+</code></pre><p>2 <strong>构造新的context</strong></p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        <span class="comment">//……</span>
+    }
+}
+init();
+<span class="comment">//可以替换为：</span>
+<span class="function"><span class="keyword">function</span> <span class="title">elClickHandler</span>(<span class="params"></span>) </span>{
+    <span class="comment">//……</span>
+}
+<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'MyElement'</span>);
+    el.onclick = elClickHandler;
+}
+init();
+</code></pre><p>把function抽到新的context中，这样，function的context就不包含对el的引用，从而打断循环引用。</p>
+<h2 id="通过javascript创建的dom对象，必须append到页面中">通过javascript创建的dom对象，必须append到页面中</h2><p>IE下，脚本创建的dom对象，如果没有append到页面中，刷新页面，这部分内存是不会回收的！</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> gc = <span class="built_in">document</span>.getElementById(<span class="string">'GC'</span>);
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++) {
+        <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);
+        el.innerHTML = <span class="string">"test"</span>;
+        <span class="comment">//下面这句可以注释掉，看看浏览器在任务管理器中，点击按钮然后刷新后的内存变化</span>
+        gc.appendChild(el);
+    }
+}
+</code></pre><h2 id="释放dom元素占用的内存">释放dom元素占用的内存</h2><p>将dom元素的innerHTML设置为空字符串，可以释放其子元素占用的内存。</p>
+<p>在rich应用中，用户也许会在一个页面上停留很长时间，可以使用该方法释放积累得越来越多的dom元素使用的内存。</p>
+<h2 id="释放javascript对象">释放javascript对象</h2><p>在rich应用中，随着实例化对象数量的增加，内存消耗会越来越大。所以应当及时释放对对象的引用，让GC能够回收这些内存控件。</p>
+<p>对象：obj = null</p>
+<p>对象属性：delete obj.myproperty</p>
+<p>数组item：使用数组的splice方法释放数组中不用的item</p>
+<h2 id="避免string的隐式装箱">避免string的隐式装箱</h2><p>对string的方法调用，比如’xxx’.length，浏览器会进行一个隐式的装箱操作，将字符串先转换成一个String对象。推荐对声明有可能使用String实例方法的字符串时，采用如下写法：</p>
+<p>var myString = new String(‘Hello World’);</p>
+<h2 id="松散耦合">松散耦合</h2><p>1 解耦HTML/JavaScript</p>
+<p>JavaScript和HTML的紧密耦合：直接写在HTML中的JavaScript、使用包含内联代码的<code>&lt;script&gt;</code>元素、使用HTML属性来分配事件处理程序等</p>
+<p>HTML和JavaScript的紧密耦合：JavaScript中包含HTML，然后使用innerHTML来插入一段html文本到页面</p>
+<p>其实应该是保持层次的分离，这样可以很容易的确定错误的来源，所以我们应确保HTML呈现应该尽可能与JavaScript保持分离</p>
+<p>2 解耦CSS/JavaScript</p>
+<p>显示问题的唯一来源应该是CSS，行为问题的唯一来源应该是JavaScript，层次之间保持松散耦合才可以让你的应用程序更加易于维护，所以像以下的代码element.style.color=”red”尽量改为element.className=”edit”，而且不要在css中通过表达式嵌入JavaScript</p>
+<p>3 解耦应用程序/事件处理程序</p>
+<p>将应用逻辑和事件处理程序相分离：一个事件处理程序应该从事件对象中提取，并将这些信息传送给处理应用逻辑的某个方法中。这样做的好处首先可以让你更容易更改触发特定过程的事件，其次可以在不附加事件的情况下测试代码，使其更易创建单元测试</p>
+<h2 id="性能方面的注意事项">性能方面的注意事项</h2><p>1 尽量使用原生方法</p>
+<p>2 switch语句相对if较快</p>
+<p>通过将case语句按照最可能到最不可能的顺序进行组织</p>
+<p>3 位运算较快</p>
+<p>当进行数字运算时，位运算操作要比任何布尔运算或者算数运算快</p>
+<p>4 巧用<code>||</code>和<code>&amp;&amp;</code>布尔运算符</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">eventHandler</span>(<span class="params">e</span>) </span>{
+    <span class="keyword">if</span> (!e) e = <span class="built_in">window</span>.event;
+}
+<span class="comment">//可以替换为：</span>
+<span class="function"><span class="keyword">function</span> <span class="title">eventHandler</span>(<span class="params">e</span>) </span>{
+    e = e || <span class="built_in">window</span>.event;
+}
+</code></pre><h2 id="避免错误应注意的地方">避免错误应注意的地方</h2><p>1 每条语句末尾须加分号</p>
+<p>在if语句中，即使条件表达式只有一条语句也要用{}把它括起来，以免后续如果添加了语句之后造成逻辑错误</p>
+<p>2 使用+号时需谨慎</p>
+<p>JavaScript 和其他编程语言不同的是，在 JavaScript 中，’+’除了表示数字值相加，字符串相连接以外，还可以作一元运算符用，把字符串转换为数字。因而如果使用不当，则可能与自增符’++’混淆而引起计算错误</p>
+<pre><code>var valueA = <span class="number">20</span><span class="comment">;</span>
+var valueB = <span class="string">"10"</span><span class="comment">;</span>
+alert<span class="list">(<span class="keyword">valueA</span> + valueB)</span><span class="comment">;     //ouput: 2010 </span>
+alert<span class="list">(<span class="keyword">valueA</span> + <span class="list">(<span class="keyword">+valueB</span>)</span>)</span><span class="comment">;  //output: 30 </span>
+alert<span class="list">(<span class="keyword">valueA</span> + +valueB)</span><span class="comment">;    //output:30 </span>
+alert<span class="list">(<span class="keyword">valueA</span> ++ valueB)</span><span class="comment">;     //Compile error</span>
+</code></pre><p>3 使用return语句需要注意</p>
+<p>一条有返回值的return语句不要用()括号来括住返回值，如果返回表达式，则表达式应与return关键字在同一行，以避免压缩时，压缩工具自动加分号而造成返回与开发人员不一致的结果</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">F1</span><span class="params">()</span> </span>{
+    <span class="keyword">var</span> valueA = <span class="number">1</span>;
+    <span class="keyword">var</span> valueB = <span class="number">2</span>;
+    <span class="keyword">return</span> valueA + valueB;
+}
+<span class="function"><span class="keyword">function</span> <span class="title">F2</span><span class="params">()</span> </span>{
+    <span class="keyword">var</span> valueA = <span class="number">1</span>;
+    <span class="keyword">var</span> valueB = <span class="number">2</span>;
+    <span class="keyword">return</span>
+    valueA + valueB;
+}
+alert(F1());  <span class="comment">//output: 3 </span>
+alert(F2());  <span class="comment">//ouput: undefined</span>
+</code></pre><h2 id="==和===的区别">==和===的区别</h2><p>避免在if和while语句的条件部分进行赋值，如if (a = b)，应该写成if (a == b)，但是在比较是否相等的情况下，最好使用全等运行符，也就是使用===和!==操作符会相对于==和!=会好点。==和!=操作符会进行类型强制转换</p>
+<pre><code>var valueA = <span class="string">"1"</span>;
+var valueB = <span class="number">1</span>;
+<span class="keyword">if</span> <span class="params">(valueA == valueB)</span> {
+    alert<span class="params">(<span class="string">"Equal"</span>)</span>;
+}
+<span class="keyword">else</span> {
+    alert<span class="params">(<span class="string">"Not equal"</span>)</span>;
+}
+<span class="comment">//output: "Equal"</span>
+<span class="keyword">if</span> <span class="params">(valueA === valueB)</span> {
+    alert<span class="params">(<span class="string">"Equal"</span>)</span>;
+}
+<span class="keyword">else</span> {
+    alert<span class="params">(<span class="string">"Not equal"</span>)</span>;
+}
+<span class="comment">//output: "Not equal"</span>
+</code></pre><h2 id="不要使用生偏语法">不要使用生偏语法</h2><p>不要使用生偏语法，写让人迷惑的代码，虽然计算机能够正确识别并运行，但是晦涩难懂的代码不方便以后维护</p>
+<h2 id="函数返回统一类型">函数返回统一类型</h2><p>虽然JavaScript是弱类型的，对于函数来说，前面返回整数型数据，后面返回布尔值在编译和运行都可以正常通过，但为了规范和以后维护时容易理解，应保证函数应返回统一的数据类型</p>
+<h2 id="总是检查数据类型">总是检查数据类型</h2><p>要检查你的方法输入的所有数据，一方面是为了安全性，另一方面也是为了可用性。用户随时随地都会输入错误的数据。这不是因为他们蠢，而是因为他们很忙，并且思考的方式跟你不同。用typeof方法来检测你的function接受的输入是否合法</p>
+<h2 id="何时用单引号，何时用双引号">何时用单引号，何时用双引号</h2><p>虽然在JavaScript当中，双引号和单引号都可以表示字符串, 为了避免混乱，我们建议在HTML中使用双引号，在JavaScript中使用单引号，但为了兼容各个浏览器，也为了解析时不会出错，定义JSON对象时，最好使用双引号</p>
+<h2 id="部署">部署</h2><ul>
+<li>用JSLint运行JavaScript验证器来确保没有语法错误或者是代码没有潜在的问</li>
+<li>部署之前推荐使用压缩工具将JS文件压缩</li>
+<li>文件编码统一用UTF-8</li>
+<li>JavaScript 程序应该尽量放在<code>.js</code>的文件中，需要调用的时候在 HTML 中以<code>&lt;script src=&quot;filename.js&quot;&gt;</code>的形式包含进来。JavaScript 代码若不是该 HTML 文件所专用的，则应尽量避免在 HTML 文件中直接编写 JavaScript 代码。因为这样会大大增加 HTML 文件的大小，无益于代码的压缩和缓存的使用。另外，<code>&lt;script src=&quot;filename.js&quot;&gt;</code>标签应尽量放在文件的后面,最好是放在<code>&lt;/body&gt;</code>标签前。这样会降低因加载 JavaScript 代码而影响页面中其它组件的加载时间。</li>
+</ul>
+<p><strong>永远不要忽略代码优化工作，重构是一项从项目开始到结束需要持续的工作，只有不断的优化代码才能让代码的执行效率越来越好</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
+
+      <time datetime="2015-03-18T06:21:06.000Z" itemprop="datePublished">3月 18, 2015</time>
+
+      
+<span class="categories">
+  <a class="category-link" href="/categories/前端/">前端</a>
+</span>
+
+
+    </p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/b/2015/03/javascript-public-and-private-properties-and-methods/" title="Previous Post: Javascript Public And Private Properties And Methods">&laquo; Javascript Public And Private Properties And Methods</a>
+      
+      
+        <a class="basic-alignment right" href="/b/2015/03/web-performance-rules/" title="Next Post: Yahoo团队经验：网站性能优化的34条黄金法则">Yahoo团队经验：网站性能优化的34条黄金法则 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>评论</h1>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
+<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '50fbdf7a6156260cd0b1',
+        clientSecret: 'aeac1ce266e68e5421cdbbcc9b5223378ff0b6bc',
+        repo: 'gitalk',
+        owner: 'wolfsilver',
+        admin: 'wolfsilver',
+        id: location.pathname.substring(0, 50),
+        labels: 'Gitalk'.split(','),
+        perPage: 15,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+ </script>
+  </section>
+
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

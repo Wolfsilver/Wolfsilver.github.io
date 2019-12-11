@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>JavaScript 权威指南总结 | MXOXW</title>
+  <meta name="author" content="Wind">
+  <meta name="keywords" content="JavaScript 权威指南总结">
+  <meta name="description" content="JavaScript 权威指南总结...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="JavaScript 权威指南总结 | MXOXW" />
+  <meta itemprop="description" content="JavaScript 权威指南总结..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaScript 权威指南总结</h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-19T02:15:15.000Z" itemprop="datePublished">5月 19, 2015</time>
+
+        
+        
+        
+           | <a href="#gitalk-container" >Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="二进制浮点数和四舍五入错误">二进制浮点数和四舍五入错误</h2><p>JavaScript采用了IEEE-754浮点数表示法（几乎所有现代编程语言所采用），这是一种二进制表示法，可以精确地表示分数，比如1/2、1/8和1/1024。遗憾的是，我们常用的分数（特别是在金融计算方面）都是十进制分数1/10、1/100等。二进制浮点数表示法并不能精确表示类似0.1这样简单的数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">.3</span> - <span class="number">.2</span>;        <span class="comment">// 30美分减去20美分</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="number">.2</span> - <span class="number">.1</span>;        <span class="comment">// 20美分减去10美分</span></span><br><span class="line">x == y                  <span class="comment">// =&gt; false:两值不相等!</span></span><br><span class="line">x == <span class="number">.1</span>                 <span class="comment">// =&gt; false: .3-.2 不等于 .1</span></span><br><span class="line">y == <span class="number">.1</span>                 <span class="comment">// =&gt; true: .2-.1 等于 .1</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript的未来版本或许会支持十进制数字类型以避免这些舍入问题。在这之前你可能更愿意使用大整数进行重要的金融计算，例如，要使用整数“分”而不要使用小数“元”进行基于货币单位的运算。<br><a id="more"></a></p>
+<h2 id="null和undefined">null和undefined</h2><p>null是JavaScript语言的关键字，它表示一个特殊值，常用来描述“空值”。对null执行typeof预算，结果返回字符串“object”，也就是说，可以将null认为是一个特殊的对象值，含义是“非对象”。但实际上，通常认为null是它自有类型的唯一一个成员，它可以表示数字、字符串和对象是“无值”的。大多数编程语言和JavaScript一样含有null：你可能对null或nil很眼熟。</p>
+<p>JavaScript还有第二个值来表示值的空缺。用未定义的值表示更深层次的“空值”。它是变量的一种取值，表明变量没有初始化，如果要查询对象属性或数组元素的值时返回undefined则说明这个属性或元素不存在。如果函数没有返回任何值，则返回undefined。引用没有提供实参的函数形参的值也只会得到undefined。undefined是预定义的全局变量（它和null不一样，它不是关键字），它的值就是“未定义”。在ECMAScript 3中，undefined是可读/写的变量，可以给它赋任意值。这个错误在ECMAScript 5中做了修正，undefined在该版本中是只读的。如果使用typeof运算符得到undefined的类型，则返回“undefined”，表明这个值是这个类型的唯一成员。</p>
+<p>尽管null和undefined是不同的，但它们都表示“值的空缺”，两者往往可以互换。判断相等运算符“==”认为两者是相等的（要使用严格相等运算符“===”来区分它们）。在希望值是布尔类型的地方它们的值都是假值，和false类似。null和undefined都不包含任何属性和方法。实际上，使用“.”和“[]”来存取这两个值的成员或方法都会产生一个类型错误。</p>
+<p>你或许认为undefined是表示系统级的、出乎意料的或类似错误的值的空缺，而null是表示程序级的、正常的或在意料之中的值的空缺。如果你想将它们赋值给变量或者属性，或将它们作为参数传入函数，最佳选择是使用null。</p>
+<h2 id="转换和相等性">转换和相等性</h2><p>由于JavaScript可以做灵活的类型转换，因此其“==”相等运算符也随相等的含义灵活多变。例如，如下这些比较结果均是true：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span>   <span class="comment">// 这两值被认为相等</span></span><br><span class="line"><span class="string">"0"</span> == <span class="number">0</span>            <span class="comment">// 在比较之前字符串转换成数字</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">false</span>          <span class="comment">// 在比较之前布尔值转换成数字</span></span><br><span class="line"><span class="string">"0"</span> == <span class="literal">false</span>        <span class="comment">// 在比较之前字符串和布尔值都转换成数字</span></span><br></pre></td></tr></table></figure></p>
+<p>需要特别注意的是，一个值转换为另一个值并不意味着两个值相等。比如，如果在期望使用布尔值的地方使用了undefined，它将会转换为false，但这并不表明undefined == false。JavaScript运算符和语句期望使用多样化的数据类型，并可以相互转换。if语句将undefined转换为false，但“==”运算符从不试图将其操作数转换为布尔值。</p>
+<p>严格相等运算符“===”首先计算其操作数的值，然后比较这两个值，比较过程没有任何类型转换：</p>
+<ul>
+<li>如果两个值类型不相同，则它们不相等。</li>
+<li>如果两个值都是null或者都是undefined，则它们不相等。</li>
+<li>如果两个值都是布尔值true或都是布尔值false，则它们相等。</li>
+<li>如果其中一个值是NaN，或者两个值都是NaN，则它们不相等。NaN和其他任何值都是不相等的，包括它本身<code>!</code>通过<code>x!==x</code>来判断x是否为NaN，只有在x为NaN的时候，这个表达式的值才为true。</li>
+<li>如果两个值为数字且数值相等，则它们相等。如果一个值为<code>0</code>，另一个值为<code>-0</code>，则它们同样相等。</li>
+<li>如果两个值为字符串，且所含的对应位上的16位数完全相等，则它们相等。如果它们的长度或内容不同，则它们不等。两个字串可能含义完全一样且所显示出的字符也一样，但具有不同编码的16位值。JavaScript并不对Unicode进行标谁化的转换，因此像这样的字符通过“===”和“==”运算符的比较结果也不相等．第三部分的String.localeCompare()提供了另外一种比较字符串的方法。</li>
+<li>如果两个引用值指向同一个对象、数组或函数，则它们是相等的。如果指向不同的对象，则它们是不等的，尽管两个对象具有完全一样的属性。</li>
+</ul>
+<p>相等运算符“==”和恒等运算符相似，但相等运算符的比较并不严格。如果两个操作数不是同一类型，那么相等运算符会尝试进行一些类型转换，然后进行比较：</p>
+<ul>
+<li>如果两个操作数的类型相同，则和上文所述的严格相等的比较规则一样。如果严格相等，那么比较结果为相等。如果它们不严格相等，则比较结果为不相等。</li>
+<li>如果两个操作数类型不同，”==”相等操作符也可能会认为它们相等。检测相等<br>将会遵守如下规则和类型转换：<ul>
+<li>如果一个值是null，另一个是undefined，则它们相等。</li>
+<li>如果一个值是数字，另一个是字符串，先将字符串转换为数字，然后使用转换后的值进行比较。</li>
+<li>如果其中一个值是true，则将其转换为1再进行比较。如果其中一个值是false,则将其转换为0再进行比较。</li>
+<li>如果一个值是对象，另一个值是数字或字符串，则使用3.8.3节所提到的转换规则将对象转换为原始值，然后再进行比较．对象通过tostring()方法或者valueOf()方法转换为原始值。JavaScript语言核心的内置类首先尝试使用valueof()，再尝试使用toString()，除了日期类，日期类只使用toString()转换。那些不是JavascriPt语言核心中的对象则通过各自的实现中定义的方法转换为原始值。</li>
+<li>其他不同类型之间的比较均不相等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="对象转换为原始值">对象转换为原始值</h2><p>JavaScript中的“+”运算符可以进行数学加法和字符串连接操作。如果它的其中一个操作数是对象，则JavaScript将使用特殊的方法将对象转换为原始值，而不是使用其他算术运算符的方法执行对象到数字的转换，“==”相等运算符与此类似。如果将对象和一个原始值比较，则转换将会遵照对象到原始值的转换方式进行。</p>
+<p>“+”和“==”应用的对象到原始值的转换包含日期对象的一种特殊情形。日期类是JavaScript语言核心中唯一的预先定义类型，它定义了有意义的向字符串和数字类型的转换。对于所有非日期的对象来说，对象到原始值的转换基本上是对象到数字的转换（首先调用valueOf()），日期对象则使用对象到字符串的转换模式，然而，这里的转换和上文讲述的并不完全一致：通过valueOf或toString()返回的原始值将被直接使用，而不会被强制转换为数字或字符串。</p>
+<p>和“==”一样，“&lt;”运算符以及其他关系运算符也会做对象到原始值的转换，但要除去日期对象的特殊情形：任何对象都会首先尝试调用valueOf()，然后调用toString()。不管得到的原始值是否直接使用，它都不会进一步被转换为数字或字符串。</p>
+<p>“+”、“==”、“!=”和关系运算符是唯一执行这种特殊的字符串到原始值的转换方式的运算符。其他运算符到特定类型的转换都很明确，而且对日期对象来讲也没有特殊情况。例如“－”（减号）运算符把它的两个操作数都转换为数字。下面的代码展示了日期对象和“+”、“－”、“==”以及“&gt;”的运行结果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();   <span class="comment">// 创建一个日期对象</span></span><br><span class="line"><span class="keyword">typeof</span> (now + <span class="number">1</span>)        <span class="comment">// =&gt; "string": "+"将日期转换为字符串</span></span><br><span class="line"><span class="keyword">typeof</span> (now - <span class="number">1</span>)        <span class="comment">// =&gt; "number": "-"使用对象到数字的转换</span></span><br><span class="line">now == now.toString()       <span class="comment">// =&gt; true: 隐式的和显式的字符串转换</span></span><br><span class="line">now &gt; (now -<span class="number">1</span>)           <span class="comment">// =&gt; true: "&gt;"将日期转换为数字</span></span><br></pre></td></tr></table></figure>
+<h2 id="全局对象——作为属性的变量">全局对象——作为属性的变量</h2><p>当声明一个JavaScript全局变量时，实际上是定义了全局对象的一个属性（见3.5节）。当使用var声明一个变量时，创建的这个属性是不可配置的（见6.7节），也就是说这个变量无法通过delete运算符删除。可能你已经注意到了，如果你没有使用严格模式并给一个未声明的变量赋值的话，JavaScript会自动创建一个全局变量。以这种方式创建的变量是全局对象的正常的可配值属性，并可以删除它们：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> truevar = <span class="number">1</span>;    <span class="comment">// 声明一个不可删除的全局变量</span></span><br><span class="line">fakevar = <span class="number">2</span>;        <span class="comment">// 创建全局对象的一个可删除的属性</span></span><br><span class="line"><span class="keyword">this</span>.fakevar2 = <span class="number">3</span>;  <span class="comment">// 同上</span></span><br><span class="line"><span class="keyword">delete</span> truevar  <span class="comment">// =&gt; false: 变量并没有被删除</span></span><br><span class="line"><span class="keyword">delete</span> fakevar  <span class="comment">// =&gt; true: 变量被删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">this</span>.fakevar2    <span class="comment">// =&gt; true: 变量被删除</span></span><br></pre></td></tr></table></figure></p>
+<p>JavaScript全局变量是全局对象的属性，这是在ECMAScript规范中强制规定的。对于局部变量则没有如此规定，但我们可以想象得到，局部变量当做跟函数调用相关的某个对象的属性。ECMAScript 3规范称该对象为“调用对象”(call object)，ECMAScript 5规范称为“声明上下文对象”（declarative environment record）。JavaScript可以允许使用this关键字来引用全局对象，却没有方法可以引用局部变量中存放的对象。这种存放局部变量的对象的特有性质，是一种对我们不可见的内部实现。然而，这些局部变量对象存在的观念是非常重要的，我们会在下一节展开讲述。</p>
+<h2 id="&amp;&amp;短路"><code>&amp;&amp;</code>短路</h2><p>下面代码效果相同<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == b) stop(); <span class="comment">// Invoke stop() only if a == b</span></span><br><span class="line">(a == b) &amp;&amp; stop(); <span class="comment">// This does the same thing</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="try/catch/finally">try/catch/finally</h2><p>如果finally块使用了return、continue、break或者throw语句使程序发生跳转，或者通过调用了抛出异常的方法改变了程序执行流程，不管这个跳转使程序挂起还是继续执行，解释器都会将其忽略。例如，如果finally从句抛出一个异常，这个异常将替代正在抛出的异常。如果finally从句运行到了return语句，尽管已经抛出了异常且这个抛出的异常还没有处理，这个方法依然会正常返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i=<span class="number">0</span>, o=&#123;x:<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'i: '</span> + i);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'o: '</span> + o.x);</span><br><span class="line">        <span class="comment">// console.log('b: ' + b.x);</span></span><br><span class="line">        <span class="keyword">return</span> [i, <span class="built_in">JSON</span>.stringify(o)];</span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        i++;</span><br><span class="line">        o.x++;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'finally i: '</span> + i);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'finally o: '</span> + o.x);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b: '</span> + b.x);</span><br><span class="line">        <span class="comment">// return [i, JSON.stringify(o)];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>finally中的return回覆盖try中的return；</li>
+<li>finally对try中的返回值修改无效；</li>
+</ul>
+<h2 id="use_strict">use strict</h2><p>严格代码以严格模式执行。ECMAscript 5中的严格模式是该语言的一个受限制的子集，它修正了语言的重要缺陷，并提供健壮的查错功能和增强的安全机制。严格模式和非严格模式之间的区别如下（前三条尤为重要）:</p>
+<ul>
+<li>在严格模式中禁止使用with语句。</li>
+<li>在严格模式中，所有的变量都要先声明，如果给一个未声明的变量、函数、函数参数、catch从句参数或全局对象的属性赋值，将会抛出一个引用错误异常（在非严格模式中，这种隐式声明的全局变量的方法是给全局对象新添加一个新属性）。</li>
+<li>在严格模式中，调用的函数（不是方法）中的一个this值是undefined.（在非严格模式中，调用的函数中的this值总是全局对象）。可以利用这种特性来判断JavaScript实现是否支持严格模式：<br>  <code>var hasStrictMode=(function(){&quot;use strict&quot;;return this===undefined}());</code></li>
+<li>同样，在严格模式中，当通过：call()或apply()来调用函数时，其中的this值就是通过call()或apply()传入的第一个参数（在非严格模式中，null和undefined值被全局对象和转换为对象的非对象值所代替）。</li>
+<li>在严格模式中，给只读属性赋值和给不可扩展的对象创建新成员都将抛出一个类型错误异常（在非严格模式中，这些操作只是简单地操作失败，不会报错）。</li>
+<li>在严格模式中，传入eval()的代码不能在调用程序所在的上下文中声明变量或定义函数，而在非严格模式中是可以这样做的。相反，变量和函数的定义是在eval()创<br>建的新作用域中，这个作用域在eval()返回时就弃用了。</li>
+<li>在严格模式中，函数里的arguments对象拥有传人函数值的静态副本。在非严格模式中，arguments对象具有“魔术般”的行为，arguments里的数组<br>元素和函数参数都是指向同一个值的引用。</li>
+<li>在严格模式中，当delete运算符后跟随非法的标识符（比如变量、函数、函数参数）时，将会抛出一个语法错误异常（在非严格模式中，这种delete表达式什么也没做，并返回false）。</li>
+<li>在严格模式中，试图删除一个不可配置的属性将抛出一个类型错误异常（在非严格模式中，delete表达式操作失败，并返回false）。</li>
+<li>在严格模式中，在一个对象直接量中定义两个或多个同名属性将产生一个语法错误（在非严格模式中不会报错）。</li>
+<li>在严格模式中，函数声明中存在两个或多个同名的参数将产生一个语法错误（在非严格模式中不会报错）。</li>
+<li>在严格模式中是不允许使用八进制整数直接量（以0为前缀，而不是0x为前缀）的（在非严格模式中某些实现是允许八进制整数直接量的）。</li>
+<li>在严格模式中，标识符eval和arguments当做关键字，它们的值是不能更改的。不能给这些标识符赋值，也不能把它们声明为变量、用做函数名、用做函数参数或用做catch块的标识符。</li>
+<li>在严格模式中限制了对调用栈的检测能力，在严格模式的函数中，arguments.caller和arguments.callee都会抛出一个类型错误异常。严格模式的函数同样具有caller和arguments属性，当访问这两个属性时将抛出类型错误异常（有一些JavaScript的实现在非严格模式里定义了这些非标准的属性）。</li>
+</ul>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
+
+      <time datetime="2015-05-19T02:15:15.000Z" itemprop="datePublished">5月 19, 2015</time>
+
+      
+
+    </p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/b/2015/05/nodejs-mo-kuai-xiu-gai/" title="Previous Post: NodeJS 模块修改">&laquo; NodeJS 模块修改</a>
+      
+      
+        <a class="basic-alignment right" href="/b/2015/03/java-collection/" title="Next Post: Java集合类详解">Java集合类详解 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>评论</h1>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
+<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '50fbdf7a6156260cd0b1',
+        clientSecret: 'aeac1ce266e68e5421cdbbcc9b5223378ff0b6bc',
+        repo: 'gitalk',
+        owner: 'wolfsilver',
+        admin: 'wolfsilver',
+        id: location.pathname.substring(0, 50),
+        labels: 'Gitalk'.split(','),
+        perPage: 15,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+ </script>
+  </section>
+
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

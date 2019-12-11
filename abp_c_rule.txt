@@ -1,0 +1,25 @@
+[Adblock Plus 2.0]
+! Version: 20160225135631
+! Title: ABP Custom Rule
+! Last modified: 25 Feb 2016 06:01 GMT
+! Expires: 30 days
+!
+!https://easylist-downloads.adblockplus.org/antiadblockfilters.txt
+!https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt
+!https://easylist-downloads.adblockplus.org/malwaredomains_full.txt
+!https://easylist-downloads.adblockplus.org/easyprivacy.txt
+!http://7xkn9m.com1.z0.glb.clouddn.com/AdFilter_V+.txt
+
+geektyper.com###itemz
+ii-i.org###wYXIKhrWpHrE
+ii-i.org##.KusCuPF9l9Id
+ii-i.org##.KusCuPF9l9Id-bg
+jianshu.com##.support-author
+mail.qq.com###folder_4_td
+outlook.live.com##._n_p
+segmentfault.com##.widget-register
+||d9.sina.com.cn/pfpghc2/201505/14/4d5f47f4799a47b892396cabb9995b32.gif
+caibaojian.com###niceMessage
+http://hermes.jd.com/log.gif
+baidu.com###content_left > div:not([class*="result"])
+wq.jd.com/webmonitor/collect/biz.json

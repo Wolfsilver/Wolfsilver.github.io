@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>MXOXW</title>
+  <meta name="author" content="Wind">
+  
+  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="MXOXW" />
+  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/javascript-public-and-private-properties-and-methods/">Javascript Public And Private Properties And Methods</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-18T09:46:50.000Z" itemprop="datePublished">3月 18, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/javascript-public-and-private-properties-and-methods/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/javascript-public-and-private-properties-and-methods/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>与java等基于类的面向对象语言的private、protected、public等关键字的用途类似，基于对象的JavaScript语言，在对象构造上也存在类似的成员可见性问题。<br>JavaScript对象构造的可见性定义可以分为以下几种： </p>
+<h2 id="私有属性（private_properties）">私有属性（private properties）</h2><p>　　<br>　　通过var关键字定义对象构造中变量的作用域，该变量只能在对象构造方法的作用域内被访问。如：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">VariableTest</span><span class="params">()</span> </span><br><span class="line"></span>&#123; </span><br><span class="line">    <span class="keyword">var</span> myVariable;<span class="comment">//private </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> vt = <span class="keyword">new</span> VariableTest(); </span><br><span class="line">vt.myVariable;<span class="comment">//这里会出现undefined异常</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="私有方法（private_methods）">私有方法（private methods）</h2><p>　　与私有属性类似，只能在对象构造方法作用域内被访问。如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MethodTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> myMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) //<span class="title">private</span> </span><br><span class="line">        </span>&#123;</span><br><span class="line">            alert(<span class="string">"private method"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">this</span>.invoke = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//能够访问到myMethod </span></span><br><span class="line">        myMehtod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mt = <span class="keyword">new</span> MethodTest();</span><br><span class="line">mt.myMethod(); <span class="comment">//错误。使用trycatch的话，可捕获“对象不支持此属性或方法”异常 </span></span><br><span class="line">mt.invoke();</span><br></pre></td></tr></table></figure></p>
+<h2 id="公共属性（public_properties）">公共属性（public properties）</h2><p>　　有两种定义公共属性的途径：<br>　　（1）通过this关键字来定义。如：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PrivilegedVariable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.variable = <span class="string">"privileged variable"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> pv = <span class="keyword">new</span> PrivilegedVariable();</span><br><span class="line">pv.variable; <span class="comment">//返回 "privileged variable"</span></span><br></pre></td></tr></table></figure></p>
+<p>（2）通过构造方法的原型来定义。如：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PublicVariable</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">PublicVariable.prototype.variable = <span class="string">"public variable"</span>;</span><br><span class="line"><span class="keyword">var</span> pv = <span class="keyword">new</span> PublicVariable();</span><br><span class="line">pv.variable; <span class="comment">//返回"public variable"</span></span><br></pre></td></tr></table></figure></p></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/javascript-public-and-private-properties-and-methods/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/javascript-xing-neng-you-hua/">JavaScript 性能优化方面的知识总结</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-18T06:21:06.000Z" itemprop="datePublished">3月 18, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/javascript-xing-neng-you-hua/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/javascript-xing-neng-you-hua/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>转载<a href="http://segmentfault.com/blog/shibar/1190000002588062">javascript性能优化方面的知识总结 - SegmentFault</a></p>
+<h2 id="前言">前言</h2><p>一直在学习JavaScript，也有看过《犀利开发Jquery内核详解与实践》，对这本书的评价只有两个字犀利，可能是对JavaScript理解的还不够透彻异或是自己太笨，更多的是自己不擅于思考懒得思考以至于里面说的一些精髓都没有太深入的理解。</p>
+<p>鉴于想让自己有一个提升，进不了一个更加广阔的天地，总得找一个属于自己的居所好好生存，所以平时会有意无意的去积累一些使用jQuerry的常用知识，特别是对于性能要求这一块，总是会想是不是有更好的方式来实现。</p>
+<p>下面是我总结的一些小技巧，仅供参考。(我先会说一个总标题，然后用一小段话来说明这个意思 再最后用一个demo来简单言明)</p>
+<h2 id="避免全局查找">避免全局查找</h2><p>在一个函数中会用到全局对象存储为局部变量来减少全局查找，因为访问局部变量的速度要比访问全局变量的速度更快些<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//当我要使用当前页面地址和主机域名</span></span><br><span class="line">    alert(<span class="built_in">window</span>.location.href + <span class="built_in">window</span>.location.host);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//最好的方式是如下这样  先用一个简单变量保存起来</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> location = <span class="built_in">window</span>.location;</span><br><span class="line">    alert(location.href + location.host);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="定时器">定时器</h2><p> 如果针对的是不断运行的代码，不应该使用setTimeout，而应该是用setInterval，因为setTimeout每一次都会初始化一个定时器，而setInterval只会在开始的时候初始化一个定时器<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutTimes = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    timeoutTimes++;</span><br><span class="line">    <span class="keyword">if</span> (timeoutTimes &lt; <span class="number">10</span>) &#123;</span><br><span class="line">        setTimeout(timeout, <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">timeout();</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line"><span class="keyword">var</span> intervalTimes = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">interval</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    intervalTimes++;</span><br><span class="line">    <span class="keyword">if</span> (intervalTimes &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">        clearInterval(interv);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> interv = setInterval(interval, <span class="number">10</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="字符串连接">字符串连接</h2><p>如果要连接多个字符串，应该少使用+=，如<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s+=a<span class="comment">;</span></span><br><span class="line">s+=b<span class="comment">;</span></span><br><span class="line">s+=c<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>应该写成<code>s+=a + b + c</code>；</p>
+<p>而如果是收集字符串，比如多次对同一个字符串进行+=操作的话，最好使用一个缓存，使用JavaScript数组来收集，最后使用join方法连接起来<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    buf.push(i.<span class="built_in">toString</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> all = buf.<span class="built_in">join</span>(<span class="string">""</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="避免with语句">避免with语句</h2><p>和函数类似，with语句会创建自己的作用域，因此会增加其中执行的代码的作用域链的长度，由于额外的作用域链的查找，在with语句中执行的代码肯定会比外面执行的代码要慢，在能不使用with语句的时候尽量不要使用with语句。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">with (a.b.c.d) &#123;</span><br><span class="line">    property1 = <span class="number">1</span>;</span><br><span class="line">    property2 = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以替换为：</span></span><br><span class="line">var obj = a.b.c.d;</span><br><span class="line">obj.property1 = <span class="number">1</span>;</span><br><span class="line">obj.property2 = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数字转换成字符串">数字转换成字符串</h2><p>般最好用<code>&quot;&quot; + 1</code>来将数字转换成字符串，虽然看起来比较丑一点，但事实上这个效率是最高的，性能上来说：</p>
+<p><strong>(“” +) &gt; String() &gt; .toString() &gt; new String()</strong></p>
+<h2 id="浮点数转换成整型">浮点数转换成整型</h2><p>很多人喜欢使用<code>parseInt()</code>，其实<code>parseInt()</code>是用于将字符串转换成数字，而不是浮点数和整型之间的转换，我们应该使用<code>Math.floor()</code>或者<code>Math.round()</code><br></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/javascript-xing-neng-you-hua/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/web-performance-rules/">Yahoo团队经验：网站性能优化的34条黄金法则</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-16T16:11:26.000Z" itemprop="datePublished">3月 17, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/web-performance-rules/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/web-performance-rules/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yahoo团队总结的关于网站性能优化的经验，非常有参考价值。<br>英文原文：<a href="http://developer.yahoo.com/performance/rules.html">http://developer.yahoo.com/performance/rules.html</a></p>
+<h2 id="1、尽量减少HTTP请求次数">1、尽量减少HTTP请求次数</h2><p>终端用户响应的时间中，有80%用于下载各项内容。这部分时间包括下载页面中的图像、样式表、脚本、Flash等。通过减少页面中的元素可以减少 HTTP请求的次数。这是提高网页速度的关键步骤。<br>减少页面组件的方法其实就是简化页面设计。那么有没有一种方法既能保持页面内容的丰富性又能达到加快响应时间的目的呢？这里有几条减少HTTP请求次数同时又可能保持页面内容丰富的技术。<br>合并文件是通过把所有的脚本放到一个文件中来减少HTTP请求的方法，如可以简单地把所有的CSS文件都放入一个样式表中。当脚本或者样式表在不同页面中使用时需要做不同的修改，这可能会相对麻烦点，但即便如此也要把这个方法作为改善页面性能的重要一步。<br>CSS Sprites是减少图像请求的有效方法。把所有的背景图像都放到一个图片文件中，然后通过CSS的background-image和 background-position属性来显示图片的不同部分；<br>图片地图是把多张图片整合到一张图片中。虽然文件的总体大小不会改变，但是可以减少HTTP请求次数。图片地图只有在图片的所有组成部分在页面中是紧挨在 一起的时候才能使用，如导航栏。确定图片的坐标和可能会比较繁琐且容易出错，同时使用图片地图导航也不具有可读性，因此不推荐这种方法；<br>内联图像是使用data:URL scheme的方法把图像数据加载页面中。这可能会增加页面的大小。把内联图像放到样式表（可缓存）中可以减少HTTP请求同时又避免增加页面文件的大小。但是内联图像现在还没有得到主流浏览器的支持。<br>减少页面的HTTP请求次数是你首先要做的一步。这是改进首次访问用户等待时间的最重要的方法。如同Tenni Theurer的他的博客Browser Cahe Usage – Exposed!中所说，HTTP请求在无缓存情况下占去了40%到60%的响应时间。让那些初次访问你网站的人获得更加快速的体验吧！</p>
+<h2 id="2、减少DNS查找次数">2、减少DNS查找次数</h2><p>域名系统（DNS）提供了域名和IP的对应关系，就像电话本中人名和他们的电话号码的关系一样。当你在浏览器地址栏中输入www.dudo.org 时，DNS解析服务器就会返回这个域名对应的IP地址。DNS解析的过程同样也是需要时间的。一般情况下返回给定域名对应的IP地址会花费20到120毫秒的时间。而且在这个过程中浏览器什么都不会做直到DNS查找完毕。<br>缓存DNS查找可以改善页面性能。这种缓存需要一个特定的缓存服务器，这种服务器一般属于用户的ISP提供商或者本地局域网控制，但是它同样会在用户使用 的计算机上产生缓存。DNS信息会保留在操作系统的DNS缓存中（微软Windows系统中DNS Client Service）。大多数浏览器有独立于操作系统以外的自己的缓存。由于浏览器有自己的缓存记录，因此在一次请求中它不会受到操作系统的影响。<br>Internet Explorer默认情况下对DNS查找记录的缓存时间为30分钟，它在注册表中的键值为DnsCacheTimeout。Firefox对DNS的查找 记录缓存时间为1分钟，它在配置文件中的选项为network.dnsCacheExpiration（Fasterfox把这个选项改为了1小时）。<br>当客户端中的DNS缓存都为空时（浏览器和操作系统都为空），DNS查找的次数和页面中主机名的数量相同。这其中包括页面中URL、图片、脚本文件、样式表、Flash对象等包含的主机名。减少主机名的数量可以减少DNS查找次数。<br>减少主机名的数量还可以减少页面中并行下载的数量。减少DNS查找次数可以节省响应时间，但是减少并行下载却会增加响应时间。我的指导原则是把这些页面中 的内容分割成至少两部分但不超过四部分。这种结果就是在减少DNS查找次数和保持较高程度并行下载两者之间的权衡了。</p>
+<h2 id="3、避免跳转">3、避免跳转</h2><p>跳转是使用301和302代码实现的。下面是一个响应代码为301的HTTP头：<br>HTTP/1.1 301 Moved Permanently<br>Location: <a href="http://example.com/newuri">http://example.com/newuri</a><br>Content-Type: text/html<br>浏览器会把用户指向到Location中指定的URL。头文件中的所有信息在一次跳转中都是必需的，内容部分可以为空。不管他们的名称，301和302 响应都不会被缓存除非增加一个额外的头选项，如Expires或者Cache-Control来指定它缓存。<code>&lt;meat /&gt;</code>元素的刷新标签和JavaScript也可以实现URL的跳转，但是如果你必须要跳转的时候，最好的方法就是使用标准的3XXHTTP状态代 码，这主要是为了确保“后退”按钮可以正确地使用。<br>但是要记住跳转会降低用户体验。在用户和HTML文档中间增加一个跳转，会拖延页面中所有元素的显示，因为在HTML文件被加载前任何文件（图像、 Flash等）都不会被下载。<br>有一种经常被网页开发者忽略却往往十分浪费响应时间的跳转现象。这种现象发生在当URL本该有斜杠（/）却被忽略掉时。例如，当我们要访问http: //astrology.yahoo.com/astrology 时，实际上返回的是一个包含301代码的跳转，它指向的是<a href="http://astrology.yahoo.com/astrology/">http://astrology.yahoo.com/astrology/</a> （注意末尾的斜杠）。在Apache服务器中可以使用Alias 或者 mod_rewrite或者the DirectorySlash来避免。<br>连接新网站和旧网站是跳转功能经常被用到的另一种情况。这种情况下往往要连接网站的不同内容然后根据用户的不同类型（如浏览器类型、用户账号所属类型）来 进行跳转。使用跳转来实现两个网站的切换十分简单，需要的代码量也不多。尽管使用这种方法对于开发者来说可以降低复杂程度，但是它同样降低用户体验。一个 可替代方法就是如果两者在同一台服务器上时使用Alias和mod_rewrite和实现。如果是因为域名的不同而采用跳转，那么可以通过使用 Alias或者mod_rewirte建立CNAME（保存一个域名和另外一个域名之间关系的DNS记录）来替代。</p>
+<h2 id="4、可缓存的AJAX">4、可缓存的AJAX</h2><p>Ajax经常被提及的一个好处就是由于其从后台服务器传输信息的异步性而为用户带来的反馈的即时性。但是，使用Ajax并不能保证用户不会在等待异步的 JavaScript和XML响应上花费时间。在很多应用中，用户是否需要等待响应取决于Ajax如何来使用。例如，在一个基于Web的Email客户端 中，用户必须等待Ajax返回符合他们条件的邮件查询结果。记住一点，“异步”并不意味着“即时”，这很重要。<br>为了提高性能，优化Ajax响应是很重要的。提高Ajxa性能的措施中最重要的方法就是使响应具有可缓存性，具体的讨论可以查看Add an Expires or a Cache-Control Header。其它的几条规则也同样适用于Ajax：<br>Gizp压缩文件<br>减少DNS查找次数<br>精简JavaScript<br>避免跳转<br>配置ETags<br>让我们来看一个例子：一个Web2.0的Email客户端会使用Ajax来自动完成对用户地址薄的下载。如果用户在上次使用过Email web应用程序后没有对地址薄作任何的修改，而且Ajax响应通过Expire或者Cacke-Control头来实现缓存，那么就可以直接从上一次的缓存中读取地址薄了。必须告知浏览器是使用缓存中的地址薄还是发送一个新的请求。这可以通过为读取地址薄的Ajax URL增加一个含有上次编辑时间的时间戳来实现，例如，&amp;t=11900241612等。如果地址薄在上次下载后没有被编辑过，时间戳就不变，则从浏览器的缓存中加载从而减少了一次HTTP请求过程。如果用户修改过地址薄，时间戳就会用来确定新的URL和缓存响应并不匹配，浏览器就会重要请求更新地址薄。</p>
+<p>即使你的Ajxa响应是动态生成的，哪怕它只适用于一个用户，那么它也应该被缓存起来。这样做可以使你的Web2.0应用程序更加快捷。</p>
+<h2 id="5、推迟加载内容">5、推迟加载内容</h2><p>你可以仔细看一下你的网页，问问自己“哪些内容是页面呈现时所必需首先加载的？哪些内容和结构可以稍后再加载？<br>把整个过程按照onload事件分隔成两部分，JavaScript是一个理想的选择。例如，如果你有用于实现拖放和动画的JavaScript，那么它 就以等待稍后加载，因为页面上的拖放元素是在初始化呈现之后才发生的。其它的例如隐藏部分的内容（用户操作之后才显现的内容）和处于折叠部分的图像也可以 推迟加载<br>工具可以节省你的工作量：YUI Image Loader可以帮你推迟加载折叠部分的图片，YUI Get utility是包含JS和 CSS的便捷方法。比如你可以打开Firebug的Net选项卡看一下Yahoo的首页。<br>当性能目标和其它网站开发实践一致时就会相得益彰。这种情况下，通过程序提高网站性能的方法告诉我们，在支持JavaScript的情况下，可以先去除用 户体验，不过这要保证你的网站在没有JavaScript也可以正常运行。在确定页面运行正常后，再加载脚本来实现如拖放和动画等更加花哨的效果。<br></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/web-performance-rules/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/java-jdbc/">Java JDBC</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-15T15:30:26.000Z" itemprop="datePublished">3月 15, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/java-jdbc/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/java-jdbc/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>JDBC, Java Database Connecive, Java 数据库连接，是一组专门负责连接并操作数据库的标准，在整个JDBC 中实际上大量的提供的是接口。针对于各个不同的数据库生产商 ，只要想使用JAVA 进行数据库的开发，则对这些标准有所支持。</p>
+<p>JDBC 在使用中常见的有以下三类：</p>
+<p>JDBC-ODBC 桥连接：是SUN 在JDK的开发包中提供的最标准的一套JDBC 操作类库，使用的时候将JDBC-ODB-数据库，中间要经过一个ODBC 的连接，那么就意味着整体的性能将会降低，所以在开发中是绝对不会去使用JDBC-ODBC的连接方式的。</p>
+<p>JDBC 连接，使用各个数据库提供商给定的数据库驱动程序，完成JDBC的开发，使用的时候需要在classpath中配置数据库的驱动程序</p>
+<p>JDBC 网络连接：主要使用通过网络连接数据库</p>
+<p>JDBC 的操作步骤</p>
+<p>在进行JDBC 操作的时候可以按照以下的步骤完成：</p>
+<p>1、加载数据库驱动程序，加载的时候需要将驱动程序配置到classpath之中</p>
+<p>2、连接数据库，通过Connection 接口和 DriverManager 类完成</p>
+<p>3、操作数据库，通过Statement、PreparedStatement、ResultSet 三个接口完成</p>
+<p>4、关闭数据库，在实际开发中数据库资源非常有限，操作完之后必须关闭</p>
+<p>数据库连接操作</p>
+<p>在JDBC 的操作中，如果要想进行数据库的连接，则必须按照以上的几步完成</p>
+<p>1、通过Class.forName()加载数据库的驱动程序</p>
+<p>2、通过DriverManager 类进行数据库的连接，连接的时候要输入数据库的连接地址、用户名、密码</p>
+<p>3、通过Connection 接口接收连接</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.connectiondemo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> class ConnectionJDBC &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * @param args</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">//驱动程序就是之前在classpath中配置的JDBC的驱动程序的JAR 包中</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DBDRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">    <span class="comment">//连接地址是由各个数据库生产商单独提供的，所以需要单独记住</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DBURL = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">    <span class="comment">//连接数据库的用户名</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DBUSER = <span class="string">"root"</span>;</span><br><span class="line">    <span class="comment">//连接数据库的密码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> DBPASS = <span class="string">""</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Connection con = <span class="keyword">null</span>; <span class="comment">//表示数据库的连接对象</span></span><br><span class="line">        Class.forName(DBDRIVER); <span class="comment">//1、使用CLASS 类加载驱动程序</span></span><br><span class="line">        con = DriverManager.getConnection(DBURL,DBUSER,DBPASS); <span class="comment">//2、连接数据库</span></span><br><span class="line">        System.out.<span class="built_in">println</span>(con);</span><br><span class="line">        con.close(); <span class="comment">// 3、关闭数据库</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/java-jdbc/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/03/interview-test/">前端面试题</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-03-12T04:57:58.000Z" itemprop="datePublished">3月 12, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/03/interview-test/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/03/interview-test/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="判断是否支持css属性">判断是否支持css属性</h3><p>转自<a href="http://www.alloyteam.com/2011/10/判断浏览器是否支持指定css属性和指定值/">判断浏览器是否支持指定css属性和指定值</a><br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span></span> isSupportCSS(<span class="keyword">name</span>, <span class="keyword">value</span>) &#123;</span><br><span class="line">    var element = document.createElement(<span class="string">'div'</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">name</span> <span class="type">in</span> element.style) &#123;    </span><br><span class="line">        element.style[<span class="keyword">name</span>] = <span class="keyword">value</span>;    </span><br><span class="line">        <span class="keyword">return</span> element.style[<span class="keyword">name</span>] === <span class="keyword">value</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">        <span class="keyword">return</span> false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">'textShadow'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style) &#123;</span><br><span class="line">    alert(<span class="number">1</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">'MozTransform'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style || <span class="string">'WebkitTransform'</span> <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">document</span>.documentElement.style || <span class="string">'OTransform'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style || <span class="string">'msTransform'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style) &#123;</span><br><span class="line">    alert(<span class="number">1</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态插入ul&gt;li*20到body最前">动态插入ul&gt;li*20到body最前</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</span><br><span class="line"><span class="keyword">var</span> tmp = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">    li.innerHTML = <span class="string">'i='</span> + i;</span><br><span class="line">    tmp.appendChild(li);</span><br><span class="line">&#125;</span><br><span class="line">ul.appendChild(tmp);</span><br><span class="line"><span class="built_in">document</span>.body.insertBefore(ul, <span class="built_in">document</span>.body.firstChild);</span><br></pre></td></tr></table></figure>
+<h3 id="统计数组中的重复字符串最多的数量">统计数组中的重复字符串最多的数量</h3><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将字符串的字符保存在一个hash table中，key是字符，value是这个字符出现的次数</span></span><br><span class="line"><span class="built_in">var</span> arr = [<span class="string">"asdf"</span>, <span class="string">"dsf"</span>, <span class="string">"asdf"</span>, <span class="string">"wew"</span>];</span><br><span class="line"><span class="built_in">var</span> obj = &#123;&#125;;</span><br><span class="line">for (<span class="built_in">var</span> i = <span class="number">0</span>, l = arr.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="built_in">var</span> <span class="built_in">key</span> = arr[i];</span><br><span class="line">    if (typeof obj[<span class="built_in">key</span>] == 'undefined') &#123;</span><br><span class="line">        obj[<span class="built_in">key</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        obj[<span class="built_in">key</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*遍历这个hash table，获取<span class="built_in">value</span>最大的<span class="built_in">key</span>和<span class="built_in">value</span>*/</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">var</span> max_key = <span class="string">""</span>;</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">key</span>;</span><br><span class="line">for (<span class="built_in">key</span> in obj) &#123;</span><br><span class="line">    if (<span class="built_in">max</span> &lt; obj[<span class="built_in">key</span>]) &#123;</span><br><span class="line">        <span class="built_in">max</span> = obj[<span class="built_in">key</span>];</span><br><span class="line">        max_key = <span class="built_in">key</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(<span class="string">"max:"</span> + <span class="built_in">max</span> + <span class="string">" max_key:"</span> + max_key);</span><br></pre></td></tr></table></figure></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/03/interview-test/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/12/">&larr; 旧作</a>
+    
+    <a href="/archives">博文列表</a>
+    
+    <a class="next" href="/page/10/">新章 &rarr;</a>
+    
+  </div>
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

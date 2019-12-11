@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>MXOXW</title>
+  <meta name="author" content="Wind">
+  
+  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="MXOXW" />
+  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/">Java Tomcat环境变量配置</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-09-07T01:26:18.000Z" itemprop="datePublished">9月 07, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>JDK,Tomcat配置</p>
+<p>配置JDK环境变量<br>1，新建变量名：<code>JAVA_HOME</code>，变量值：<code>C:\Program Files\Java\jdk1.7.0</code><br>2，打开<code>PATH</code>，添加变量值：<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code><br>3，新建变量名：<code>CLASSPATH</code>，变量值：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></p>
+<p>备注：<br>1，.表示当前路径，<code>%JAVA_HOME%</code>就是引用前面指定的<code>JAVA_HOME</code>；<br>2，<code>JAVA_HOME</code>指明JDK安装路径，此路径下包括lib，bin，jre等文件夹，tomcat，eclipse等的运行都需要依靠此变量。<br>3，<code>PATH</code>使得系统可以在任何路径下识别java命令。<br>4，<code>CLASSPATH</code>为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别。</p>
+<p>配置Tomcat环境变量<br>1，新建变量名：<code>TOMCAT_HOME</code>，变量值：<code>C:\tomcat</code><br>2，打开PATH，添加变量值：<code>%TOMCAT_HOME%\lib;%TOMCAT_HOME%\bin</code></p>
+<p><code>set TOMCAT_HOME=&quot;D:\Program Files\tomcat7.0.61&quot;</code></p>
+<p>根据安装路径自行调整</p>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/wei-xin-android-ban-yin-cang-gong-neng/">微信Android版隐藏功能</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-17T07:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/wei-xin-android-ban-yin-cang-gong-neng/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/wei-xin-android-ban-yin-cang-gong-neng/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>//triggerWebViewCacheCleanup</code> 来清缓存！</p>
+<p><code>//switchtabpos</code>：让微信 tab 更贴合 Android Design<br>如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 //switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整回来，再输入一遍并发送就好了。</p>
+<p><code>//multiwebview</code>：将微信聊天页和文章页拆分为两个任务卡片<br>在任意聊天窗口输入 //multiwebview 并发送，聊天和文章页面就可以被拆分为两个任务，并能同时出现在多任务切换页面中。如果在看文章过程中来了微信消息，回复消息后再跳转回文章就方便多了。当然，该功能还需系统的支持，目前只适用于 Android 5.0 及以上版本的系统。</p>
+<p><code>//switchnotificationstatus</code>：让微信也支持浮动通知<br>在微信任意聊天窗口输入 //switchnotificationstatus 并发送，即可让微信也支持浮动通知。不过该功能仅支持 Android 5.x + 和微信 6.2 测试版，如要升级到微信 6.2 测试版，请用微信扫一扫下面最后一张图中的二维码。</p>
+<p><code>//sightinfo</code>：查看小视频参数<br><code>//sightinfo</code> 可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入 //sightinfo 并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复 输入 //sightinfo 并发送， 退出微信再重新进入就好了。</p>
+<p><code>//traceroute</code>：调出「诊断网络」功能<br>在微信任意聊天窗口输入 //traceroute 并发送，可以调出「诊断网络」功能。不过，当你真遇上无法连接到服务器的情况，这页面应该会自动弹出来吧。</p>
+<p><code>//opentrace</code><br>在微信任意聊天窗口输入 //opentrace 并发送，可以调出一个悬浮的类似音乐播放器中的播放/停止按钮。点击一下是开始，再点击一下是结束。尚不清楚这是什么功能，希望能得到高人指点。</p>
+<p><code>//getfpkey</code><br>输入 //getfpkey 并发送，可以看到关于手机的一些信息，包括制造商、型号、ROM 的版本。然而用处不大，这些信息在 设置-关于手机里都可以找到。</p>
+<p><code>//testwaitsms</code><br>输入 //testwaitsms 并发送后会要求验证手机号码，在进度条走完之前你可以点返回键取消操作。不知道 验证手机号码为哪般，关键这手机号码还不是我的，所以无法得知下一步要做什么。</p>
+<p><code>//setshakecarddata</code><br>输入 //setshakecarddata 并发送后，摇一摇功能中会多出一个「礼券」选项。然而并不能摇出什么礼券，只有一句「活动已结束，多陪陪家人」的温馨提示。该功能的取消方法与前面所述的不大一样，需要输入 //clearshakecarddata 并发送。</p>
+<p><code>//checkcount</code>：查看当前聊天窗口消息数量<br>输入 //checkcount 并发送，可以查看当前聊天窗口总共有多少条消息。</p>
+<p><code>//pickpoi</code>：定位当前位置<br>输入 //pickpoi 并发送，可以定位自己当前的位置，这与微信中的「发送位置」的功能是相同的。</p>
+<p><code>//fullexit</code>：退出微信<br>//fullexit 相当于退出功能，输入并发送后，微信会自动退出。再次进入微信时，需要输入登录密码。</p>
+<p><code>//testsetpageowner</code><br>输入 //testsetpageowner 并发送，会跳转到一个 Weixin JS API Demos 页面，不过该页面仅支持公司内网访问，对咱来说没什么用。</p>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/chuang-jian-kuai-jie-fang-shi-bu-bao-han-kuai-jie-fang-shi/">创建快捷方式不包含 -快捷方式</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-10T02:42:59.000Z" itemprop="datePublished">6月 10, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/chuang-jian-kuai-jie-fang-shi-bu-bao-han-kuai-jie-fang-shi/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/chuang-jian-kuai-jie-fang-shi-bu-bao-han-kuai-jie-fang-shi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>修改注册表<br><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer</code>，点击选中Explorer<br>更改<code>link</code>键值为<code>00 00 00 00</code> (默认<code>1E 00 00 00</code>)</p>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/windows-xia-shi-yong-openssl-sheng-cheng-zheng-shu/">Windows下使用openssl生成证书</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-09T09:05:08.000Z" itemprop="datePublished">6月 09, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/windows-xia-shi-yong-openssl-sheng-cheng-zheng-shu/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/windows-xia-shi-yong-openssl-sheng-cheng-zheng-shu/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用git包含的openssl<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成私钥key文件：</span></span><br><span class="line">openssl genrsa -out privatekey.pem <span class="number">1024</span></span><br><span class="line"><span class="comment">#通过私钥生成CSR证书签名</span></span><br><span class="line">openssl req -new -key privatekey.pem -out certrequest.csr -config  <span class="string">"D:\Program Files\Git\ssl\openssl.cnf"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过私钥和证书签名生成证书文件</span></span><br><span class="line">openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem</span><br></pre></td></tr></table></figure></p>
+<p>针对NodeJS下http-server<br>修改<code>http-server\bin\http-server</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ssl) &#123;</span><br><span class="line">  options.https = &#123;</span><br><span class="line">    cert: argv.C || argv.cert || process.env.NODE_PATH + <span class="string">'\\http-server\\cert\\certificate.pem'</span>,</span><br><span class="line">    key: argv.K || argv.key || process.env.NODE_PATH + <span class="string">'\\http-server\\cert\\privatekey.pem'</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考:</p>
+<blockquote>
+<p><a href="http://blog.fens.me/nodejs-https-server/" target="_blank" rel="external">http://blog.fens.me/nodejs-https-server/</a><br><a href="http://blog.csdn.net/longeremmy/article/details/8156384" target="_blank" rel="external">http://blog.csdn.net/longeremmy/article/details/8156384</a></p>
+</blockquote>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/javascript-quan-wei-zhi-nan-shi-jian-chu-li/">JavaScript 权威指南-事件处理</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-04T03:43:27.000Z" itemprop="datePublished">6月 04, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/javascript-quan-wei-zhi-nan-shi-jian-chu-li/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/javascript-quan-wei-zhi-nan-shi-jian-chu-li/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/8/">&larr; 旧作</a>
+    
+    <a href="/archives">博文列表</a>
+    
+    <a class="next" href="/page/6/">新章 &rarr;</a>
+    
+  </div>
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

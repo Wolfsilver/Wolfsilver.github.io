@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>MXOXW</title>
+  <meta name="author" content="Wind">
+  
+  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="MXOXW" />
+  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/javascript-quan-wei-zhi-nan-zheng-ze-biao-da-shi/">JavaScript 权威指南-正则表达式</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-01T07:55:16.000Z" itemprop="datePublished">6月 01, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/javascript-quan-wei-zhi-nan-zheng-ze-biao-da-shi/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/javascript-quan-wei-zhi-nan-zheng-ze-biao-da-shi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>10.2<br><code>&quot;JavaScript&quot;.search(/script/i);</code><br>search()返回匹配的第一个子串的起始位置，找不到匹配的子串将返回-1。不支持全局检索。</p>
+<p>replace()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// No matter how it is capitalized, replace it with the correct capitalization</span></span><br><span class="line">text.replace(<span class="regexp">/javascript/gi</span>, <span class="string">"JavaScript"</span>);</span><br></pre></td></tr></table></figure></p>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/xiu-gai-cmd-zi-ti/">修改cmd字体</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-28T08:59:52.000Z" itemprop="datePublished">5月 28, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/xiu-gai-cmd-zi-ti/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/xiu-gai-cmd-zi-ti/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在终端、cmd、编辑器中偶尔会有中文字符出现，Windows下默认的点阵字体「宋体」和等宽英文字符放在一起非常违和。一个解决方法是下载混合字体，比如「Consolas + YAHEI hybrid」，「Source Code Pro + YAHEI hybrid」。但是这些字体组合毕竟有限，如果想用「Anonymous Pro + 幼圆」、或者更改字重、使用斜体该怎么办呢？这时便要用到注册表的FontLink功能了。</p>
+<p>FontLink，顾名思义，是将某个字体未包含的字符映射到另一个字体上。比如编辑器中设定默认字体是「Consolas」，如果文件中有汉字字符，Windows本来默认显示为「宋体」，但是FontLink设置了「雅黑」，便可以用「雅黑」来显示。</p>
+<p>以「Consolas + 雅黑」为例，下面是实现方法：</p>
+<p>按下Win+R打开「运行」，输入regedit点击确定，开启「注册表」；<br>定位到如下位置；</p>
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink</code><br>找到Consolas项，双击打开，在「数值数据」文本框内输入以下内容后点击确定；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MSYH.TTF,<span class="number">192</span>,<span class="number">154</span></span><br><span class="line">MSYH.TTF</span><br></pre></td></tr></table></figure>
+<p><em>192，154在font-size=12或14时，中文对齐比较整洁</em><br>注销或重启计算机。</p>
+<blockquote>
+<p><a href="http://segmentfault.com/a/1190000000660694" target="_blank" rel="external">使用注册表优化终端、编辑器的中英字体混合显示，如「Consolas + 雅黑」 - SegmentFault</a><br><a href="http://fffonion.diandian.com/make-your-console-more-sxy" target="_blank" rel="external">让你的windows控制台更♂诱♂人_论野生技术与二次元</a></p>
+</blockquote>
+<p>附件：<br><a href="/files/fontLink.reg">FontLink.reg</a></p>
+</div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/javascript-quan-wei-zhi-nan-lei-he-mo-kuai/">JavaScript 权威指南-类和模块</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-28T03:07:26.000Z" itemprop="datePublished">5月 28, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/javascript-quan-wei-zhi-nan-lei-he-mo-kuai/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-lei-he-mo-kuai/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>9.1 类和原型<br>9.2 类和构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> *  A Range class using a constructor</span><br><span class="line"> */</span></span><br><span class="line"><span class="comment">// range2.js: Another class representing a range of values.</span></span><br><span class="line"><span class="comment">// This is a constructor function that initializes new Range objects.</span></span><br><span class="line"><span class="comment">// Note that it does not create or return the object. It just initializes this.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">from, to</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Store the start and end points (state) of this new range object.</span></span><br><span class="line">        <span class="comment">// These are noninherited properties that are unique to this object.</span></span><br><span class="line">        <span class="keyword">this</span>.from = from;</span><br><span class="line">        <span class="keyword">this</span>.to = to;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// All Range objects inherit from this object.</span></span><br><span class="line">    <span class="comment">// Note that the property name must be "prototype" for this to work.</span></span><br><span class="line">Range.prototype = &#123;</span><br><span class="line">    <span class="comment">// Return true if x is in the range, false otherwise</span></span><br><span class="line">    <span class="comment">// This method works for textual and Date ranges as well as numeric.</span></span><br><span class="line">    includes: <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.from &lt;= x &amp;&amp; x &lt;= <span class="keyword">this</span>.to;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Invoke f once for each integer in the range.</span></span><br><span class="line">    <span class="comment">// This method works only for numeric ranges.</span></span><br><span class="line">    foreach: <span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from); x &lt;= <span class="keyword">this</span>.to; x++) f(x);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Return a string representation of the range</span></span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"("</span> + <span class="keyword">this</span>.from + <span class="string">"..."</span> + <span class="keyword">this</span>.to + <span class="string">")"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Here are example uses of a range object</span></span><br><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> Range(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">// Create a range object</span></span><br><span class="line">r.includes(<span class="number">2</span>); <span class="comment">// =&gt; true: 2 is in the range</span></span><br><span class="line">r.foreach(<span class="built_in">console</span>.log); <span class="comment">// Prints 1 2 3</span></span><br><span class="line"><span class="built_in">console</span>.log(r); <span class="comment">// Prints (1...3)</span></span><br></pre></td></tr></table></figure></p>
+<p>9.2.2 constructor属性</p>
+<p>9.4 类的扩充<br>JavaScript中基于原型的继承机制是动态的：对象从其原型继承属性，如果创建对象之后原型的属性发生改变，也会影响到继承这个原型的所有实例对象。这意味着我们可以通过给原型对象添加新方法来扩充JavaScript类。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Define the ES5 String.trim() method if one does not already exist.</span></span><br><span class="line"><span class="comment">// This method returns a string with whitespace removed from the start and end.</span></span><br><span class="line"><span class="built_in">String</span>.prototype.trim = <span class="built_in">String</span>.prototype.trim || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>) <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// Don't alter the empty string</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">""</span>); <span class="comment">// Regular expression magic</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Return a function's name. If it has a (nonstandard) name property, use it.</span></span><br><span class="line"><span class="comment">// Otherwise, convert the function to a string and extract the name from that.</span></span><br><span class="line"><span class="comment">// Returns an empty string for unnamed functions like itself.</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name || <span class="keyword">this</span>.toString().match(<span class="regexp">/function\s*([^(]*)\(/</span>)[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>9.5 类和类型<br>9.5.1 instanceof<br>instanceof运算符和isPrototypeOf()方法的缺点是，我们无法通过对象来获得类名，只能检测对象是否属于指定的类名。在客户端JavaScript中还有一个比较严重的不足，就是在多窗口和多框架子页面的Web应用中兼容性不佳。每个窗口和框架子页面都具有单独的执行上下文，每个上下文都包含独有的全局变量和一组构造函数。在两个不同框架页面中创建的两个数组继承自两个相同但相互独立的原型对象，其中一个框架页面中的数组不是另一个框架页面的Array()构造函数的实例，instanceof运算结果是false。<br></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/05/javascript-quan-wei-zhi-nan-lei-he-mo-kuai/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/javascript-quan-wei-zhi-nan-han-shu/">JavaScript 权威指南-函数</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-26T06:45:22.000Z" itemprop="datePublished">5月 26, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/javascript-quan-wei-zhi-nan-han-shu/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-han-shu/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>8.1 函数定义</p>
+<ul>
+<li>函数表达式</li>
+<li>函数声明式</li>
+</ul>
+<p>8.2 函数调用</p>
+<ul>
+<li>作为函数</li>
+<li>作为方法</li>
+<li>作为构造函数</li>
+<li>通过它们的call()和apply()方法间接调用</li>
+</ul>
+<p>8.3 函数的实参和形参</p>
+<p>8.3.1 可选形参<br>传入的实参比形参个数少，剩余的形参置为undefined。</p>
+<p>8.3.2 实参对象<br>arguments指向实参对象的引用，是一个类数组对象<br>callee：当前正在执行的函数<br>caller（非标准的）：调用当前正在执行的函数的函数</p>
+<p>8.6 闭包<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>; <span class="comment">// A global variable</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>; <span class="comment">// A local variable</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> scope;</span><br><span class="line">        &#125; <span class="comment">// Return the value in scope here</span></span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()() <span class="comment">// What does this return?</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        count: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> n++;</span><br><span class="line">        &#125;,</span><br><span class="line">        reset: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            n = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = counter(),</span><br><span class="line">    d = counter(); <span class="comment">// Create two counters</span></span><br><span class="line">c.count() <span class="comment">// =&gt; 0</span></span><br><span class="line">d.count() <span class="comment">// =&gt; 0: they count independently</span></span><br><span class="line">c.reset() <span class="comment">// reset() and count() methods share state</span></span><br><span class="line">c.count() <span class="comment">// =&gt; 0: because we reset c</span></span><br><span class="line">d.count() <span class="comment">// =&gt; 1: d was not reset</span></span><br></pre></td></tr></table></figure></p></div>
+  
+    <footer>
+      <a rel="full-article" href="/b/2015/05/javascript-quan-wei-zhi-nan-han-shu/#more">Read More →</a>
+    </footer>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/05/javascript-quan-wei-zhi-nan-shu-zu/">JavaScript 权威指南-数组</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-05-25T07:36:06.000Z" itemprop="datePublished">5月 25, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/05/javascript-quan-wei-zhi-nan-shu-zu/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-shu-zu/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="7-8数组方法">7.8数组方法</h2><ul>
+<li><p>join()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];          <span class="comment">// Create a new array with these three elements</span></span><br><span class="line">a.join();                   <span class="comment">// =&gt; "1,2,3"</span></span><br><span class="line">a.join(<span class="string">" "</span>);                <span class="comment">// =&gt; "1 2 3"</span></span><br><span class="line">a.join(<span class="string">""</span>);                 <span class="comment">// =&gt; "123"</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);      <span class="comment">// An array of length 10 with no elements</span></span><br><span class="line">b.join(<span class="string">'-'</span>)                 <span class="comment">// =&gt; '---------': a string of 9 hyphens</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reverse()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a.reverse().join() <span class="comment">// =&gt; "3,2,1" and a is now [3,2,1]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sort()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"banana"</span>, <span class="string">"cherry"</span>, <span class="string">"apple"</span>);</span><br><span class="line">a.sort();</span><br><span class="line"><span class="keyword">var</span> s = a.join(<span class="string">", "</span>); <span class="comment">// s == "apple, banana, cherry"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * [a description]</span><br><span class="line"> * @type &#123;Array&#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">33</span>, <span class="number">4</span>, <span class="number">1111</span>, <span class="number">222</span>];</span><br><span class="line">a.sort(); <span class="comment">// Alphabetical order: 1111, 222, 33, 4</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="comment">// Numerical order: 4, 33, 222, 1111</span></span><br><span class="line">    Core JavaScript</span><br><span class="line">    <span class="keyword">return</span> a - b; <span class="comment">// Returns &amp;lt; 0, 0, or &amp;gt; 0, depending on order</span></span><br><span class="line">&#125;);</span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b - a</span><br><span class="line">&#125;); <span class="comment">// Reverse numerical order</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * [a description]</span><br><span class="line"> * @type &#123;Array&#125;</span><br><span class="line"> */</span></span><br><span class="line">a = [<span class="string">'ant'</span>, <span class="string">'Bug'</span>, <span class="string">'cat'</span>, <span class="string">'Dog'</span>]</span><br><span class="line">a.sort(); <span class="comment">// case-sensitive sort: ['Bug','Dog','ant',cat']</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">s, t</span>) </span>&#123; <span class="comment">// Case-insensitive sort</span></span><br><span class="line">    <span class="keyword">var</span> a = s.toLowerCase();</span><br><span class="line">    <span class="keyword">var</span> b = t.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span> (a &lt; b) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;); <span class="comment">// =&gt; ['ant','Bug','cat','Dog']</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>concat()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a.concat(<span class="number">4</span>, <span class="number">5</span>)              <span class="comment">// Returns [1,2,3,4,5]</span></span><br><span class="line">a.concat([<span class="number">4</span>,<span class="number">5</span>]);            <span class="comment">// Returns [1,2,3,4,5]</span></span><br><span class="line">a.concat([<span class="number">4</span>,<span class="number">5</span>],[<span class="number">6</span>,<span class="number">7</span>])       <span class="comment">// Returns [1,2,3,4,5,6,7]</span></span><br><span class="line">a.concat(<span class="number">4</span>, [<span class="number">5</span>,[<span class="number">6</span>,<span class="number">7</span>]])      <span class="comment">// Returns [1,2,3,4,5,[6,7]]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>slice()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.slice(<span class="number">0</span>,<span class="number">3</span>);       <span class="comment">// Returns [1,2,3]</span></span><br><span class="line">a.slice(<span class="number">3</span>);         <span class="comment">// Returns [4,5]</span></span><br><span class="line">a.slice(<span class="number">1</span>,-<span class="number">1</span>);      <span class="comment">// Returns [2,3,4]</span></span><br><span class="line">a.slice(-<span class="number">3</span>,-<span class="number">2</span>);     <span class="comment">// Returns [3]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>splice()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 第一个参数指定插入和（或）删除的起始位置</span><br><span class="line"> * 第二个参数指定应该从数组删除元素的个数，如果省略，从起始到数组结尾的所有元素都将删除</span><br><span class="line"> * 第三个开始之后的参数指定插入到起始位置的元素</span><br><span class="line"> * 返回由删除元素组成的数组，没有元素删除返回空数组</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>];</span><br><span class="line">a.splice(<span class="number">4</span>);   <span class="comment">// Returns [5,6,7,8]; a is [1,2,3,4]</span></span><br><span class="line">a.splice(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// Returns [2,3]; a is [1,4]</span></span><br><span class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">// Returns [4]; a is [1]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">'a'</span>,<span class="string">'b'</span>); <span class="comment">// Returns []; a is [1,2,'a','b',3,4,5]</span></span><br><span class="line">a.splice(<span class="number">2</span>,<span class="number">2</span>,[<span class="number">1</span>,<span class="number">2</span>],<span class="number">3</span>); <span class="comment">// Returns ['a','b']; a is [1,2,[1,2],3,3,4,5]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>push() and pop()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stack = [];         <span class="comment">// stack: []</span></span><br><span class="line">stack.push(<span class="number">1</span>,<span class="number">2</span>);        <span class="comment">// stack: [1,2] Returns 2</span></span><br><span class="line">stack.pop();            <span class="comment">// stack: [1] Returns 2</span></span><br><span class="line">Core JavaScript</span><br><span class="line">stack.push(<span class="number">3</span>);          <span class="comment">// stack: [1,3] Returns 2</span></span><br><span class="line">stack.pop();            <span class="comment">// stack: [1] Returns 3</span></span><br><span class="line">stack.push([<span class="number">4</span>,<span class="number">5</span>]);      <span class="comment">// stack: [1,[4,5]] Returns 2</span></span><br><span class="line">stack.pop()             <span class="comment">// stack: [1] Returns [4,5]</span></span><br><span class="line">stack.pop();            <span class="comment">// stack: [] Returns 1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unshift() and shift()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];             <span class="comment">// a:[]</span></span><br><span class="line">a.unshift(<span class="number">1</span>);           <span class="comment">// a:[1] Returns: 1</span></span><br><span class="line">a.unshift(<span class="number">22</span>);          <span class="comment">// a:[22,1] Returns: 2</span></span><br><span class="line">a.shift();              <span class="comment">// a:[1] Returns: 22</span></span><br><span class="line">a.unshift(<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>]);     <span class="comment">// a:[3,[4,5],1] Returns: 3</span></span><br><span class="line">a.shift();              <span class="comment">// a:[[4,5],1] Returns: 3</span></span><br><span class="line">a.shift();              <span class="comment">// a:[1] Returns: [4,5]</span></span><br><span class="line">a.shift();              <span class="comment">// a:[] Returns: 1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="7-9_ECMAScript_5_数组方法">7.9 ECMAScript 5 数组方法</h2><p>大多数方法的第一个参数接收一个函数，并且对数组的每个元素（或一些元素）调用一次该函数。如果是稀疏数组，对不存在的元素不调用传递的函数。在大多数情况下，调用提供的函数使用三个参数：<code>数组元素、元素的索引和数组本身</code>。通常，只需要第一个参数值，可以忽略后两个参数．大多数ECMAScript 5数组方法的第一个参数是一个函数，第二个参数是可选的。如果有第二个参数，则调用的函数被看做是第二个参数的方法。也就是说，在调用函数时传递进去的第二个参数作为它的this关键字的值来使用。被调用的函数的返回值非常重要，但是不同的方法处理返回值的方式也不一样。ECMAScript 5中的数组方法都不会修改它们调用的原始数组。当然，传递给这些方法的函数是可以修改这些数组的。</p>
+<ul>
+<li><p>forEach()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]; <span class="comment">// An array to sum</span></span><br><span class="line"><span class="comment">// Compute the sum of the array elements</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">0</span>; <span class="comment">// Start at 0</span></span><br><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    sum += value;</span><br><span class="line">&#125;); <span class="comment">// Add each value to sum</span></span><br><span class="line">sum <span class="comment">// =&gt; 15</span></span><br><span class="line"><span class="comment">// Now increment each array element</span></span><br><span class="line">data.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">v, i, a</span>) </span>&#123;</span><br><span class="line">    a[i] = v + <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br><span class="line">data <span class="comment">// =&gt; [2,3,4,5,6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * **break问题**</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foreach</span>(<span class="params">a, f, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        a.forEach(f, t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">if</span> (e === foreach.break) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">throw</span> e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">foreach.break = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"StopIteration"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>map()<br>传递给map()的函数的调用方式和传递给于forEach的函数的调用方式一样。但传递给map()的函数应该有返回值。注意map()返回的是新数组：它不修改调用的数组。如果是稀疏数组，返回的也是相同方式的稀疏数组：它具有相同的长度，相同的缺失元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">b = a.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x*x; &#125;); <span class="comment">// b is [1, 4, 9]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>filter()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>];</span><br><span class="line">smallvalues = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x &lt; <span class="number">3</span> &#125;); <span class="comment">// [2, 1]</span></span><br><span class="line">everyother = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x,i</span>) </span>&#123; <span class="keyword">return</span> i%<span class="number">2</span>==<span class="number">0</span> &#125;); <span class="comment">// [5, 3, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dense = sparse.filter(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="literal">true</span>; &#125;);</span><br><span class="line"></span><br><span class="line">a = a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x !== <span class="literal">undefined</span> &amp;&amp; x != <span class="literal">null</span>; &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>every() and some()<br>数组逻辑判定</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x &lt; <span class="number">10</span>; &#125;) <span class="comment">// =&gt; true: all values &lt; 10.</span></span><br><span class="line">a.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>; &#125;) <span class="comment">// =&gt; false: not all values even.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">a.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x%<span class="number">2</span>===<span class="number">0</span>; &#125;) <span class="comment">// =&gt; true a has some even numbers.</span></span><br><span class="line">a.some(<span class="built_in">isNaN</span>) <span class="comment">// =&gt; false: a has no non-numbers.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reduce() and reduceRight()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">var</span> sum = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123; <span class="keyword">return</span> x+y &#125;, <span class="number">0</span>); <span class="comment">// Sum of values</span></span><br><span class="line"><span class="keyword">var</span> product = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123; <span class="keyword">return</span> x*y &#125;, <span class="number">1</span>); <span class="comment">// Product of values</span></span><br><span class="line"><span class="keyword">var</span> max = a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x,y</span>) </span>&#123; <span class="keyword">return</span> (x&gt;y)?x:y; &#125;); <span class="comment">// Largest value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="comment">// Compute 2^(3^4). Exponentiation has right-to-left precedence</span></span><br><span class="line"><span class="keyword">var</span> big = a.reduceRight(<span class="function"><span class="keyword">function</span>(<span class="params">accumulator,value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.pow(value,accumulator);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>indexOf() and lastIndexOf()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>];</span><br><span class="line">a.indexOf(<span class="number">1</span>) <span class="comment">// =&gt; 1: a[1] is 1</span></span><br><span class="line">a.lastIndexOf(<span class="number">1</span>) <span class="comment">// =&gt; 3: a[3] is 1</span></span><br><span class="line">a.indexOf(<span class="number">3</span>) <span class="comment">// =&gt; -1: no element has value 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 在数组中查找所有出现的x，并返回一个包含匹配索引的数组</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findall</span>(<span class="params">a, x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> results = [],               <span class="comment">//将会返回的数组</span></span><br><span class="line">        len = a.length,             <span class="comment">//待搜索数组的长度</span></span><br><span class="line">        p05 = <span class="number">0</span>;                    <span class="comment">//开始搜索的位置</span></span><br><span class="line">    <span class="keyword">while</span> (pos &lt; len) &#123;             <span class="comment">//循环搜索多个元素…</span></span><br><span class="line">        pos = a.indexOf(x, pos);    <span class="comment">//搜索</span></span><br><span class="line">        <span class="keyword">if</span> (pos === -<span class="number">1</span>) <span class="keyword">break</span>;      <span class="comment">//未找到，就完成搜索</span></span><br><span class="line">        results.push(pos);          <span class="comment">//否则，在数组中存储索引</span></span><br><span class="line">        pos = pos + <span class="number">1</span>;              <span class="comment">//并从下一个位置开始搜索</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> results;                 <span class="comment">//返回包含索引的数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</div>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/10/">&larr; 旧作</a>
+    
+    <a href="/archives">博文列表</a>
+    
+    <a class="next" href="/page/8/">新章 &rarr;</a>
+    
+  </div>
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>

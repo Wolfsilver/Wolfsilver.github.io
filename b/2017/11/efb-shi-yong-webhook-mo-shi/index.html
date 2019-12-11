@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html>
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="utf-8">
+  
+  <title>EFB使用webhook模式 | MXOXW</title>
+  <meta name="author" content="Wind">
+  
+  <meta name="description" content="添加配置
+eh_telegram_master = &#123;
+    &#34;flag&#34;: &#123;
+        &#34;webhook_url&#34;: &#34;http://example.com&#34;,
+        &#34;port&#34;: 5000
+    &#125;,
+    &#34;token&#34;: &#34;12345678:QWFPGJLUYarstdheioZXCVBKM&#34;,
+    ...
+
+修改polli...">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
+  <meta itemprop="name" content="EFB使用webhook模式 | MXOXW" />
+  <meta itemprop="description" content="添加配置
+eh_telegram_master = &#123;
+    &#34;flag&#34;: &#123;
+        &#34;webhook_url&#34;: &#34;http://example.com&#34;,
+        &#34;port&#34;: 5000
+    &#125;,
+    &#34;token&#34;: &#34;12345678:QWFPGJLUYarstdheioZXCVBKM&#34;,
+    ...
+
+修改polli..." />
+  
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+
+  <link rel="canonical" href="http://www.mxoxw.com/b/2017/11/efb-shi-yong-webhook-mo-shi/">
+  
+  <link rel="alternative" href="/atom.xml" title="MXOXW" type="application/atom+xml">
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4817791179797310",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+</head>
+
+<body> <!-- TODO body 添加样式-->
+  <header role="banner"><hgroup>
+  <h1><a href="/">MXOXW</a></h1>
+  
+    <h2>Life always finds a way.</h2>
+  
+</hgroup>
+</header>
+  <nav role="navigation"><!-- TODO  -->
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+</ul>
+  
+<form action="https://www.google.com" target="_blank" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="http://www.mxoxw.com">
+    <input class="search" type="text" name="q" results="0" placeholder="搜索..."/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li><li><a href="/archives/">博文列表</a></li><li><a href="/about/">关于</a></li>
+</ul>
+
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">EFB使用webhook模式</h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2017-11-11T15:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
+
+        
+        
+        
+           | <a href="#gitalk-container" >Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="添加配置">添加配置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">eh_telegram_master = &#123;</span><br><span class="line">    <span class="string">"flag"</span>: &#123;</span><br><span class="line">        <span class="string">"webhook_url"</span>: <span class="string">"http://example.com"</span>,</span><br><span class="line">        <span class="string">"port"</span>: <span class="number">5000</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"12345678:QWFPGJLUYarstdheioZXCVBKM"</span>,</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h2 id="修改polling_from_tg">修改polling_from_tg</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># self.bot.start_polling(timeout=10)</span></span><br><span class="line">webhook_url = <span class="keyword">self</span>._flag(<span class="string">'webhook_url'</span>, <span class="string">''</span>)</span><br><span class="line">port = <span class="keyword">self</span>._flag(<span class="string">'port'</span>, <span class="number">80</span>)</span><br><span class="line"><span class="keyword">if</span> webhook_url != <span class="string">''</span><span class="symbol">:</span></span><br><span class="line">    token = getattr(config, <span class="keyword">self</span>.channel_id)[<span class="string">'token'</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> webhook_url.endswith(<span class="string">'/'</span>)<span class="symbol">:</span></span><br><span class="line">        webhook_url += <span class="string">'/'</span></span><br><span class="line">    webhook_url += token</span><br><span class="line">    <span class="keyword">self</span>.bot.start_webhook(<span class="string">'127.0.0.1'</span>, port, token)</span><br><span class="line">    <span class="keyword">self</span>.bot.bot.setWebhook(webhook_url=webhook_url)</span><br><span class="line">    <span class="comment"># self.logger.critical("webhook_url: %s" % webhook_url)</span></span><br><span class="line"><span class="symbol">else:</span></span><br><span class="line">    <span class="keyword">self</span>.bot.start_polling(timeout=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改nginx配置">修改nginx配置</h2><p>转发回调请求到<code>http://127.0.0.1:5000</code></p>
+<a id="more"></a>
+<p>几点需要注意的问题</p>
+<blockquote>
+<p>证书问题，如果使用Let’s Encrypt签发的证书，需要使用full chained certificate，否则不会收到回调请求</p>
+<p>如果在同一目录下，使用多个微信号登录，容易导致“限制web微信登录”</p>
+</blockquote>
+<p>具体见 <a href="https://github.com/wolfsilver/ehForwarderBot" target="_blank" rel="external">https://github.com/wolfsilver/ehForwarderBot</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
+
+      <time datetime="2017-11-11T15:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
+
+      
+
+    </p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/b/2017/11/thought/" title="Previous Post: thought">&laquo; thought</a>
+      
+      
+        <a class="basic-alignment right" href="/b/2017/11/bandwagonhost-vps/" title="Next Post: bandwagonhost vps">bandwagonhost vps &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>评论</h1>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
+<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '50fbdf7a6156260cd0b1',
+        clientSecret: 'aeac1ce266e68e5421cdbbcc9b5223378ff0b6bc',
+        repo: 'gitalk',
+        owner: 'wolfsilver',
+        admin: 'wolfsilver',
+        id: location.pathname.substring(0, 50),
+        labels: 'Gitalk'.split(','),
+        perPage: 15,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+
+      gitalk.render('gitalk-container')
+ </script>
+  </section>
+
+</div>
+
+
+  <aside class="sidebar">
+    
+      
+<section>
+  <h1>分类</h1>
+  <ul id="categories">
+    
+      
+        <li class="category"><a href="/categories/essay/" title="Essay">Essay (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/" title="Java">Java (3)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/javascript/" title="JavaScript">JavaScript (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/whistle-js/" title="whistle js">whistle js (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/其他/" title="其他">其他 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/前端/" title="前端">前端 (5)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/java/多线程/" title="多线程">多线程 (1)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/杂谈/" title="杂谈">杂谈 (2)</a></li>
+      
+    
+      
+        <li class="category"><a href="/categories/转载/" title="转载">转载 (2)</a></li>
+      
+    
+  </ul>
+</section>
+
+
+    
+      
+<section>
+  <h1>近期文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/b/2019/12/whistle-xxtpl/">whistle.xxtpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/11/2018-11-01-mian-shi/">2018-11-01面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/">2018年8月25日 面试</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/02/duo-yu-ming-dan-zheng-shu/">多域名单证书</a>
+      </li>
+    
+      <li class="post">
+        <a href="/b/2018/01/vs-code-zi-ding-yi-gao-liang/">VS Code自定义高亮</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    
+  </aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Wind -
+  <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+</p>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
+<script src="/js/script.min.js" type="text/javascript"></script>
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
+  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-60526602-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-60526602-1');
+</script>
+
+<!-- End Google Analytics -->
+
+
+
+<!-- Baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f09124d228ae25c45c871424139d9ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Analytics -->
+
+
+
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1576032452269')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script></body>
+</html>
