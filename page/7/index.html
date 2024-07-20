@@ -3,24 +3,25 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>MXOXW</title>
   <meta name="author" content="Wind">
   
-  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="description" content="Wind's Blog 追求超越时代的技术.个人技术博客，记录学习成长历程。skill：JavaScript，html，CSS，Java，c++，Linux">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
   <meta itemprop="name" content="MXOXW" />
-  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  <meta itemprop="description" content="Wind's Blog 追求超越时代的技术.个人技术博客，记录学习成长历程。skill：JavaScript，html，CSS，Java，c++，Linux" />
   
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css">
+
   
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com">
   
@@ -29,9 +30,9 @@
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -41,7 +42,7 @@
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -77,45 +78,12 @@
         
   <header>
     
-      <h1 class="entry-title"><a href="/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/">Java Tomcat环境变量配置</a></h1>
-    
-    
-      <p class="meta">
-        
-          <time datetime="2015-09-07T01:26:18.000Z" itemprop="datePublished">9月 07, 2015</time>
-
-        
-        
-        
-           | <a href="/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/09/java-tomcat-huan-jing-bian-liang-pei-zhi/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>JDK,Tomcat配置</p>
-<p>配置JDK环境变量<br>1，新建变量名：<code>JAVA_HOME</code>，变量值：<code>C:\Program Files\Java\jdk1.7.0</code><br>2，打开<code>PATH</code>，添加变量值：<code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code><br>3，新建变量名：<code>CLASSPATH</code>，变量值：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></p>
-<p>备注：<br>1，.表示当前路径，<code>%JAVA_HOME%</code>就是引用前面指定的<code>JAVA_HOME</code>；<br>2，<code>JAVA_HOME</code>指明JDK安装路径，此路径下包括lib，bin，jre等文件夹，tomcat，eclipse等的运行都需要依靠此变量。<br>3，<code>PATH</code>使得系统可以在任何路径下识别java命令。<br>4，<code>CLASSPATH</code>为java加载类(class or lib)路径，只有类在classpath中，java命令才能识别。</p>
-<p>配置Tomcat环境变量<br>1，新建变量名：<code>TOMCAT_HOME</code>，变量值：<code>C:\tomcat</code><br>2，打开PATH，添加变量值：<code>%TOMCAT_HOME%\lib;%TOMCAT_HOME%\bin</code></p>
-<p><code>set TOMCAT_HOME=&quot;D:\Program Files\tomcat7.0.61&quot;</code></p>
-<p>根据安装路径自行调整</p>
-</div>
-  
-
-
-    </article>
-  
-    <article>
-        
-  <header>
-    
       <h1 class="entry-title"><a href="/b/2015/06/wei-xin-android-ban-yin-cang-gong-neng/">微信Android版隐藏功能</a></h1>
     
     
       <p class="meta">
         
-          <time datetime="2015-06-17T07:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
+          <time datetime="2015-06-17T15:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
 
         
         
@@ -128,19 +96,19 @@
 
 
   <div class="entry-content"><p><code>//triggerWebViewCacheCleanup</code> 来清缓存！</p>
-<p><code>//switchtabpos</code>：让微信 tab 更贴合 Android Design<br>如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 //switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整回来，再输入一遍并发送就好了。</p>
-<p><code>//multiwebview</code>：将微信聊天页和文章页拆分为两个任务卡片<br>在任意聊天窗口输入 //multiwebview 并发送，聊天和文章页面就可以被拆分为两个任务，并能同时出现在多任务切换页面中。如果在看文章过程中来了微信消息，回复消息后再跳转回文章就方便多了。当然，该功能还需系统的支持，目前只适用于 Android 5.0 及以上版本的系统。</p>
-<p><code>//switchnotificationstatus</code>：让微信也支持浮动通知<br>在微信任意聊天窗口输入 //switchnotificationstatus 并发送，即可让微信也支持浮动通知。不过该功能仅支持 Android 5.x + 和微信 6.2 测试版，如要升级到微信 6.2 测试版，请用微信扫一扫下面最后一张图中的二维码。</p>
-<p><code>//sightinfo</code>：查看小视频参数<br><code>//sightinfo</code> 可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入 //sightinfo 并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复 输入 //sightinfo 并发送， 退出微信再重新进入就好了。</p>
-<p><code>//traceroute</code>：调出「诊断网络」功能<br>在微信任意聊天窗口输入 //traceroute 并发送，可以调出「诊断网络」功能。不过，当你真遇上无法连接到服务器的情况，这页面应该会自动弹出来吧。</p>
-<p><code>//opentrace</code><br>在微信任意聊天窗口输入 //opentrace 并发送，可以调出一个悬浮的类似音乐播放器中的播放/停止按钮。点击一下是开始，再点击一下是结束。尚不清楚这是什么功能，希望能得到高人指点。</p>
-<p><code>//getfpkey</code><br>输入 //getfpkey 并发送，可以看到关于手机的一些信息，包括制造商、型号、ROM 的版本。然而用处不大，这些信息在 设置-关于手机里都可以找到。</p>
-<p><code>//testwaitsms</code><br>输入 //testwaitsms 并发送后会要求验证手机号码，在进度条走完之前你可以点返回键取消操作。不知道 验证手机号码为哪般，关键这手机号码还不是我的，所以无法得知下一步要做什么。</p>
-<p><code>//setshakecarddata</code><br>输入 //setshakecarddata 并发送后，摇一摇功能中会多出一个「礼券」选项。然而并不能摇出什么礼券，只有一句「活动已结束，多陪陪家人」的温馨提示。该功能的取消方法与前面所述的不大一样，需要输入 //clearshakecarddata 并发送。</p>
-<p><code>//checkcount</code>：查看当前聊天窗口消息数量<br>输入 //checkcount 并发送，可以查看当前聊天窗口总共有多少条消息。</p>
-<p><code>//pickpoi</code>：定位当前位置<br>输入 //pickpoi 并发送，可以定位自己当前的位置，这与微信中的「发送位置」的功能是相同的。</p>
-<p><code>//fullexit</code>：退出微信<br>//fullexit 相当于退出功能，输入并发送后，微信会自动退出。再次进入微信时，需要输入登录密码。</p>
-<p><code>//testsetpageowner</code><br>输入 //testsetpageowner 并发送，会跳转到一个 Weixin JS API Demos 页面，不过该页面仅支持公司内网访问，对咱来说没什么用。</p>
+<p><code>//switchtabpos</code>：让微信 tab 更贴合 Android Design<br>如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 &#x2F;&#x2F;switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整回来，再输入一遍并发送就好了。</p>
+<p><code>//multiwebview</code>：将微信聊天页和文章页拆分为两个任务卡片<br>在任意聊天窗口输入 &#x2F;&#x2F;multiwebview 并发送，聊天和文章页面就可以被拆分为两个任务，并能同时出现在多任务切换页面中。如果在看文章过程中来了微信消息，回复消息后再跳转回文章就方便多了。当然，该功能还需系统的支持，目前只适用于 Android 5.0 及以上版本的系统。</p>
+<p><code>//switchnotificationstatus</code>：让微信也支持浮动通知<br>在微信任意聊天窗口输入 &#x2F;&#x2F;switchnotificationstatus 并发送，即可让微信也支持浮动通知。不过该功能仅支持 Android 5.x + 和微信 6.2 测试版，如要升级到微信 6.2 测试版，请用微信扫一扫下面最后一张图中的二维码。</p>
+<p><code>//sightinfo</code>：查看小视频参数<br><code>//sightinfo</code> 可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入 &#x2F;&#x2F;sightinfo 并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复 输入 &#x2F;&#x2F;sightinfo 并发送， 退出微信再重新进入就好了。</p>
+<p><code>//traceroute</code>：调出「诊断网络」功能<br>在微信任意聊天窗口输入 &#x2F;&#x2F;traceroute 并发送，可以调出「诊断网络」功能。不过，当你真遇上无法连接到服务器的情况，这页面应该会自动弹出来吧。</p>
+<p><code>//opentrace</code><br>在微信任意聊天窗口输入 &#x2F;&#x2F;opentrace 并发送，可以调出一个悬浮的类似音乐播放器中的播放&#x2F;停止按钮。点击一下是开始，再点击一下是结束。尚不清楚这是什么功能，希望能得到高人指点。</p>
+<p><code>//getfpkey</code><br>输入 &#x2F;&#x2F;getfpkey 并发送，可以看到关于手机的一些信息，包括制造商、型号、ROM 的版本。然而用处不大，这些信息在 设置-关于手机里都可以找到。</p>
+<p><code>//testwaitsms</code><br>输入 &#x2F;&#x2F;testwaitsms 并发送后会要求验证手机号码，在进度条走完之前你可以点返回键取消操作。不知道 验证手机号码为哪般，关键这手机号码还不是我的，所以无法得知下一步要做什么。</p>
+<p><code>//setshakecarddata</code><br>输入 &#x2F;&#x2F;setshakecarddata 并发送后，摇一摇功能中会多出一个「礼券」选项。然而并不能摇出什么礼券，只有一句「活动已结束，多陪陪家人」的温馨提示。该功能的取消方法与前面所述的不大一样，需要输入 &#x2F;&#x2F;clearshakecarddata 并发送。</p>
+<p><code>//checkcount</code>：查看当前聊天窗口消息数量<br>输入 &#x2F;&#x2F;checkcount 并发送，可以查看当前聊天窗口总共有多少条消息。</p>
+<p><code>//pickpoi</code>：定位当前位置<br>输入 &#x2F;&#x2F;pickpoi 并发送，可以定位自己当前的位置，这与微信中的「发送位置」的功能是相同的。</p>
+<p><code>//fullexit</code>：退出微信<br>&#x2F;&#x2F;fullexit 相当于退出功能，输入并发送后，微信会自动退出。再次进入微信时，需要输入登录密码。</p>
+<p><code>//testsetpageowner</code><br>输入 &#x2F;&#x2F;testsetpageowner 并发送，会跳转到一个 Weixin JS API Demos 页面，不过该页面仅支持公司内网访问，对咱来说没什么用。</p>
 </div>
   
 
@@ -156,7 +124,7 @@
     
       <p class="meta">
         
-          <time datetime="2015-06-10T02:42:59.000Z" itemprop="datePublished">6月 10, 2015</time>
+          <time datetime="2015-06-10T10:42:59.000Z" itemprop="datePublished">6月 10, 2015</time>
 
         
         
@@ -184,7 +152,7 @@
     
       <p class="meta">
         
-          <time datetime="2015-06-09T09:05:08.000Z" itemprop="datePublished">6月 09, 2015</time>
+          <time datetime="2015-06-09T17:05:08.000Z" itemprop="datePublished">6月 09, 2015</time>
 
         
         
@@ -196,11 +164,14 @@
   </header>
 
 
-  <div class="entry-content"><p>使用git包含的openssl<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成私钥key文件：</span></span><br><span class="line">openssl genrsa -out privatekey.pem <span class="number">1024</span></span><br><span class="line"><span class="comment">#通过私钥生成CSR证书签名</span></span><br><span class="line">openssl req -new -key privatekey.pem -out certrequest.csr -config  <span class="string">"D:\Program Files\Git\ssl\openssl.cnf"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过私钥和证书签名生成证书文件</span></span><br><span class="line">openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.pem</span><br></pre></td></tr></table></figure></p>
-<p>针对NodeJS下http-server<br>修改<code>http-server\bin\http-server</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ssl) &#123;</span><br><span class="line">  options.https = &#123;</span><br><span class="line">    cert: argv.C || argv.cert || process.env.NODE_PATH + <span class="string">'\\http-server\\cert\\certificate.pem'</span>,</span><br><span class="line">    key: argv.K || argv.key || process.env.NODE_PATH + <span class="string">'\\http-server\\cert\\privatekey.pem'</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+  <div class="entry-content"><p>使用git包含的openssl</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成私钥key文件：</span></span><br><span class="line">openssl genrsa -out privatekey.pem 1024</span><br><span class="line"><span class="comment">#通过私钥生成CSR证书签名</span></span><br><span class="line">openssl req -new -key privatekey.pem -out certrequest.csr -config  <span class="string">&quot;D:\Program Files\Git\ssl\openssl.cnf&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过私钥和证书签名生成证书文件</span></span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> certrequest.csr -signkey privatekey.pem -out certificate.pem</span><br></pre></td></tr></table></figure>
+
+<p>针对NodeJS下http-server<br>修改<code>http-server\bin\http-server</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ssl) &#123;</span><br><span class="line">  options.<span class="property">https</span> = &#123;</span><br><span class="line">    <span class="attr">cert</span>: argv.<span class="property">C</span> || argv.<span class="property">cert</span> || process.<span class="property">env</span>.<span class="property">NODE_PATH</span> + <span class="string">&#x27;\\http-server\\cert\\certificate.pem&#x27;</span>,</span><br><span class="line">    <span class="attr">key</span>: argv.<span class="property">K</span> || argv.<span class="property">key</span> || process.<span class="property">env</span>.<span class="property">NODE_PATH</span> + <span class="string">&#x27;\\http-server\\cert\\privatekey.pem&#x27;</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考:</p>
 <blockquote>
-<p><a href="http://blog.fens.me/nodejs-https-server/" target="_blank" rel="external">http://blog.fens.me/nodejs-https-server/</a><br><a href="http://blog.csdn.net/longeremmy/article/details/8156384" target="_blank" rel="external">http://blog.csdn.net/longeremmy/article/details/8156384</a></p>
+<p><a href="http://blog.fens.me/nodejs-https-server/">http://blog.fens.me/nodejs-https-server/</a><br><a href="http://blog.csdn.net/longeremmy/article/details/8156384">http://blog.csdn.net/longeremmy/article/details/8156384</a></p>
 </blockquote>
 </div>
   
@@ -217,7 +188,7 @@
     
       <p class="meta">
         
-          <time datetime="2015-06-04T03:43:27.000Z" itemprop="datePublished">6月 04, 2015</time>
+          <time datetime="2015-06-04T11:43:27.000Z" itemprop="datePublished">6月 04, 2015</time>
 
         
         
@@ -230,6 +201,76 @@
 
 
   <div class="entry-content"></div>
+  
+
+
+    </article>
+  
+    <article>
+        
+  <header>
+    
+      <h1 class="entry-title"><a href="/b/2015/06/javascript-quan-wei-zhi-nan-jiao-ben-hua-wen-dang/">JavaScript 权威指南-脚本化文档</a></h1>
+    
+    
+      <p class="meta">
+        
+          <time datetime="2015-06-03T10:08:32.000Z" itemprop="datePublished">6月 03, 2015</time>
+
+        
+        
+        
+           | <a href="/b/2015/06/javascript-quan-wei-zhi-nan-jiao-ben-hua-wen-dang/#gitalk-container" data-disqus-identifier="http://www.mxoxw.com/b/2015/06/javascript-quan-wei-zhi-nan-jiao-ben-hua-wen-dang/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>15.2 选取文档元素</p>
+<ul>
+<li>用指定的id属性；</li>
+<li>用指定的name属性；</li>
+<li>用指定的标签名字；</li>
+<li>用指定的CSS类；</li>
+<li>匹配指定的CSS选择器。</li>
+</ul>
+<p>15.3 文档结构和遍历</p>
+<p>15.3.1 作为节点树的文档</p>
+<ul>
+<li>parentNode</li>
+<li>childNodes</li>
+<li>firstChild, lastChild</li>
+<li>nextSibling, previousSibling</li>
+<li>nodeType<br>  <em>该节点的类型。9代表Document节点，1代表Element节点，3代表Text节点，4代表CDATA节点，8代表Comment节点，11代表documentFragment节点。</em></li>
+<li>nodeValue</li>
+<li>nodeName</li>
+</ul>
+<p>15.4 属性</p>
+<p>HTML属性名不区分大小写，但JavaScript属性名则大小写敏感。从HTML属性名转换到JavaScript属性名应该采用小写。但是，如果属性名包含不止一个单词，则将除了第一个单词以外的单词的首字母大写，例如：defaultChecked和tabIndex。</p>
+<p>有些HTML属性名在JavaScript中是保留字。对于这些属性，一般的规则是为属性名加前缀”html”。例如，HTML的for属性（&lt;lable／&gt;元素）在JavaScript中变为htm1For属性。”class”在JavaScript中是保留字（但还未使用），它是HTML非常重要的class属性，是上面规则的一个例外：在JavaScript代码中它变为className。</p>
+<ul>
+<li>getAttribute()</li>
+<li>setAttribute()</li>
+</ul>
+<p>dataset</p>
+<p>作为attr节点的属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>[<span class="number">0</span>] <span class="comment">// The first attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>.<span class="property">bgcolor</span> <span class="comment">// The bgcolor attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>[<span class="string">&quot;ONLOAD&quot;</span>] <span class="comment">// The onload attribute of the &lt;body&gt; elt</span></span><br></pre></td></tr></table></figure>
+
+<p>15.5.1 作为HTML的元素的内容<br>innerHTML的效率非常高，但是用’+&#x3D;’重复追加一小段文字通常效率底下，因为它既要序列化又要解析。<br>outerHTML<br>insertAdjacentHTML()</p>
+<p>15.5.2 作为纯文本的元素的内容<br>textContent<br>innerText</p>
+<p>15.5.3 作为TEXT的元素的内容<br>nodeValue</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">textContent</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> child, type, s = <span class="string">&quot;&quot;</span>; <span class="comment">// s holds the text of all children</span></span><br><span class="line">    <span class="keyword">for</span> (child = e.<span class="property">firstChild</span>; child != <span class="literal">null</span>; child = child.<span class="property">nextSibling</span>) &#123;</span><br><span class="line">        type = child.<span class="property">nodeType</span>;</span><br><span class="line">        <span class="keyword">if</span> (type === <span class="number">3</span> || type === <span class="number">4</span>) <span class="comment">// Text and CDATASection nodes</span></span><br><span class="line">            s += child.<span class="property">nodeValue</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>) <span class="comment">// Recurse for Element nodes</span></span><br><span class="line">            s += <span class="title function_">textContent</span>(child);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>15.6.1 创建节点<br>createElement()<br>createTextNode()<br>createDocumentFragment()<br>createElementNS()<br>cloneNode()<br>importNode()</p>
+<p>15.6.2 插入节点<br>appendChild()<br>insertBefore()</p>
+<p>15.6.3 删除和替换节点<br>removeChild()<br>replaceChild()</p>
+<p>15.6.4 使用 DocumentFragments</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Reverse the order of the children of Node n</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reverse</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="comment">// Create an empty DocumentFragment as a temporary container</span></span><br><span class="line">    <span class="keyword">var</span> f = <span class="variable language_">document</span>.<span class="title function_">createDocumentFragment</span>();</span><br><span class="line">    <span class="comment">// Now loop backward through the children, moving each one to the fragment.</span></span><br><span class="line">    <span class="comment">// The last child of n becomes the first child of f, and vice-versa.</span></span><br><span class="line">    <span class="comment">// Note that appending a child to f automatically removes it from n.</span></span><br><span class="line">    <span class="keyword">while</span> (n.<span class="property">lastChild</span>) f.<span class="title function_">appendChild</span>(n.<span class="property">lastChild</span>);</span><br><span class="line">    <span class="comment">// Finally, move the children of f all at once back to n, all at once.</span></span><br><span class="line">    n.<span class="title function_">appendChild</span>(f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>15.10.3 查询选取的文本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getSelectedText</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">getSelection</span>) <span class="comment">// The HTML5 standard API</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">window</span>.<span class="title function_">getSelection</span>().<span class="title function_">toString</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">selection</span>) <span class="comment">// This is the IE-specific technique.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">document</span>.<span class="property">selection</span>.<span class="title function_">createRange</span>().<span class="property">text</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
   
 
 
@@ -331,21 +372,33 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -378,10 +431,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

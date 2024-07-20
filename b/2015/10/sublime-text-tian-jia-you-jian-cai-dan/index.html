@@ -3,7 +3,7 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>Sublime Text添加右键菜单 | MXOXW</title>
@@ -15,10 +15,8 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\Edit with SublimeText]
-&#34;Icon&#34;=&#34;D:\\Program Files\\SublimeText\\sublime_text.exe,0&#34;
-@=&#34;Edit with SublimeText&#34;
-
-[HKEY_...">
+&quot;Icon&quot;=&quot;D:\\Program Files\\SublimeText\\sublime_text.exe,0&quot;
+@=&quot;Edit ...">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,15 +28,14 @@ Windows Registry Editor Version 5.00
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\Edit with SublimeText]
-&#34;Icon&#34;=&#34;D:\\Program Files\\SublimeText\\sublime_text.exe,0&#34;
-@=&#34;Edit with SublimeText&#34;
+&quot;Icon&quot;=&quot;D:\\Program Files\\SublimeText\\sublime_text.exe,0&quot;
+@=&quot;Edit ..." />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-[HKEY_..." />
   
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com/b/2015/10/sublime-text-tian-jia-you-jian-cai-dan/">
   
@@ -47,9 +44,9 @@ Windows Registry Editor Version 5.00
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -59,7 +56,7 @@ Windows Registry Editor Version 5.00
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -99,7 +96,7 @@ Windows Registry Editor Version 5.00
     
       <p class="meta">
         
-          <time datetime="2015-10-01T03:42:10.000Z" itemprop="datePublished">10月 01, 2015</time>
+          <time datetime="2015-10-01T11:42:10.000Z" itemprop="datePublished">10月 01, 2015</time>
 
         
         
@@ -111,10 +108,13 @@ Windows Registry Editor Version 5.00
   </header>
 
 
-<div class="entry-content"><p>修改注册表<br>文件添加右键菜单<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_CLASSES_ROOT<span class="command">\*</span><span class="command">\shell</span><span class="command">\Edit</span> with SublimeText<span class="special">]</span></span><br><span class="line">"Icon"="D:<span class="command">\\</span>Program Files<span class="command">\\</span>SublimeText<span class="command">\\</span>sublime_text.exe,0"</span><br><span class="line">@="Edit with SublimeText"</span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_CLASSES_ROOT<span class="command">\*</span><span class="command">\shell</span><span class="command">\Edit</span> with SublimeText<span class="command">\command</span><span class="special">]</span></span><br><span class="line">@="<span class="command">\"</span>D:<span class="command">\\</span>Program Files<span class="command">\\</span>SublimeText<span class="command">\\</span>sublime_text.exe<span class="command">\"</span> <span class="command">\"</span><span class="comment">%1\""</span></span><br></pre></td></tr></table></figure></p>
-<p>文件夹添加右键菜单<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_CLASSES_ROOT<span class="command">\Folder</span><span class="command">\shell</span><span class="command">\Edit</span> with Sublime Text<span class="special">]</span></span><br><span class="line">"Icon"="D:<span class="command">\\</span>Program Files<span class="command">\\</span>SublimeText<span class="command">\\</span>sublime_text.exe,0"</span><br><span class="line">@="Edit with SublimeText"</span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_CLASSES_ROOT<span class="command">\Folder</span><span class="command">\shell</span><span class="command">\Edit</span> with Sublime Text<span class="command">\command</span><span class="special">]</span></span><br><span class="line">@="D:<span class="command">\\</span>Program Files<span class="command">\\</span>SublimeText<span class="command">\\</span>sublime_text.exe -a <span class="comment">%1"</span></span><br></pre></td></tr></table></figure></p>
+<div class="entry-content"><p>修改注册表<br>文件添加右键菜单</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Edit with SublimeText]</span><br><span class="line"><span class="string">&quot;Icon&quot;</span>=<span class="string">&quot;D:<span class="subst">\\</span>Program Files<span class="subst">\\</span>SublimeText<span class="subst">\\</span>sublime_text.exe,0&quot;</span></span><br><span class="line">@=<span class="string">&quot;Edit with SublimeText&quot;</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Edit with SublimeText\command]</span><br><span class="line">@=<span class="string">&quot;<span class="subst">\&quot;</span>D:<span class="subst">\\</span>Program Files<span class="subst">\\</span>SublimeText<span class="subst">\\</span>sublime_text.exe<span class="subst">\&quot;</span> <span class="subst">\&quot;</span>%1<span class="subst">\&quot;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>文件夹添加右键菜单</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Folder\shell\Edit with Sublime Text]</span><br><span class="line"><span class="string">&quot;Icon&quot;</span>=<span class="string">&quot;D:<span class="subst">\\</span>Program Files<span class="subst">\\</span>SublimeText<span class="subst">\\</span>sublime_text.exe,0&quot;</span></span><br><span class="line">@=<span class="string">&quot;Edit with SublimeText&quot;</span></span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Folder\shell\Edit with Sublime Text\command]</span><br><span class="line">@=<span class="string">&quot;D:<span class="subst">\\</span>Program Files<span class="subst">\\</span>SublimeText<span class="subst">\\</span>sublime_text.exe -a %1&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>[-a 在当前窗口打开]</p>
-<p>vs code 参数 <a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line" target="_blank" rel="external">https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line</a></p>
+<p>vs code 参数 <a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line">https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line</a></p>
 <p>附件：<br><a href="/files/Files_Edit_with_SublimeText.reg">Files_Edit_with_SublimeText</a><br><a href="/files/Folder_Edit_with_SublimeText.reg">Folder_Edit_with_SublimeText</a></p>
 </div>
 
@@ -126,7 +126,7 @@ Windows Registry Editor Version 5.00
 
 <span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
 
-      <time datetime="2015-10-01T03:42:10.000Z" itemprop="datePublished">10月 01, 2015</time>
+      <time datetime="2015-10-01T11:42:10.000Z" itemprop="datePublished">10月 01, 2015</time>
 
       
 
@@ -150,7 +150,9 @@ Windows Registry Editor Version 5.00
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 <!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
-<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script src="/js/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
       var gitalk = new Gitalk({
@@ -258,21 +260,33 @@ Windows Registry Editor Version 5.00
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -305,10 +319,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

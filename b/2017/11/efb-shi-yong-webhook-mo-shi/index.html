@@ -3,7 +3,7 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>EFB使用webhook模式 | MXOXW</title>
@@ -11,14 +11,11 @@
   
   <meta name="description" content="添加配置
 eh_telegram_master = &#123;
-    &#34;flag&#34;: &#123;
-        &#34;webhook_url&#34;: &#34;http://example.com&#34;,
-        &#34;port&#34;: 5000
+    &quot;flag&quot;: &#123;
+        &quot;webhook_url&quot;: &quot;http://example.com&quot;,
+        &quot;port&quot;: 5000
     &#125;,
-    &#34;token&#34;: &#34;12345678:QWFPGJLUYarstdheioZXCVBKM&#34;,
-    ...
-
-修改polli...">
+    &quot;token&quot;: &quo...">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,19 +23,17 @@ eh_telegram_master = &#123;
   <meta itemprop="name" content="EFB使用webhook模式 | MXOXW" />
   <meta itemprop="description" content="添加配置
 eh_telegram_master = &#123;
-    &#34;flag&#34;: &#123;
-        &#34;webhook_url&#34;: &#34;http://example.com&#34;,
-        &#34;port&#34;: 5000
+    &quot;flag&quot;: &#123;
+        &quot;webhook_url&quot;: &quot;http://example.com&quot;,
+        &quot;port&quot;: 5000
     &#125;,
-    &#34;token&#34;: &#34;12345678:QWFPGJLUYarstdheioZXCVBKM&#34;,
-    ...
+    &quot;token&quot;: &quo..." />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-修改polli..." />
   
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com/b/2017/11/efb-shi-yong-webhook-mo-shi/">
   
@@ -47,9 +42,9 @@ eh_telegram_master = &#123;
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -59,7 +54,7 @@ eh_telegram_master = &#123;
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -99,7 +94,7 @@ eh_telegram_master = &#123;
     
       <p class="meta">
         
-          <time datetime="2017-11-11T15:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
+          <time datetime="2017-11-11T23:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
 
         
         
@@ -111,16 +106,21 @@ eh_telegram_master = &#123;
   </header>
 
 
-<div class="entry-content"><h2 id="添加配置">添加配置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">eh_telegram_master = &#123;</span><br><span class="line">    <span class="string">"flag"</span>: &#123;</span><br><span class="line">        <span class="string">"webhook_url"</span>: <span class="string">"http://example.com"</span>,</span><br><span class="line">        <span class="string">"port"</span>: <span class="number">5000</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"12345678:QWFPGJLUYarstdheioZXCVBKM"</span>,</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<h2 id="修改polling_from_tg">修改polling_from_tg</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># self.bot.start_polling(timeout=10)</span></span><br><span class="line">webhook_url = <span class="keyword">self</span>._flag(<span class="string">'webhook_url'</span>, <span class="string">''</span>)</span><br><span class="line">port = <span class="keyword">self</span>._flag(<span class="string">'port'</span>, <span class="number">80</span>)</span><br><span class="line"><span class="keyword">if</span> webhook_url != <span class="string">''</span><span class="symbol">:</span></span><br><span class="line">    token = getattr(config, <span class="keyword">self</span>.channel_id)[<span class="string">'token'</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> webhook_url.endswith(<span class="string">'/'</span>)<span class="symbol">:</span></span><br><span class="line">        webhook_url += <span class="string">'/'</span></span><br><span class="line">    webhook_url += token</span><br><span class="line">    <span class="keyword">self</span>.bot.start_webhook(<span class="string">'127.0.0.1'</span>, port, token)</span><br><span class="line">    <span class="keyword">self</span>.bot.bot.setWebhook(webhook_url=webhook_url)</span><br><span class="line">    <span class="comment"># self.logger.critical("webhook_url: %s" % webhook_url)</span></span><br><span class="line"><span class="symbol">else:</span></span><br><span class="line">    <span class="keyword">self</span>.bot.start_polling(timeout=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="修改nginx配置">修改nginx配置</h2><p>转发回调请求到<code>http://127.0.0.1:5000</code></p>
-<a id="more"></a>
+<div class="entry-content"><h2 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">eh_telegram_master = &#123;</span><br><span class="line">    <span class="string">&quot;flag&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;webhook_url&quot;</span>: <span class="string">&quot;http://example.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;port&quot;</span>: 5000</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;token&quot;</span>: <span class="string">&quot;12345678:QWFPGJLUYarstdheioZXCVBKM&quot;</span>,</span><br><span class="line">    <span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改polling-from-tg"><a href="#修改polling-from-tg" class="headerlink" title="修改polling_from_tg"></a>修改polling_from_tg</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># <span class="built_in">self</span>.bot.start_polling(timeout=<span class="number">10</span>)</span><br><span class="line">webhook_url = <span class="built_in">self</span>._flag(<span class="string">&#x27;webhook_url&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">port = <span class="built_in">self</span>._flag(<span class="string">&#x27;port&#x27;</span>, <span class="number">80</span>)</span><br><span class="line"><span class="keyword">if</span> webhook_url != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">    token = getattr(<span class="built_in">config</span>, <span class="built_in">self</span>.channel_id)[<span class="string">&#x27;token&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> webhook_url.endswith(<span class="string">&#x27;/&#x27;</span>):</span><br><span class="line">        webhook_url += <span class="string">&#x27;/&#x27;</span></span><br><span class="line">    webhook_url += token</span><br><span class="line">    <span class="built_in">self</span>.bot.start_webhook(<span class="string">&#x27;127.0.0.1&#x27;</span>, port, token)</span><br><span class="line">    <span class="built_in">self</span>.bot.bot.setWebhook(webhook_url=webhook_url)</span><br><span class="line">    # <span class="built_in">self</span>.logger.critical(<span class="string">&quot;webhook_url: %s&quot;</span> % webhook_url)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">self</span>.bot.start_polling(timeout=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改nginx配置"><a href="#修改nginx配置" class="headerlink" title="修改nginx配置"></a>修改nginx配置</h2><p>转发回调请求到<code>http://127.0.0.1:5000</code></p>
+<span id="more"></span>
+
 <p>几点需要注意的问题</p>
 <blockquote>
 <p>证书问题，如果使用Let’s Encrypt签发的证书，需要使用full chained certificate，否则不会收到回调请求</p>
+</blockquote>
+<blockquote>
 <p>如果在同一目录下，使用多个微信号登录，容易导致“限制web微信登录”</p>
 </blockquote>
-<p>具体见 <a href="https://github.com/wolfsilver/ehForwarderBot" target="_blank" rel="external">https://github.com/wolfsilver/ehForwarderBot</a></p>
+<p>具体见 <a href="https://github.com/wolfsilver/ehForwarderBot">https://github.com/wolfsilver/ehForwarderBot</a></p>
 </div>
 
 
@@ -131,7 +131,7 @@ eh_telegram_master = &#123;
 
 <span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
 
-      <time datetime="2017-11-11T15:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
+      <time datetime="2017-11-11T23:29:26.000Z" itemprop="datePublished">11月 11, 2017</time>
 
       
 
@@ -142,7 +142,7 @@ eh_telegram_master = &#123;
         <a class="basic-alignment left" href="/b/2017/11/thought/" title="Previous Post: thought">&laquo; thought</a>
       
       
-        <a class="basic-alignment right" href="/b/2017/11/bandwagonhost-vps/" title="Next Post: bandwagonhost vps">bandwagonhost vps &raquo;</a>
+        <a class="basic-alignment right" href="/b/2017/11/yu-ming-qian-yi/" title="Next Post: 域名迁移">域名迁移 &raquo;</a>
       
     </p>
   </footer>
@@ -155,7 +155,9 @@ eh_telegram_master = &#123;
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 <!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
-<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script src="/js/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
       var gitalk = new Gitalk({
@@ -263,21 +265,33 @@ eh_telegram_master = &#123;
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -310,10 +324,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

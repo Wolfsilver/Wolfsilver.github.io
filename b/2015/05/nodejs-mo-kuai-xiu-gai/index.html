@@ -3,24 +3,25 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>NodeJS 模块修改 | MXOXW</title>
   <meta name="author" content="Wind">
   <meta name="keywords" content="http-server gzip hexo">
-  <meta name="description" content="http-server添加gzip支持, 自动识别文件编码格式;  hexo 将中文标题转换为拼音...">
+  <meta name="description" content="http-server添加gzip支持, 自动识别文件编码格式;  hexo 将中文标题转换为拼音">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
   <meta itemprop="name" content="NodeJS 模块修改 | MXOXW" />
-  <meta itemprop="description" content="http-server添加gzip支持, 自动识别文件编码格式;  hexo 将中文标题转换为拼音..." />
+  <meta itemprop="description" content="http-server添加gzip支持, 自动识别文件编码格式;  hexo 将中文标题转换为拼音" />
   
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css">
+
   
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com/b/2015/05/nodejs-mo-kuai-xiu-gai/">
   
@@ -29,9 +30,9 @@
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -41,7 +42,7 @@
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -81,7 +82,7 @@
     
       <p class="meta">
         
-          <time datetime="2015-05-19T05:52:05.000Z" itemprop="datePublished">5月 19, 2015</time>
+          <time datetime="2015-05-19T13:52:05.000Z" itemprop="datePublished">5月 19, 2015</time>
 
         
         
@@ -93,18 +94,29 @@
   </header>
 
 
-<div class="entry-content"><h2 id="HEXO">HEXO</h2><h3 id="新建博客时，将中文标题转换为拼音">新建博客时，将中文标题转换为拼音</h3><p>/node_modules/hexo/lib/plugins/console/new.js<br>修改部分如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tr = <span class="built_in">require</span>(<span class="string">'transliteration'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    title: args._.pop(),</span><br><span class="line">    layout: args._.length ? args._[<span class="number">0</span>] : <span class="keyword">this</span>.config.default_layout,</span><br><span class="line">    slug: args.s || args.slug,</span><br><span class="line">    path: args.p || args.path</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 中文标题转换为拼音</span></span><br><span class="line">data.slug = tr.slugify(data.title);</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<h3 id="代码高亮添加源代码属性">代码高亮添加源代码属性</h3><p>node_modules/hexo/node_modules/hexo-util/lib/highlight.js [line: 35]<br>修改部分如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result += <span class="string">'&lt;figure class="highlight'</span> + (data.language ? <span class="string">' '</span> + data.language : <span class="string">''</span>) + <span class="string">'" data-source-code="'</span> + str.replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>) + <span class="string">'"&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
-<h2 id="http-server">http-server</h2><h3 id="判断文件编码">判断文件编码</h3><p>http-server/node_modules/ecstatic/lib/ecstatic.js<br>修改function serve</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (contentType) &#123;</span><br><span class="line">  charSet = mime.charsets.lookup(contentType, <span class="string">'utf-8'</span>, file);</span><br><span class="line">  <span class="keyword">if</span> (charSet) &#123;</span><br><span class="line">    contentType += <span class="string">'; charset='</span> + charSet;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>http-server/node_modules/ecstatic/node_modules/mime/mime.js<br>修改最后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jschardet = <span class="built_in">require</span>(<span class="string">"jschardet"</span>);</span><br><span class="line"></span><br><span class="line">mime.charsets = &#123;</span><br><span class="line">  lookup: <span class="function"><span class="keyword">function</span>(<span class="params">mimeType, fallback, file</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Assume text types are utf8</span></span><br><span class="line">    <span class="keyword">if</span> (!mimeType.match(<span class="regexp">/text\//</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> fallback;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> bin = fs.readFileSync(file),</span><br><span class="line">        charset = jschardet.detect(bin);</span><br><span class="line">    <span class="comment">// console.log('*****' + file + ': [' + charset.encoding + ', '+ charset.confidence + ']');</span></span><br><span class="line">    <span class="keyword">if</span> (charset.confidence &lt;= <span class="number">0.95</span>) &#123;</span><br><span class="line">      <span class="comment">// console.log('Get file codeType &#123;' + file + ': [' + charset.encoding + ', '+ charset.confidence + ']&#125;');</span></span><br><span class="line">      <span class="keyword">return</span> fallback;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> charset.encoding || fallback;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="修改MIME">修改MIME</h3><p><code>http-server/node_modules/ecstatic/node_modules/mime/types.json</code></p>
-<h3 id="http-server添加gzip支持">http-server添加gzip支持</h3><p>http-server/node_modules/ecstatic/lib/ecstatic.js<br>修改function serve</p>
-<p>注释<code>res.setHeader(&#39;content-length&#39;, stat.size);</code><br>最后添加<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (req.query &amp;&amp; req.query.callback) &#123;</span><br><span class="line">  <span class="keyword">var</span> data = fs.readFileSync(file, charSet),</span><br><span class="line">    r = <span class="keyword">new</span> stream.Readable();</span><br><span class="line">  <span class="comment">// console.log(req.query.callback + '(' + data + ')');</span></span><br><span class="line"></span><br><span class="line">  r.push(req.query.callback);</span><br><span class="line">  r.push(<span class="string">'('</span>);</span><br><span class="line">  r.push(data);</span><br><span class="line">  r.push(<span class="string">')'</span>);</span><br><span class="line">  r.push(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (shouldCompress(req)) &#123;</span><br><span class="line">    <span class="keyword">var</span> acceptEncoding = req.headers[<span class="string">'accept-encoding'</span>].split(<span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (acceptEncoding[<span class="number">0</span>].trim()) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'gzip'</span>:</span><br><span class="line">        res.setHeader(<span class="string">'content-encoding'</span>, <span class="string">'gzip'</span>);</span><br><span class="line">        r = r.pipe(zlib.createGzip());</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'deflate'</span>:</span><br><span class="line">        res.setHeader(<span class="string">'content-encoding'</span>, <span class="string">'deflate'</span>);</span><br><span class="line">        r = r.pipe(zlib.createDeflate());</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> r.pipe(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rs = fs.createReadStream(file);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (shouldCompress(req)) &#123;</span><br><span class="line">  <span class="keyword">var</span> acceptEncoding = req.headers[<span class="string">'accept-encoding'</span>].split(<span class="string">","</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (acceptEncoding[<span class="number">0</span>].trim()) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'gzip'</span>:</span><br><span class="line">      res.setHeader(<span class="string">'content-encoding'</span>, <span class="string">'gzip'</span>);</span><br><span class="line">      rs = rs.pipe(zlib.createGzip());</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'deflate'</span>:</span><br><span class="line">      res.setHeader(<span class="string">'content-encoding'</span>, <span class="string">'deflate'</span>);</span><br><span class="line">      rs = rs.pipe(zlib.createDeflate());</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      res.setHeader(<span class="string">'content-length'</span>, stat.size);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">  res.setHeader(<span class="string">'content-length'</span>, stat.size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rs.pipe(res);</span><br></pre></td></tr></table></figure></p>
-<h3 id="修改默认端口">修改默认端口</h3><p>node_modules/http-server/bin/http-server<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portfinder.basePort = <span class="number">80</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Etag乱码问题">Etag乱码问题</h3><p>/node_modules/ecstatic/lib/ecstatic/etag.js<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> JSON.stringify([<span class="keyword">stat</span>.ino, <span class="keyword">stat</span>.size, <span class="keyword">stat</span>.mtime.toJSON()].<span class="keyword">join</span>(<span class="string">'-'</span>));</span><br></pre></td></tr></table></figure></p>
-</div>
+<div class="entry-content"><p>##HEXO<br>###新建博客时，将中文标题转换为拼音<br>&#x2F;node_modules&#x2F;hexo&#x2F;lib&#x2F;plugins&#x2F;console&#x2F;new.js<br>修改部分如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tr = <span class="built_in">require</span>(<span class="string">&#x27;transliteration&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">title</span>: args.<span class="property">_</span>.<span class="title function_">pop</span>(),</span><br><span class="line">    <span class="attr">layout</span>: args.<span class="property">_</span>.<span class="property">length</span> ? args.<span class="property">_</span>[<span class="number">0</span>] : <span class="variable language_">this</span>.<span class="property">config</span>.<span class="property">default_layout</span>,</span><br><span class="line">    <span class="attr">slug</span>: args.<span class="property">s</span> || args.<span class="property">slug</span>,</span><br><span class="line">    <span class="attr">path</span>: args.<span class="property">p</span> || args.<span class="property">path</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 中文标题转换为拼音</span></span><br><span class="line">data.<span class="property">slug</span> = tr.<span class="title function_">slugify</span>(data.<span class="property">title</span>);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>###代码高亮添加源代码属性<br>node_modules&#x2F;hexo&#x2F;node_modules&#x2F;hexo-util&#x2F;lib&#x2F;highlight.js [line: 35]<br>修改部分如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result += <span class="string">&#x27;&lt;figure class=&quot;highlight&#x27;</span> + (data.<span class="property">language</span> ? <span class="string">&#x27; &#x27;</span> + data.<span class="property">language</span> : <span class="string">&#x27;&#x27;</span>) + <span class="string">&#x27;&quot; data-source-code=&quot;&#x27;</span> + str.<span class="title function_">replace</span>(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>) + <span class="string">&#x27;&quot;&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>##http-server</p>
+<p>###判断文件编码<br>http-server&#x2F;node_modules&#x2F;ecstatic&#x2F;lib&#x2F;ecstatic.js<br>修改function serve</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (contentType) &#123;</span><br><span class="line">  charSet = mime.<span class="property">charsets</span>.<span class="title function_">lookup</span>(contentType, <span class="string">&#x27;utf-8&#x27;</span>, file);</span><br><span class="line">  <span class="keyword">if</span> (charSet) &#123;</span><br><span class="line">    contentType += <span class="string">&#x27;; charset=&#x27;</span> + charSet;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>http-server&#x2F;node_modules&#x2F;ecstatic&#x2F;node_modules&#x2F;mime&#x2F;mime.js<br>修改最后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jschardet = <span class="built_in">require</span>(<span class="string">&quot;jschardet&quot;</span>);</span><br><span class="line"></span><br><span class="line">mime.<span class="property">charsets</span> = &#123;</span><br><span class="line">  <span class="attr">lookup</span>: <span class="keyword">function</span>(<span class="params">mimeType, fallback, file</span>) &#123;</span><br><span class="line">    <span class="comment">// Assume text types are utf8</span></span><br><span class="line">    <span class="keyword">if</span> (!mimeType.<span class="title function_">match</span>(<span class="regexp">/text\//</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> fallback;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> bin = fs.<span class="title function_">readFileSync</span>(file),</span><br><span class="line">        charset = jschardet.<span class="title function_">detect</span>(bin);</span><br><span class="line">    <span class="comment">// console.log(&#x27;*****&#x27; + file + &#x27;: [&#x27; + charset.encoding + &#x27;, &#x27;+ charset.confidence + &#x27;]&#x27;);</span></span><br><span class="line">    <span class="keyword">if</span> (charset.<span class="property">confidence</span> &lt;= <span class="number">0.95</span>) &#123;</span><br><span class="line">      <span class="comment">// console.log(&#x27;Get file codeType &#123;&#x27; + file + &#x27;: [&#x27; + charset.encoding + &#x27;, &#x27;+ charset.confidence + &#x27;]&#125;&#x27;);</span></span><br><span class="line">      <span class="keyword">return</span> fallback;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> charset.<span class="property">encoding</span> || fallback;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>###修改MIME<br><code>http-server/node_modules/ecstatic/node_modules/mime/types.json</code></p>
+<p>###http-server添加gzip支持<br>http-server&#x2F;node_modules&#x2F;ecstatic&#x2F;lib&#x2F;ecstatic.js<br>修改function serve</p>
+<p>注释<code>res.setHeader(&#39;content-length&#39;, stat.size);</code><br>最后添加</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (req.<span class="property">query</span> &amp;&amp; req.<span class="property">query</span>.<span class="property">callback</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> data = fs.<span class="title function_">readFileSync</span>(file, charSet),</span><br><span class="line">    r = <span class="keyword">new</span> stream.<span class="title class_">Readable</span>();</span><br><span class="line">  <span class="comment">// console.log(req.query.callback + &#x27;(&#x27; + data + &#x27;)&#x27;);</span></span><br><span class="line"></span><br><span class="line">  r.<span class="title function_">push</span>(req.<span class="property">query</span>.<span class="property">callback</span>);</span><br><span class="line">  r.<span class="title function_">push</span>(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">  r.<span class="title function_">push</span>(data);</span><br><span class="line">  r.<span class="title function_">push</span>(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">  r.<span class="title function_">push</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">shouldCompress</span>(req)) &#123;</span><br><span class="line">    <span class="keyword">var</span> acceptEncoding = req.<span class="property">headers</span>[<span class="string">&#x27;accept-encoding&#x27;</span>].<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (acceptEncoding[<span class="number">0</span>].<span class="title function_">trim</span>()) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;gzip&#x27;</span>:</span><br><span class="line">        res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-encoding&#x27;</span>, <span class="string">&#x27;gzip&#x27;</span>);</span><br><span class="line">        r = r.<span class="title function_">pipe</span>(zlib.<span class="title function_">createGzip</span>());</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;deflate&#x27;</span>:</span><br><span class="line">        res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-encoding&#x27;</span>, <span class="string">&#x27;deflate&#x27;</span>);</span><br><span class="line">        r = r.<span class="title function_">pipe</span>(zlib.<span class="title function_">createDeflate</span>());</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="attr">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> r.<span class="title function_">pipe</span>(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rs = fs.<span class="title function_">createReadStream</span>(file);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">shouldCompress</span>(req)) &#123;</span><br><span class="line">  <span class="keyword">var</span> acceptEncoding = req.<span class="property">headers</span>[<span class="string">&#x27;accept-encoding&#x27;</span>].<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (acceptEncoding[<span class="number">0</span>].<span class="title function_">trim</span>()) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;gzip&#x27;</span>:</span><br><span class="line">      res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-encoding&#x27;</span>, <span class="string">&#x27;gzip&#x27;</span>);</span><br><span class="line">      rs = rs.<span class="title function_">pipe</span>(zlib.<span class="title function_">createGzip</span>());</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;deflate&#x27;</span>:</span><br><span class="line">      res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-encoding&#x27;</span>, <span class="string">&#x27;deflate&#x27;</span>);</span><br><span class="line">      rs = rs.<span class="title function_">pipe</span>(zlib.<span class="title function_">createDeflate</span>());</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-length&#x27;</span>, stat.<span class="property">size</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;content-length&#x27;</span>, stat.<span class="property">size</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rs.<span class="title function_">pipe</span>(res);</span><br></pre></td></tr></table></figure>
+
+<p>###修改默认端口<br>node_modules&#x2F;http-server&#x2F;bin&#x2F;http-server</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">portfinder.basePort</span> = <span class="number">80</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>###Etag乱码问题<br>&#x2F;node_modules&#x2F;ecstatic&#x2F;lib&#x2F;ecstatic&#x2F;etag.js</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> JSON.stringify([stat.ino, stat.<span class="keyword">size</span>, stat.mtime.toJSON()].<span class="keyword">join</span>(<span class="string">&#x27;-&#x27;</span>));</span><br></pre></td></tr></table></figure></div>
 
 
   <footer>
@@ -114,7 +126,7 @@
 
 <span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
 
-      <time datetime="2015-05-19T05:52:05.000Z" itemprop="datePublished">5月 19, 2015</time>
+      <time datetime="2015-05-19T13:52:05.000Z" itemprop="datePublished">5月 19, 2015</time>
 
       
 
@@ -138,7 +150,9 @@
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 <!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
-<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script src="/js/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
       var gitalk = new Gitalk({
@@ -246,21 +260,33 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -293,10 +319,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

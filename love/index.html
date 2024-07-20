@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head><link rel="manifest" href="/manifest.json">
+<head>
 	<meta charset="utf-8">
 	<title>Our Love Story</title>
 	<style type="text/css">
@@ -15,45 +15,45 @@
 	</style>
 	<link rel="shortcut icon" href="resources/favicon.ico">
     <link href="css/default.css" type="text/css" rel="stylesheet">
-	<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="js/garden.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/console.js"></script>
 </head>
 
-<body onmouseup="document.selection.empty()" onmousedown="return false" onselectstart="return false" onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">
+<body onmouseup="document.selection.empty()" onmousedown="return false" onselectstart="return false"  onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">
 	<div style="z-index:999;position: absolute;top: 0;"><canvas id="canvas">Canvas is not supported in your browser.</canvas></div>
 	<div id="mainDiv">
 		<div id="content">
 			<div id="code">
-				<span class="comments">/**</span><br>
-				<span class="space"><span class="comments">* Encountered very kind of you,</span><br>
-				<span class="space"><span class="comments">* so I write some code to celebrate our 1st met.</span><br>
-				<span class="space"><span class="comments">*/</span><br>
-				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Wind"</span>);<br>
-				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Metamorposis"</span>);<br>
-				<span class="comments">// Aug 2, 2014, I told you I love you. </span><br>
-				i.love(u);<br>
-				<span class="comments">// Unluckily, you did not accepte.</span><br>
-				u.unAccepted();<br>
-				<span class="comments">// Since then, I miss u every day.</span><br>
-				i.miss(u);<br>
-				<span class="comments">// And take care of u.</span><br>
-				i.takeCareOf(u);<br>
-				<span class="comments">// You say that you won't be so easy to be my girlfriend.</span><br>
-				<span class="comments">// So I keep waiting and I have confidence that you will.</span><br>
-				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br>
-				<span class="keyword">while</span> (isHesitate) {<br>
-				<span class="placeholder">i.waitFor(u);<br>
-				<span class="comments">// I think it is an important decision</span><br>
-				<span class="comments">// and you should think it over.</span><br>
-				<span class="placeholder">isHesitate = u.thinkOver();<br>
-				}<br>
-				<span class="comments">// But it's time to face the truth.</span><br>
-				<span class="keyword">while</span> (true) {<br>
-				i.love(u);<br>
-				}<br>
-			</span></span></span></span></span></div>
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* Encountered very kind of you,</span><br />
+				<span class="space"/><span class="comments">* so I write some code to celebrate our 1st met.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Wind"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Metamorposis"</span>);<br />
+				<span class="comments">// Aug 2, 2014, I told you I love you. </span><br />
+				i.love(u);<br />
+				<span class="comments">// Unluckily, you did not accepte.</span><br />
+				u.unAccepted();<br />
+				<span class="comments">// Since then, I miss u every day.</span><br />
+				i.miss(u);<br />
+				<span class="comments">// And take care of u.</span><br />
+				i.takeCareOf(u);<br />
+				<span class="comments">// You say that you won't be so easy to be my girlfriend.</span><br />
+				<span class="comments">// So I keep waiting and I have confidence that you will.</span><br />
+				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
+				<span class="keyword">while</span> (isHesitate) {<br />
+				<span class="placeholder"/>i.waitFor(u);<br />
+				<span class="comments">// I think it is an important decision</span><br />
+				<span class="comments">// and you should think it over.</span><br />
+				<span class="placeholder"/>isHesitate = u.thinkOver();<br />
+				}<br />
+				<span class="comments">// But it's time to face the truth.</span><br />
+				<span class="keyword">while</span> (true) {<br />
+				i.love(u);<br />
+				}<br />
+			</div>
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
@@ -62,14 +62,14 @@
 						<div id="elapseClock"></div>
 					</div>
 					<div id="loveu">
-						Love u forever and ever.<br>
+						Love u forever and ever.<br/>
 						<div class="signature">- Wind</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<audio id="myaudio" preload="auto">
-            <source src="resources/click.mp3" type="audio/mpeg">
+            <source src="resources/click.mp3" type="audio/mpeg" />
         </audio>
         
 		<script type="text/javascript">
@@ -109,7 +109,7 @@
 	</div>
 	
 	<div id="copyright">
-            Designed by <a href="http://hackerzhou.me" target="_blank" rel="external">hackerzhou.me</a> & Inspired by <a href="http://www.openrise.com/lab/FlowerPower/" target="_blank" rel="external">FlowerPower</a> project.<br>
+            Designed by <a href='http://hackerzhou.me'>hackerzhou.me</a> & Inspired by <a href="http://www.openrise.com/lab/FlowerPower/">FlowerPower</a> project.<br />
             Copyleft
             <!--[if lte IE 8]><span style="filter: FlipH; -ms-filter: "FlipH"; display: inline-block;"><![endif]-->
             <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); display: inline-block; font-size:110%;">©</span>
@@ -146,11 +146,6 @@
         include_js("js/functions.js");
         include_js("js/console.js");
     </script> -->
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 <script type="text/javascript" src="js/fireworks.js"></script>
 </html>

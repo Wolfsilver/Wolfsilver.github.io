@@ -3,24 +3,25 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>MXOXW</title>
   <meta name="author" content="Wind">
   
-  <meta name="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React...">
+  <meta name="description" content="Wind's Blog 追求超越时代的技术.个人技术博客，记录学习成长历程。skill：JavaScript，html，CSS，Java，c++，Linux">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta itemprop="image" content="//a.disquscdn.com/uploads/users/14817/5647/avatar92.jpg?1445168112" />
   <meta itemprop="name" content="MXOXW" />
-  <meta itemprop="description" content="Wind's Blog 个人技术博客，记录学习成长历程。skill：JavaScript, html, CSS, Java, c++, Linux, Docker, Vue, React..." />
+  <meta itemprop="description" content="Wind's Blog 追求超越时代的技术.个人技术博客，记录学习成长历程。skill：JavaScript，html，CSS，Java，c++，Linux" />
   
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css">
+
   
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com">
   
@@ -29,9 +30,9 @@
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -41,7 +42,7 @@
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -82,7 +83,7 @@
     
       <p class="meta">
         
-          <time datetime="2018-01-01T11:55:46.000Z" itemprop="datePublished">1月 01, 2018</time>
+          <time datetime="2018-01-01T19:55:46.000Z" itemprop="datePublished">1月 01, 2018</time>
 
         
         
@@ -110,7 +111,7 @@
     
       <p class="meta">
         
-          <time datetime="2017-11-16T01:44:54.000Z" itemprop="datePublished">11月 16, 2017</time>
+          <time datetime="2017-11-16T09:44:54.000Z" itemprop="datePublished">11月 16, 2017</time>
 
         
         
@@ -122,9 +123,11 @@
   </header>
 
 
-  <div class="entry-content"><p>使用nslookup命令时，提示<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="string">bash:</span> <span class="string">nslookup:</span> command not found</span><br></pre></td></tr></table></figure></p>
-<p>使用下面命令安装即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install <span class="built_in">bind</span>-utils</span><br></pre></td></tr></table></figure></p>
-</div>
+  <div class="entry-content"><p>使用nslookup命令时，提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: nslookup: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure>
+
+<p>使用下面命令安装即可</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> bind-utils</span><br></pre></td></tr></table></figure></div>
   
 
 
@@ -139,7 +142,7 @@
     
       <p class="meta">
         
-          <time datetime="2017-11-15T09:43:05.000Z" itemprop="datePublished">11月 15, 2017</time>
+          <time datetime="2017-11-15T17:43:05.000Z" itemprop="datePublished">11月 15, 2017</time>
 
         
         
@@ -153,9 +156,11 @@
 
   <div class="entry-content"><p>nginx自定义server<br>修改nginx的名称，隐藏版本号，既增加安全性又可以用来装逼。<br>nginx展示名称的地方，通常有Response Header中的server，错误页等。</p>
 <p>修改几个位置如下：</p>
-<h2 id="修改src/core/nginx-h">修改src/core/nginx.h</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#def</span>ine NGINX_VERSION      <span class="string">"1.12.1"</span></span><br><span class="line"><span class="hexcolor">#def</span>ine NGINX_VER          <span class="string">"NGINX/"</span> NGINX_VERSION</span><br></pre></td></tr></table></figure>
-<h2 id="修改src/http/ngx_http_header_filter_module-c">修改src/http/ngx_http_header_filter_module.c</h2><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static u_char ngx_http_server_string<span class="string">[]</span> = <span class="string">"Server: nginx"</span> CRLF;</span><br></pre></td></tr></table></figure>
-<h2 id="修改src/http/ngx_http_special_response-c">修改src/http/ngx_http_special_response.c</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static u_char ngx_http_error_tail[] =</span><br><span class="line">"<span class="tag">&lt;<span class="title">hr</span>&gt;</span><span class="tag">&lt;<span class="title">center</span>&gt;</span>nginx<span class="tag">&lt;/<span class="title">center</span>&gt;</span>" CRLF</span><br><span class="line">"<span class="tag">&lt;/<span class="title">body</span>&gt;</span>" CRLF</span><br><span class="line">"<span class="tag">&lt;/<span class="title">html</span>&gt;</span>" CRLF</span><br><span class="line">;</span><br></pre></td></tr></table></figure></div>
+<h2 id="修改src-core-nginx-h"><a href="#修改src-core-nginx-h" class="headerlink" title="修改src&#x2F;core&#x2F;nginx.h"></a>修改src&#x2F;core&#x2F;nginx.h</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> NGINX_VERSION      <span class="string">&quot;1.12.1&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> NGINX_VER          <span class="string">&quot;NGINX/&quot;</span> NGINX_VERSION</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改src-http-ngx-http-header-filter-module-c"><a href="#修改src-http-ngx-http-header-filter-module-c" class="headerlink" title="修改src&#x2F;http&#x2F;ngx_http_header_filter_module.c"></a>修改src&#x2F;http&#x2F;ngx_http_header_filter_module.c</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static u_char ngx_http_server_string[] <span class="operator">=</span> <span class="string">&quot;Server: nginx&quot;</span> <span class="keyword">CRLF</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改src-http-ngx-http-special-response-c"><a href="#修改src-http-ngx-http-special-response-c" class="headerlink" title="修改src&#x2F;http&#x2F;ngx_http_special_response.c"></a>修改src&#x2F;http&#x2F;ngx_http_special_response.c</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static u_char ngx_http_error_tail[] <span class="operator">=</span></span><br><span class="line"><span class="string">&quot;&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;&quot;</span> <span class="keyword">CRLF</span></span><br><span class="line"><span class="string">&quot;&lt;/body&gt;&quot;</span> <span class="keyword">CRLF</span></span><br><span class="line"><span class="string">&quot;&lt;/html&gt;&quot;</span> <span class="keyword">CRLF</span></span><br><span class="line"><span class="comment">;</span></span><br></pre></td></tr></table></figure></div>
   
     <footer>
       <a rel="full-article" href="/b/2017/11/nginx-xiu-gai-server/#more">Read More →</a>
@@ -174,7 +179,7 @@
     
       <p class="meta">
         
-          <time datetime="2017-11-14T12:21:36.000Z" itemprop="datePublished">11月 14, 2017</time>
+          <time datetime="2017-11-14T20:21:36.000Z" itemprop="datePublished">11月 14, 2017</time>
 
         
         
@@ -189,16 +194,18 @@
   <div class="entry-content"><p>邬迪：乌云完成了使命 | 乌云回忆录（一）</p>
 <blockquote>
 <p>from: <a href="https://mp.weixin.qq.com/s/GmRXqg4ay_Q5nr2x-0E41g">https://mp.weixin.qq.com/s/GmRXqg4ay_Q5nr2x-0E41g</a></p>
+</blockquote>
+<blockquote>
 <p>《乌云回忆录》，是科技自媒体浅黑科技出品的专题。<br>2016年漏洞平台乌云关停。时隔一年，我试图走访那些和乌云相关的人，了解他们对网络安全、白帽子黑客，以及这个世界的看法。愿这些记录可以引发更多人的思考。<br>每个人都有自己的立场和理由，他们的愤怒、恐惧和自私本就情有可原。我只祈祷自己有一双忠诚的眼睛，注脚这个世界的美好或荒凉。<br>本文是对前乌云合伙人邬迪的采访，是为《乌云回忆录》第一篇。</p>
 </blockquote>
-<h2 id="邬迪：乌云完成了使命">邬迪：乌云完成了使命</h2><blockquote>
+<h2 id="邬迪：乌云完成了使命"><a href="#邬迪：乌云完成了使命" class="headerlink" title="邬迪：乌云完成了使命"></a>邬迪：乌云完成了使命</h2><blockquote>
 <p>乌云完成了它的使命。</p>
 </blockquote>
 <p>邬迪说。</p>
 <p>邬迪，前漏洞平台“乌云”合伙人，如今他加入了一家安全创业公司。</p>
 <p>2016年7月20日，乌云页面突然显示“升级公告”，关闭至今。2017年11月12日，距离“乌云事件”480天，我坐在邬迪对面。这个故事的另一个主人公是方小顿，人称剑心，“乌云”创始人。和邬迪一样，方小顿也在等待乌云事件最终的结果。</p>
 <p>在一家咖啡馆里，邬迪和我讲了一些被尘封的往事：</p>
-<h2 id="（一）">（一）</h2><p>我认识方小顿，是在2012年。</p>
+<h2 id="（一）"><a href="#（一）" class="headerlink" title="（一）"></a>（一）</h2><p>我认识方小顿，是在2012年。</p>
 <p>那是我在老牌 IT 公司深信服工作的第7年。</p>
 <p>有同事找到我说，有个叫做“乌云”的媒体曝光了我们产品的一个漏洞。作为品牌总监，我得想办法“平事儿”。</p>
 <p>我设法找到了乌云联系人的电话，电话那头传来了方小顿沙哑的声音。</p>
@@ -213,7 +220,7 @@
 <p>鼓励“白帽子黑客”——民间对网络安全技术感兴趣的技术人员——提交各个企业的漏洞，乌云审核之后无条件公开。白帽子在这个平台上获得认可、技术交流和荣誉感，企业在这里获得自己的漏洞详情和危机感，鞭策自己提高安全性。</p>
 </blockquote>
 <p>这就是后来著名的<strong>“乌云模式”</strong>。这个模式让当时的我热血沸腾，当然后来也改写了我们所有人的命运。</p>
-<p>两年以后，我选择加入乌云。另一位创始人“疯狗”跟我回忆，我认识方小顿的2012年乌云已经成立三年，那时只有两三个人，所有人住在民宅里，不仅不领工资，而且都是把自己的积蓄在往里填。他们相信自己在做一件伟大的事。<br></div>
+<p>两年以后，我选择加入乌云。另一位创始人“疯狗”跟我回忆，我认识方小顿的2012年乌云已经成立三年，那时只有两三个人，所有人住在民宅里，不仅不领工资，而且都是把自己的积蓄在往里填。他们相信自己在做一件伟大的事。</p></div>
   
     <footer>
       <a rel="full-article" href="/b/2017/11/wu-di-wu-yun-wan-cheng-liao-shi-ming/#more">Read More →</a>
@@ -232,7 +239,7 @@
     
       <p class="meta">
         
-          <time datetime="2017-11-13T08:14:49.000Z" itemprop="datePublished">11月 13, 2017</time>
+          <time datetime="2017-11-13T16:14:49.000Z" itemprop="datePublished">11月 13, 2017</time>
 
         
         
@@ -347,21 +354,33 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -394,10 +413,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

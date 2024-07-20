@@ -3,7 +3,7 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>微信Android版隐藏功能 | MXOXW</title>
@@ -11,7 +11,7 @@
   <meta name="keywords" content="微信">
   <meta name="description" content="//triggerWebViewCacheCleanup 来清缓存！
 //switchtabpos：让微信 tab 更贴合 Android Design
-如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 //switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整...">
+如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 &#x2F;&#x2F;switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android ...">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,12 +19,13 @@
   <meta itemprop="name" content="微信Android版隐藏功能 | MXOXW" />
   <meta itemprop="description" content="//triggerWebViewCacheCleanup 来清缓存！
 //switchtabpos：让微信 tab 更贴合 Android Design
-如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 //switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整..." />
+如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 &#x2F;&#x2F;switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android ..." />
   
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css">
+
   
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com/b/2015/06/wei-xin-android-ban-yin-cang-gong-neng/">
   
@@ -33,9 +34,9 @@
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -45,7 +46,7 @@
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -85,7 +86,7 @@
     
       <p class="meta">
         
-          <time datetime="2015-06-17T07:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
+          <time datetime="2015-06-17T15:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
 
         
         
@@ -98,19 +99,19 @@
 
 
 <div class="entry-content"><p><code>//triggerWebViewCacheCleanup</code> 来清缓存！</p>
-<p><code>//switchtabpos</code>：让微信 tab 更贴合 Android Design<br>如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 //switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整回来，再输入一遍并发送就好了。</p>
-<p><code>//multiwebview</code>：将微信聊天页和文章页拆分为两个任务卡片<br>在任意聊天窗口输入 //multiwebview 并发送，聊天和文章页面就可以被拆分为两个任务，并能同时出现在多任务切换页面中。如果在看文章过程中来了微信消息，回复消息后再跳转回文章就方便多了。当然，该功能还需系统的支持，目前只适用于 Android 5.0 及以上版本的系统。</p>
-<p><code>//switchnotificationstatus</code>：让微信也支持浮动通知<br>在微信任意聊天窗口输入 //switchnotificationstatus 并发送，即可让微信也支持浮动通知。不过该功能仅支持 Android 5.x + 和微信 6.2 测试版，如要升级到微信 6.2 测试版，请用微信扫一扫下面最后一张图中的二维码。</p>
-<p><code>//sightinfo</code>：查看小视频参数<br><code>//sightinfo</code> 可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入 //sightinfo 并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复 输入 //sightinfo 并发送， 退出微信再重新进入就好了。</p>
-<p><code>//traceroute</code>：调出「诊断网络」功能<br>在微信任意聊天窗口输入 //traceroute 并发送，可以调出「诊断网络」功能。不过，当你真遇上无法连接到服务器的情况，这页面应该会自动弹出来吧。</p>
-<p><code>//opentrace</code><br>在微信任意聊天窗口输入 //opentrace 并发送，可以调出一个悬浮的类似音乐播放器中的播放/停止按钮。点击一下是开始，再点击一下是结束。尚不清楚这是什么功能，希望能得到高人指点。</p>
-<p><code>//getfpkey</code><br>输入 //getfpkey 并发送，可以看到关于手机的一些信息，包括制造商、型号、ROM 的版本。然而用处不大，这些信息在 设置-关于手机里都可以找到。</p>
-<p><code>//testwaitsms</code><br>输入 //testwaitsms 并发送后会要求验证手机号码，在进度条走完之前你可以点返回键取消操作。不知道 验证手机号码为哪般，关键这手机号码还不是我的，所以无法得知下一步要做什么。</p>
-<p><code>//setshakecarddata</code><br>输入 //setshakecarddata 并发送后，摇一摇功能中会多出一个「礼券」选项。然而并不能摇出什么礼券，只有一句「活动已结束，多陪陪家人」的温馨提示。该功能的取消方法与前面所述的不大一样，需要输入 //clearshakecarddata 并发送。</p>
-<p><code>//checkcount</code>：查看当前聊天窗口消息数量<br>输入 //checkcount 并发送，可以查看当前聊天窗口总共有多少条消息。</p>
-<p><code>//pickpoi</code>：定位当前位置<br>输入 //pickpoi 并发送，可以定位自己当前的位置，这与微信中的「发送位置」的功能是相同的。</p>
-<p><code>//fullexit</code>：退出微信<br>//fullexit 相当于退出功能，输入并发送后，微信会自动退出。再次进入微信时，需要输入登录密码。</p>
-<p><code>//testsetpageowner</code><br>输入 //testsetpageowner 并发送，会跳转到一个 Weixin JS API Demos 页面，不过该页面仅支持公司内网访问，对咱来说没什么用。</p>
+<p><code>//switchtabpos</code>：让微信 tab 更贴合 Android Design<br>如果你并不喜欢微信 Android 版和 iOS 端同用一套 UI，现在有一个小方法可以实现 Tab 的转移：在微信任意聊天窗口输入 &#x2F;&#x2F;switchtabpos 并按发送，Tab 就会从转移到屏幕顶端，Android 范十足。如果想再调整回来，再输入一遍并发送就好了。</p>
+<p><code>//multiwebview</code>：将微信聊天页和文章页拆分为两个任务卡片<br>在任意聊天窗口输入 &#x2F;&#x2F;multiwebview 并发送，聊天和文章页面就可以被拆分为两个任务，并能同时出现在多任务切换页面中。如果在看文章过程中来了微信消息，回复消息后再跳转回文章就方便多了。当然，该功能还需系统的支持，目前只适用于 Android 5.0 及以上版本的系统。</p>
+<p><code>//switchnotificationstatus</code>：让微信也支持浮动通知<br>在微信任意聊天窗口输入 &#x2F;&#x2F;switchnotificationstatus 并发送，即可让微信也支持浮动通知。不过该功能仅支持 Android 5.x + 和微信 6.2 测试版，如要升级到微信 6.2 测试版，请用微信扫一扫下面最后一张图中的二维码。</p>
+<p><code>//sightinfo</code>：查看小视频参数<br><code>//sightinfo</code> 可以让小视频的左上角显示小视频的一些参数，比如帧率、分辨率、时长、大小等。输入 &#x2F;&#x2F;sightinfo 并发送后，参数不会立即显示，需先退出微信再重新进入。如要取消显示参数，只需重复 输入 &#x2F;&#x2F;sightinfo 并发送， 退出微信再重新进入就好了。</p>
+<p><code>//traceroute</code>：调出「诊断网络」功能<br>在微信任意聊天窗口输入 &#x2F;&#x2F;traceroute 并发送，可以调出「诊断网络」功能。不过，当你真遇上无法连接到服务器的情况，这页面应该会自动弹出来吧。</p>
+<p><code>//opentrace</code><br>在微信任意聊天窗口输入 &#x2F;&#x2F;opentrace 并发送，可以调出一个悬浮的类似音乐播放器中的播放&#x2F;停止按钮。点击一下是开始，再点击一下是结束。尚不清楚这是什么功能，希望能得到高人指点。</p>
+<p><code>//getfpkey</code><br>输入 &#x2F;&#x2F;getfpkey 并发送，可以看到关于手机的一些信息，包括制造商、型号、ROM 的版本。然而用处不大，这些信息在 设置-关于手机里都可以找到。</p>
+<p><code>//testwaitsms</code><br>输入 &#x2F;&#x2F;testwaitsms 并发送后会要求验证手机号码，在进度条走完之前你可以点返回键取消操作。不知道 验证手机号码为哪般，关键这手机号码还不是我的，所以无法得知下一步要做什么。</p>
+<p><code>//setshakecarddata</code><br>输入 &#x2F;&#x2F;setshakecarddata 并发送后，摇一摇功能中会多出一个「礼券」选项。然而并不能摇出什么礼券，只有一句「活动已结束，多陪陪家人」的温馨提示。该功能的取消方法与前面所述的不大一样，需要输入 &#x2F;&#x2F;clearshakecarddata 并发送。</p>
+<p><code>//checkcount</code>：查看当前聊天窗口消息数量<br>输入 &#x2F;&#x2F;checkcount 并发送，可以查看当前聊天窗口总共有多少条消息。</p>
+<p><code>//pickpoi</code>：定位当前位置<br>输入 &#x2F;&#x2F;pickpoi 并发送，可以定位自己当前的位置，这与微信中的「发送位置」的功能是相同的。</p>
+<p><code>//fullexit</code>：退出微信<br>&#x2F;&#x2F;fullexit 相当于退出功能，输入并发送后，微信会自动退出。再次进入微信时，需要输入登录密码。</p>
+<p><code>//testsetpageowner</code><br>输入 &#x2F;&#x2F;testsetpageowner 并发送，会跳转到一个 Weixin JS API Demos 页面，不过该页面仅支持公司内网访问，对咱来说没什么用。</p>
 </div>
 
 
@@ -121,7 +122,7 @@
 
 <span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
 
-      <time datetime="2015-06-17T07:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
+      <time datetime="2015-06-17T15:38:56.000Z" itemprop="datePublished">6月 17, 2015</time>
 
       
 
@@ -145,7 +146,9 @@
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 <!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
-<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script src="/js/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
       var gitalk = new Gitalk({
@@ -253,21 +256,33 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -300,10 +315,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>

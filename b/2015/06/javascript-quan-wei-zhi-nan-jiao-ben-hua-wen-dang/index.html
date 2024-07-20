@@ -3,7 +3,7 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
 <html>
-<head><link rel=manifest href=/manifest.json>
+<head>
   <meta charset="utf-8">
   
   <title>JavaScript 权威指南-脚本化文档 | MXOXW</title>
@@ -50,9 +50,10 @@ nodeType
   该节点的类型。9代表Docu..." />
   
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/css/style.css">
+
   
-  <link rel="dns-prefetch" href="//cdn.bootcss.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
   <link rel="canonical" href="http://www.mxoxw.com/b/2015/06/javascript-quan-wei-zhi-nan-jiao-ben-hua-wen-dang/">
   
@@ -61,9 +62,9 @@ nodeType
   
   
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+  <!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
   
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
@@ -73,7 +74,7 @@ nodeType
     });
   </script>
   
-</head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body> <!-- TODO body 添加样式-->
   <header role="banner"><hgroup>
@@ -113,7 +114,7 @@ nodeType
     
       <p class="meta">
         
-          <time datetime="2015-06-03T02:08:32.000Z" itemprop="datePublished">6月 03, 2015</time>
+          <time datetime="2015-06-03T10:08:32.000Z" itemprop="datePublished">6月 03, 2015</time>
 
         
         
@@ -146,21 +147,28 @@ nodeType
 </ul>
 <p>15.4 属性</p>
 <p>HTML属性名不区分大小写，但JavaScript属性名则大小写敏感。从HTML属性名转换到JavaScript属性名应该采用小写。但是，如果属性名包含不止一个单词，则将除了第一个单词以外的单词的首字母大写，例如：defaultChecked和tabIndex。</p>
-<p>有些HTML属性名在JavaScript中是保留字。对于这些属性，一般的规则是为属性名加前缀”html”。例如，HTML的for属性（<code>&lt;lable／&gt;</code>元素）在JavaScript中变为htm1For属性。”class”在JavaScript中是保留字（但还未使用），它是HTML非常重要的class属性，是上面规则的一个例外：在JavaScript代码中它变为className。</p>
+<p>有些HTML属性名在JavaScript中是保留字。对于这些属性，一般的规则是为属性名加前缀”html”。例如，HTML的for属性（&lt;lable／&gt;元素）在JavaScript中变为htm1For属性。”class”在JavaScript中是保留字（但还未使用），它是HTML非常重要的class属性，是上面规则的一个例外：在JavaScript代码中它变为className。</p>
 <ul>
 <li>getAttribute()</li>
 <li>setAttribute()</li>
 </ul>
 <p>dataset</p>
-<p>作为attr节点的属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.attributes[<span class="number">0</span>] <span class="comment">// The first attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="built_in">document</span>.body.attributes.bgcolor <span class="comment">// The bgcolor attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="built_in">document</span>.body.attributes[<span class="string">"ONLOAD"</span>] <span class="comment">// The onload attribute of the &lt;body&gt; elt</span></span><br></pre></td></tr></table></figure></p>
-<p>15.5.1 作为HTML的元素的内容<br>innerHTML的效率非常高，但是用’+=’重复追加一小段文字通常效率底下，因为它既要序列化又要解析。<br>outerHTML<br>insertAdjacentHTML()</p>
+<p>作为attr节点的属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>[<span class="number">0</span>] <span class="comment">// The first attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>.<span class="property">bgcolor</span> <span class="comment">// The bgcolor attribute of the &lt;body&gt; elt</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">attributes</span>[<span class="string">&quot;ONLOAD&quot;</span>] <span class="comment">// The onload attribute of the &lt;body&gt; elt</span></span><br></pre></td></tr></table></figure>
+
+<p>15.5.1 作为HTML的元素的内容<br>innerHTML的效率非常高，但是用’+&#x3D;’重复追加一小段文字通常效率底下，因为它既要序列化又要解析。<br>outerHTML<br>insertAdjacentHTML()</p>
 <p>15.5.2 作为纯文本的元素的内容<br>textContent<br>innerText</p>
-<p>15.5.3 作为TEXT的元素的内容<br>nodeValue<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">textContent</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> child, type, s = <span class="string">""</span>; <span class="comment">// s holds the text of all children</span></span><br><span class="line">    <span class="keyword">for</span> (child = e.firstChild; child != <span class="literal">null</span>; child = child.nextSibling) &#123;</span><br><span class="line">        type = child.nodeType;</span><br><span class="line">        <span class="keyword">if</span> (type === <span class="number">3</span> || type === <span class="number">4</span>) <span class="comment">// Text and CDATASection nodes</span></span><br><span class="line">            s += child.nodeValue;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>) <span class="comment">// Recurse for Element nodes</span></span><br><span class="line">            s += textContent(child);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>15.5.3 作为TEXT的元素的内容<br>nodeValue</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">textContent</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> child, type, s = <span class="string">&quot;&quot;</span>; <span class="comment">// s holds the text of all children</span></span><br><span class="line">    <span class="keyword">for</span> (child = e.<span class="property">firstChild</span>; child != <span class="literal">null</span>; child = child.<span class="property">nextSibling</span>) &#123;</span><br><span class="line">        type = child.<span class="property">nodeType</span>;</span><br><span class="line">        <span class="keyword">if</span> (type === <span class="number">3</span> || type === <span class="number">4</span>) <span class="comment">// Text and CDATASection nodes</span></span><br><span class="line">            s += child.<span class="property">nodeValue</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type === <span class="number">1</span>) <span class="comment">// Recurse for Element nodes</span></span><br><span class="line">            s += <span class="title function_">textContent</span>(child);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>15.6.1 创建节点<br>createElement()<br>createTextNode()<br>createDocumentFragment()<br>createElementNS()<br>cloneNode()<br>importNode()</p>
 <p>15.6.2 插入节点<br>appendChild()<br>insertBefore()</p>
 <p>15.6.3 删除和替换节点<br>removeChild()<br>replaceChild()</p>
-<p>15.6.4 使用 DocumentFragments<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Reverse the order of the children of Node n</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Create an empty DocumentFragment as a temporary container</span></span><br><span class="line">    <span class="keyword">var</span> f = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">    <span class="comment">// Now loop backward through the children, moving each one to the fragment.</span></span><br><span class="line">    <span class="comment">// The last child of n becomes the first child of f, and vice-versa.</span></span><br><span class="line">    <span class="comment">// Note that appending a child to f automatically removes it from n.</span></span><br><span class="line">    <span class="keyword">while</span> (n.lastChild) f.appendChild(n.lastChild);</span><br><span class="line">    <span class="comment">// Finally, move the children of f all at once back to n, all at once.</span></span><br><span class="line">    n.appendChild(f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>15.10.3 查询选取的文本<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSelectedText</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getSelection) <span class="comment">// The HTML5 standard API</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.getSelection().toString();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.selection) <span class="comment">// This is the IE-specific technique.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.selection.createRange().text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>15.6.4 使用 DocumentFragments</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Reverse the order of the children of Node n</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reverse</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="comment">// Create an empty DocumentFragment as a temporary container</span></span><br><span class="line">    <span class="keyword">var</span> f = <span class="variable language_">document</span>.<span class="title function_">createDocumentFragment</span>();</span><br><span class="line">    <span class="comment">// Now loop backward through the children, moving each one to the fragment.</span></span><br><span class="line">    <span class="comment">// The last child of n becomes the first child of f, and vice-versa.</span></span><br><span class="line">    <span class="comment">// Note that appending a child to f automatically removes it from n.</span></span><br><span class="line">    <span class="keyword">while</span> (n.<span class="property">lastChild</span>) f.<span class="title function_">appendChild</span>(n.<span class="property">lastChild</span>);</span><br><span class="line">    <span class="comment">// Finally, move the children of f all at once back to n, all at once.</span></span><br><span class="line">    n.<span class="title function_">appendChild</span>(f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>15.10.3 查询选取的文本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getSelectedText</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">getSelection</span>) <span class="comment">// The HTML5 standard API</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">window</span>.<span class="title function_">getSelection</span>().<span class="title function_">toString</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">selection</span>) <span class="comment">// This is the IE-specific technique.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">document</span>.<span class="property">selection</span>.<span class="title function_">createRange</span>().<span class="property">text</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </div>
 
 
@@ -171,7 +179,7 @@ nodeType
 
 <span class="byline author vcard">Posted by <span class="fn">Wind</span></span>
 
-      <time datetime="2015-06-03T02:08:32.000Z" itemprop="datePublished">6月 03, 2015</time>
+      <time datetime="2015-06-03T10:08:32.000Z" itemprop="datePublished">6月 03, 2015</time>
 
       
 
@@ -195,7 +203,9 @@ nodeType
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 <!--<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>-->
-<script src="/js/gitalk.min.js" type="text/javascript"></script>
+
+<script src="/js/gitalk.min.js"></script>
+
 
 <script type="text/javascript">
       var gitalk = new Gitalk({
@@ -303,21 +313,33 @@ nodeType
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2022 - Wind -
+  Copyright &copy; 2024 - Wind -
   <span class="credit">Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
 </p>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js" type="text/javascript"></script>
-<script src="/js/script.min.js" type="text/javascript"></script>
+  
+<script src="//cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/modernizr@3.13.0/lib/cli.min.js"></script>
+
+
+<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+<script src="/js/script.min.js"></script>
 
 
 
 
 
-  <link rel="stylesheet" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
-  <script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.css">
+
+  
+<script src="//cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.min.js"></script>
+
 
 
 
@@ -350,10 +372,5 @@ var _hmt = _hmt || [];
 
 
 
-<script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1651293525834')
-    .then(function () {console.log('ServiceWorker Register Successfully.')})
-    .catch(function (e) {console.error(e)});
-}
-</script></body>
+</body>
 </html>
