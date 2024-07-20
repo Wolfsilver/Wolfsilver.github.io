@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.mxoxw.com/love/index.html</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/rent/index.html</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://www.mxoxw.com/tags/index.html</loc>
     
     <lastmod>2024-07-20</lastmod>
@@ -38,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://www.mxoxw.com/b/2018/01/2018/</loc>
+    <loc>http://www.mxoxw.com/love/index.html</loc>
     
     <lastmod>2024-07-20</lastmod>
     
@@ -47,52 +29,7 @@
   </url>
   
   <url>
-    <loc>http://www.mxoxw.com/b/2018/01/vs-code-zi-ding-yi-gao-liang/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2018/02/duo-yu-ming-dan-zheng-shu/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2018/11/2018-11-01-mian-shi/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2019/12/whistle-xxtpl/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/about/index.html</loc>
+    <loc>http://www.mxoxw.com/rent/index.html</loc>
     
     <lastmod>2024-07-20</lastmod>
     
@@ -111,6 +48,123 @@
   
   <url>
     <loc>http://www.mxoxw.com/cv/index.html</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/10-articles-every-programmer-must-read/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/Front-end-knowledge-summary-1/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/what-really-happens-when-you-navigate-to-a-url/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/interview-test/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/java-jdbc/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/web-performance-rules/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/javascript-public-and-private-properties-and-methods/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/javascript-xing-neng-you-hua/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/java-classloader/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/03/java-collection/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/05/nodejs-mo-kuai-xiu-gai/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/</loc>
     
     <lastmod>2024-07-20</lastmod>
     
@@ -461,6 +515,69 @@
   </url>
   
   <url>
+    <loc>http://www.mxoxw.com/b/2018/01/2018/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2018/01/vs-code-zi-ding-yi-gao-liang/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2018/02/duo-yu-ming-dan-zheng-shu/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2018/08/2018-nian-8-yue-25-ri-mian-shi/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2018/11/2018-11-01-mian-shi/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/b/2019/12/whistle-xxtpl/</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mxoxw.com/about/index.html</loc>
+    
+    <lastmod>2024-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.mxoxw.com/b/2015/02/my-first-blog/</loc>
     
     <lastmod>2024-07-20</lastmod>
@@ -507,123 +624,6 @@
   
   <url>
     <loc>http://www.mxoxw.com/b/2015/03/blog-migrated-to-hexo/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/10-articles-every-programmer-must-read/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/Front-end-knowledge-summary-1/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/what-really-happens-when-you-navigate-to-a-url/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/interview-test/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/java-jdbc/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/web-performance-rules/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/javascript-public-and-private-properties-and-methods/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/javascript-xing-neng-you-hua/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/java-classloader/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/03/java-collection/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-zong-jie/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/05/nodejs-mo-kuai-xiu-gai/</loc>
-    
-    <lastmod>2024-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.mxoxw.com/b/2015/05/javascript-quan-wei-zhi-nan-dui-xiang/</loc>
     
     <lastmod>2024-07-20</lastmod>
     

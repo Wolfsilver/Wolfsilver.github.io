@@ -153,7 +153,7 @@ function highlight() {
     $(this).attr('data-id', index);
   });
   
-  var clipboard = new Clipboard('.copyCode');
+  var clipboard = new ClipboardJS('.copyCode');
 
   clipboard.on('success', function(e) {
       $('body').append(tipHtml);
